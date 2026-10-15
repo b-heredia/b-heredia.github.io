@@ -2,11 +2,50 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0"> <title>Briana Heredia - Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briana Heredia - Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@700&family=Big+Shoulders+Display:wght@800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div id="boot-overlay" aria-hidden="true">
+<p class="boot-line">&gt; initializing_portfolio.exe</p>
+</div>
+
+<canvas id="starField" aria-hidden="true"></canvas>
+<div class="nebula" aria-hidden="true">
+  <span class="nebula-blob a"></span>
+  <span class="nebula-blob b"></span>
+  <span class="nebula-blob c"></span>
+</div>
+<div class="live-floor" aria-hidden="true"><div class="live-floor-grid"></div></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<canvas id="cometCanvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<div class="chrome-bar" aria-hidden="true">
+<span class="chrome-dot" style="background:#ff5f57"></span>
+<span class="chrome-dot" style="background:#febc2e"></span>
+<span class="chrome-dot" style="background:#28c840"></span>
+<span class="chrome-url">https://b-heredia.github.io/portfolio</span>
+</div>
+
+<div class="ruler" id="ruler" aria-hidden="true"></div>
+
+<div class="scroll-progress" aria-hidden="true">
+<div class="scroll-progress-fill" id="scrollFill"></div>
+</div>
+
+<div class="edge-label edge-label-left" aria-hidden="true">
+<span>MARKUP</span><span>STYLE</span><span>SCRIPT</span><span>DEPLOY</span>
+</div>
+<div class="edge-label edge-label-right" aria-hidden="true">
+<span>PORTFOLIO</span><span>I.C.STARS</span><span>BRI</span><span>2026</span>
+</div>
+
 <header>
 <nav>
 <a href="#about">About</a>
@@ -14,40 +53,134 @@ content="width=device-width, initial-scale=1.0"> <title>Briana Heredia - Portfol
 <a href="#contact">Contact</a>
 </nav>
 </header>
+
 <main>
+
 <section id="hero">
-<h1>Briana Heredia</h1>
-<p class="tagline">
-Aspiring Software Developer - i.c.stars
-</p>
+<div class="viewfinder" aria-hidden="true">
+  <span class="vf-corner vf-tl"></span>
+  <span class="vf-corner vf-tr"></span>
+  <span class="vf-corner vf-bl"></span>
+  <span class="vf-corner vf-br"></span>
+  <span class="vf-crosshair"></span>
+</div>
+<p class="eyebrow boxed-label">&lt;developer&nbsp;in&nbsp;progress /&gt;</p>
+<h1 class="gradient-text glitch" data-text="Briana Heredia">Briana Heredia</h1>
+<p class="tagline"><span id="typed"></span><span class="cursor">|</span></p>
 </section>
-<section id="about">
+
+<section id="about" class="reveal">
+<p class="section-label">01 · About</p>
 <h2>About Me</h2>
-<p></p>Hi, I'm Briana — but you can call me Bri. I'm a software developer in training with i.c.stars, currently exploring where my interests best fit within tech. Right now I'm drawn toward the intersection of AI and creative work — I like the idea of building tools that are both technically interesting and expressive. I'm still figuring out my exact path, but I'm using every project as a chance to test what excites me and grow my skills along the way.</p>
+<div class="about-centered">
+  <div class="avatar-frame">
+    <div class="avatar-photo">
+      <img src="avatar.jpg" alt="Briana Heredia" width="480" height="480" decoding="async">
+    </div>
+  </div>
+  <div>
+    <h2>Hello from the Windy City 🌬️🏙️!</h2>
+
+<h2>I’m Briana Heredia</h2>
+  
+    <p>But you can call me <b>Bri</b> for short — ideas for days.</p>
+
+<p>I’m an intern, lifelong learner, and creative at heart, currently figuring out where my curiosity can take me. With a background in UX/UI design, I’ve learned to think about how people interact with technology — but now I’m curious to explore what’s beyond design. I’m exploring the space where AI, design, and technology meet, experimenting with different ideas, building new skills, and discovering what kind of work excites me along the way.
+
+I don’t have it all figured out yet, and that’s part of the journey. I’m learning, creating, and finding my direction one project at a time. </p>
+    
+    <div class="tag-row">
+      <span class="tag">Product innovation</span>
+      <span class="tag">Creative Technology</span>
+      <span class="tag">Culture,Language & Travel</span>
+      <span class="tag">Branding, Design & Visual Storytelling</span>
+      <span class="tag">Research, Problem Solving & Systems Thinking</span>
+      <span class="tag">Fashion</span>
+      <span class="tag">Stocks</span>
+      <span class="tag">Cute Things ୨୧</span>
+      <span class="tag">Music & Digital Media</span>
+      <span class="tag">Science & Health Curiosity</span>
+      <span class="tag">Visual Aesthetics & Creative Expression</span>
+      <span class="tag">Self Developement being 1% better than yesterday</span>
+    </div>
+  </div>
+</div>
 </section>
-<section id="projects">
+
+<section id="projects" class="reveal">
+<p class="section-label">02 · Projects</p>
 <h2>Projects</h2>
-<div class="project">
-<h3>Project Title</h3>
-<p>What it does and what you built.</p>
+
+<div class="project tilt">
+  <div class="project-head">
+    <h3>Mood Companion</h3>
+    <span class="status status-live">live</span>
+  </div>
+  <p>A cute little widget that reads your mood and reacts with an animated character and a supportive message. Built with vanilla HTML/CSS/JS — my first step toward AI-powered, creative projects.</p>
+  <div class="tag-row small">
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">JavaScript</span>
+  </div>
+  <a class="project-link" href="mood-companion.html">View project <span aria-hidden="true">→</span></a>
 </div>
-<div class="project">
-<h3>Project Title</h3>
-<p>What it does and what you built.</p>
+
+<div class="project tilt">
+  <div class="project-head">
+    <h3>Project Title</h3>
+    <span class="status status-progress">in progress</span>
+  </div>
+  <p>What it does and what you built.</p>
+  <div class="tag-row small">
+    <span class="tag">Coming soon</span>
+  </div>
+</div>
+
+</section>
+
+<section id="contact" class="reveal">
+<p class="section-label">03 · Contact</p>
+<h2>Ready to Create Something Amazing?</h2>
+<p class="contact-lead">Open to opportunities, collaborations, and conversations about AI + creative work.</p>
+<div class="contact-links">
+  <a class="pill" href="mailto:bheredia@icstars.org">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+    Email Me
+  </a>
+  <a class="pill" href="https://github.com/b-heredia" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg>
+    GitHub
+  </a>
 </div>
 </section>
-<section id="contact">
-<h2>Contact</h2>
-<p>Email:
-<a href="mailto:bheredia@icstars.org">Contact Me</a> </p>
-<p>GitHub:
-<a href="https://github.com/b-heredia">
-github.com/b-heredia</a>
-</p>
-</section>
+
 </main>
+
 <footer>
-<p>&copy; 2026 Briana Heredia</p>
+<div class="colophon">
+  <div class="colophon-col colophon-mark">
+    <span>B.H.</span>
+  </div>
+  <div class="colophon-col">
+    <span class="colophon-label">Portfolio</span>
+    <span>b-heredia.github.io</span>
+  </div>
+  <div class="colophon-col">
+    <span class="colophon-label">Date</span>
+    <span id="footerDate"></span>
+  </div>
+  <div class="colophon-col">
+    <span class="colophon-label">Time</span>
+    <span id="liveClock"></span>
+  </div>
+  <div class="colophon-col colophon-desc">
+    <span class="colophon-label">Note</span>
+    <span>In my retrowave era -</span>
+  </div>
+</div>
+<p class="status-line"><span class="status-dot" aria-hidden="true"></span><span id="statusText">SYSTEM ONLINE</span></p>
 </footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
