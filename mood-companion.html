@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mood Companion</title>
+<style>
+  :root {
+    --blob-color: #E7E4F8;
+    --text-color: #3A3358;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FAF9FF;
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    color: var(--text-color);
+  }
+
+  .widget {
+    width: min(90vw, 380px);
+    text-align: center;
+    padding: 32px 24px;
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 12px 30px rgba(58, 51, 88, 0.12);
+  }
+
+  h1 {
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.65;
+    margin: 0 0 20px;
+  }
+
+  .blob-wrap {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .blob {
+    width: 100%;
+    height: 100%;
+    background: var(--blob-color);
+    border-radius: 58% 42% 55% 45% / 55% 45% 60% 40%;
+    transition: background 0.5s ease, border-radius 1.2s ease;
+    animation: breathe 3.5s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.04) rotate(1.5deg); }
+  }
+
+  .blob.bounce {
+    animation: bounce 0.5s ease;
+  }
+
+  @keyframes bounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.12, 0.9); }
+    60% { transform: scale(0.95, 1.08); }
+    100% { transform: scale(1); }
+  }
+
+  .face {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  .eye {
+    fill: var(--text-color);
+    transition: all 0.4s ease;
+  }
+
+  .mouth {
+    fill: none;
+    stroke: var(--text-color);
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: d 0.4s ease;
+  }
+
+  form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  input[type="text"]:focus {
+    border-color: #B4A7F0;
+  }
+
+  button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: #B4A7F0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+
+  button:hover { background: #9C8CE8; }
+  button:active { transform: scale(0.96); }
+
+  .message {
+    min-height: 44px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .message.show { opacity: 1; }
+
+  .hint {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="widget">
+  <h1>Mood Companion</h1>
+  <p class="subtitle">tell me how you're feeling</p>
+
+  <div class="blob-wrap">
+    <div class="blob" id="blob">
+      <svg class="face" viewBox="0 0 100 100">
+        <circle class="eye" id="eyeLeft" cx="35" cy="42" r="4"></circle>
+        <circle class="eye" id="eyeRight" cx="65" cy="42" r="4"></circle>
+        <path class="mouth" id="mouth" d="M38,60 Q50,68 62,60"></path>
+      </svg>
+    </div>
+  </div>
+
+  <form id="moodForm">
+    <input type="text" id="moodInput" placeholder="e.g. a little anxious" autocomplete="off">
+    <button type="submit">tell me</button>
+  </form>
+
+  <p class="message" id="message"></p>
+  <p class="hint">try: happy, sad, anxious, tired, excited, calm, angry</p>
+</div>
+
+<script>
+  const moods = {
+    happy: {
+      color: '#FFE39A',
+      mouth: 'M32,55 Q50,75 68,55',
+      eye: { r: 4 },
+      keywords: ['happy', 'good', 'great', 'joyful', 'glad', 'content', 'grateful'],
+      messages: [
+        "I love that! Hold onto this feeling for a bit. ✨",
+        "That's wonderful to hear — you deserve this.",
+        "Yay! Let this good energy carry you through the day."
+      ]
+    },
+    sad: {
+      color: '#A9C7F0',
+      mouth: 'M35,62 Q50,50 65,62',
+      eye: { r: 4 },
+      keywords: ['sad', 'down', 'blue', 'upset', 'cry', 'crying', 'lonely', 'hurt'],
+      messages: [
+        "I'm sorry you're feeling this way. It's okay to sit with it for a bit.",
+        "That sounds heavy. Be gentle with yourself today.",
+        "Whatever it is, you don't have to carry it alone."
+      ]
+    },
+    anxious: {
+      color: '#FFB3B3',
+      mouth: 'M34,60 Q40,52 46,60 T58,60 T70,60',
+      eye: { r: 3 },
+      keywords: ['anxious', 'nervous', 'worried', 'stressed', 'stress', 'overwhelmed', 'scared', 'panicking'],
+      messages: [
+        "Let's slow down for a second — take one deep breath with me.",
+        "That's a lot to hold. You're allowed to take this one step at a time.",
+        "Anxious feelings pass. You've gotten through this before."
+      ]
+    },
+    tired: {
+      color: '#D3C2EE',
+      mouth: 'M38,58 L62,58',
+      eye: { r: 2, ry: 1 },
+      keywords: ['tired', 'exhausted', 'sleepy', 'drained', 'burnt out', 'burnout', 'sleepy'],
+      messages: [
+        "Sounds like you've been running on empty. Rest counts as progress too.",
+        "It's okay to slow down. You don't have to earn your rest.",
+        "Go easy on yourself — even a short break helps."
+      ]
+    },
+    excited: {
+      color: '#FFC2E2',
+      mouth: 'M32,52 Q50,78 68,52 Q50,66 32,52',
+      eye: { r: 5 },
+      keywords: ['excited', 'pumped', 'thrilled', 'hyped', 'stoked'],
+      messages: [
+        "Yes!! Let that excitement out — you've earned it!",
+        "I can feel the energy from here. Go make it happen!",
+        "That's the spirit — ride this wave!"
+      ]
+    },
+    calm: {
+      color: '#BDEFC9',
+      mouth: 'M36,58 Q50,64 64,58',
+      eye: { r: 4 },
+      keywords: ['calm', 'relaxed', 'peaceful', 'chill', 'fine', 'okay', 'ok', 'steady'],
+      messages: [
+        "That's a nice place to be. Enjoy the quiet.",
+        "Steady and calm — that's a good rhythm.",
+        "Glad you're feeling settled today."
+      ]
+    },
+    angry: {
+      color: '#FFAE8C',
+      mouth: 'M35,64 L50,54 L65,64',
+      eye: { r: 4 },
+      keywords: ['angry', 'mad', 'frustrated', 'annoyed', 'irritated', 'furious'],
+      messages: [
+        "That frustration is valid. Let it out, then let it go a little at a time.",
+        "Totally fair to feel that. Take a beat before you respond to anything.",
+        "It makes sense you're upset. Be kind to yourself while it settles."
+      ]
+    },
+    neutral: {
+      color: '#E7E4F8',
+      mouth: 'M38,60 Q50,68 62,60',
+      eye: { r: 4 },
+      keywords: [],
+      messages: [
+        "Thanks for checking in with yourself — that matters.",
+        "Not every day needs a label. I'm here either way.",
+        "However you're doing, I'm glad you stopped by."
+      ]
+    }
+  };
+
+  const blob = document.getElementById('blob');
+  const mouth = document.getElementById('mouth');
+  const eyeLeft = document.getElementById('eyeLeft');
+  const eyeRight = document.getElementById('eyeRight');
+  const message = document.getElementById('message');
+  const form = document.getElementById('moodForm');
+  const input = document.getElementById('moodInput');
+
+  let lastMessage = '';
+
+  function detectMood(text) {
+    const lower = text.toLowerCase();
+    for (const key in moods) {
+      if (key === 'neutral') continue;
+      if (moods[key].keywords.some(word => lower.includes(word))) {
+        return key;
+      }
+    }
+    return 'neutral';
+  }
+
+  function pickMessage(list) {
+    let choice = list[Math.floor(Math.random() * list.length)];
+    if (list.length > 1 && choice === lastMessage) {
+      choice = list[(list.indexOf(choice) + 1) % list.length];
+    }
+    lastMessage = choice;
+    return choice;
+  }
+
+  function applyMood(key) {
+    const mood = moods[key];
+    document.documentElement.style.setProperty('--blob-color', mood.color);
+    mouth.setAttribute('d', mood.mouth);
+    eyeLeft.setAttribute('r', mood.eye.r);
+    eyeRight.setAttribute('r', mood.eye.r);
+
+    message.textContent = pickMessage(mood.messages);
+    message.classList.remove('show');
+    void message.offsetWidth;
+    message.classList.add('show');
+
+    blob.classList.remove('bounce');
+    void blob.offsetWidth;
+    blob.classList.add('bounce');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    const key = detectMood(text);
+    applyMood(key);
+  });
+</script>
+
+</body>
+</html>
