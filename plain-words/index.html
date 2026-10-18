@@ -56,6 +56,15 @@
   .rel { margin-top:14px; font-size:13px; color:var(--muted); }
   .rel a { color:var(--ink); }
   .empty { grid-column:1/13; padding:48px 0; font-size:20px; }
+  .tagtable { margin-top:22px; }
+  .tt-title { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px; }
+  .tt-scroll { overflow-x:auto; }
+  .tagtable table { width:100%; border-collapse:collapse; font-size:13px; }
+  .tagtable th, .tagtable td { text-align:left; vertical-align:top; padding:8px 12px 8px 0; border-bottom:1px solid #d6d6d6; }
+  .tagtable th { font-size:11px; text-transform:uppercase; letter-spacing:.06em; border-bottom:1px solid var(--ink); }
+  .tagtable td:first-child, .tagtable td:last-child { white-space:nowrap; }
+  .tagtable code, .tt-note code { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12px; background:var(--soft); padding:1px 5px; }
+  .tt-note { margin-top:10px; font-size:13px; }
   [hidden] { display:none !important; }
 
   .note { padding-top:clamp(40px,5vw,64px); padding-bottom:24px; }
@@ -352,6 +361,25 @@
       <div class="ex">
         <div><b>Think of it like</b>Labels on storage boxes: "Photos", "Books". The label tells you what is inside before you open it.</div>
         <div><b>In real tech</b><code>&lt;p&gt;Hello&lt;/p&gt;</code> marks "Hello" as a paragraph. <code>&lt;p&gt;</code> opens it and <code>&lt;/p&gt;</code> closes it.</div>
+      </div>
+      <div class="tagtable"><b class="tt-title">Common tags</b>
+        <div class="tt-scroll"><table>
+          <thead><tr><th>Tag</th><th>What it does</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>&lt;h1&gt;...&lt;/h1&gt;</code></td><td>Main heading. h2 to h6 are smaller sub-headings.</td><td><code>&lt;h1&gt;My Portfolio&lt;/h1&gt;</code></td></tr>
+            <tr><td><code>&lt;p&gt;...&lt;/p&gt;</code></td><td>A paragraph of text.</td><td><code>&lt;p&gt;Welcome to my site.&lt;/p&gt;</code></td></tr>
+            <tr><td><code>&lt;b&gt;...&lt;/b&gt; / &lt;strong&gt;...&lt;/strong&gt;</code></td><td>Bold text. &lt;strong&gt; also tells screen readers it is important.</td><td><code>&lt;strong&gt;Note:&lt;/strong&gt; read this</code></td></tr>
+            <tr><td><code>&lt;i&gt;...&lt;/i&gt; / &lt;em&gt;...&lt;/em&gt;</code></td><td>Italic text. &lt;em&gt; adds emphasis.</td><td><code>I &lt;em&gt;love&lt;/em&gt; learning</code></td></tr>
+            <tr><td><code>&lt;a href="..."&gt;...&lt;/a&gt;</code></td><td>A link to another page.</td><td><code>&lt;a href="about.html"&gt;About me&lt;/a&gt;</code></td></tr>
+            <tr><td><code>&lt;img src="..." alt="..."&gt;</code></td><td>An image. No closing tag. alt describes it for people who cannot see it.</td><td><code>&lt;img src="me.jpg" alt="Photo of Briana"&gt;</code></td></tr>
+            <tr><td><code>&lt;ul&gt; &lt;li&gt;...&lt;/li&gt; &lt;/ul&gt;</code></td><td>A bulleted list. Use &lt;ol&gt; for a numbered list.</td><td><code>&lt;ul&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;li&gt;CSS&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+            <tr><td><code>&lt;br&gt;</code></td><td>A line break. No closing tag.</td><td><code>Line one&lt;br&gt;Line two</code></td></tr>
+            <tr><td><code>&lt;div&gt;...&lt;/div&gt;</code></td><td>A box that groups content, often for layout.</td><td><code>&lt;div class="card"&gt;...&lt;/div&gt;</code></td></tr>
+            <tr><td><code>&lt;span&gt;...&lt;/span&gt;</code></td><td>Wraps a few words inside a line, often for styling.</td><td><code>I am &lt;span class="highlight"&gt;curious&lt;/span&gt;</code></td></tr>
+            <tr><td><code>&lt;button&gt;...&lt;/button&gt;</code></td><td>A clickable button.</td><td><code>&lt;button&gt;Copy prompt&lt;/button&gt;</code></td></tr>
+          </tbody>
+        </table></div>
+        <p class="tt-note"><b>Tip:</b> the opening and closing tags must match. <code>&lt;h1&gt;Title&lt;/h1&gt;</code> works; <code>&lt;h1&gt;Title&lt;/h2&gt;</code> does not.</p>
       </div>
       <p class="rel">Related: <a href="#html">HTML</a>, <a href="#css">CSS</a></p>
     </div>
