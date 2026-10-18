@@ -62,7 +62,9 @@
   .tagtable table { width:100%; border-collapse:collapse; font-size:13px; }
   .tagtable th, .tagtable td { text-align:left; vertical-align:top; padding:8px 12px 8px 0; border-bottom:1px solid #d6d6d6; }
   .tagtable th { font-size:11px; text-transform:uppercase; letter-spacing:.06em; border-bottom:1px solid var(--ink); }
-  .tagtable td:first-child, .tagtable td:last-child { white-space:nowrap; }
+  .tagtable td:first-child { white-space:nowrap; }
+  .tagtable td:nth-child(2) { min-width:14em; }
+  .tagtable td:last-child { min-width:12em; }
   .tagtable code, .tt-note code { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12px; background:var(--soft); padding:1px 5px; }
   .tt-note { margin-top:10px; font-size:13px; }
   [hidden] { display:none !important; }
