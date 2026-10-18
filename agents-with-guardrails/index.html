@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents with Guardrails — Briana Heredia</title>
+<meta name="description" content="Four Claude Code agents, each with one job and clear limits, tested on material with known problems planted inside.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#111; --paper:#fff; --muted:#5c5c5c; --soft:#f1f1f1; --gutter:clamp(16px,3vw,48px); --giant:clamp(56px,13vw,200px); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { overflow-x:hidden; }
+  body { background:var(--paper); color:var(--ink); font-family:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif; font-size:16px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  :focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+  .grid { display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--gutter); padding-left:var(--gutter); padding-right:var(--gutter); position:relative; }
+  .rule { border:0; border-top:1px solid var(--ink); margin:0 var(--gutter); }
+  nav { display:flex; justify-content:space-between; gap:16px; padding:20px var(--gutter); font-size:14px; font-weight:500; }
+  nav a { text-decoration:none; } nav a:hover { text-decoration:underline; text-underline-offset:4px; }
+  .lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .lines line { stroke:var(--ink); stroke-width:1; vector-effect:non-scaling-stroke; }
+
+  .hero { padding-top:clamp(24px,5vw,64px); padding-bottom:clamp(48px,6vw,80px); }
+  .kicker { grid-column:1/4; font-size:clamp(15px,1.5vw,20px); line-height:1.2; max-width:16ch; padding-top:.3em; }
+  .giant { grid-column:4/13; font-size:var(--giant); font-weight:700; line-height:.8; letter-spacing:-.055em; text-transform:uppercase; }
+  .giant span { display:block; }
+  .giant span:nth-child(2) { padding-left:.6em; }
+  .giant span:nth-child(4) { padding-left:.4em; }
+  .intro { grid-column:7/13; margin-top:40px; font-size:clamp(17px,1.7vw,22px); line-height:1.3; max-width:34ch; }
+  .meta { grid-column:1/13; margin-top:48px; display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gutter); font-size:13px; }
+  .meta b { display:block; margin-bottom:2px; }
+
+  section { padding-top:clamp(40px,5vw,72px); padding-bottom:clamp(40px,5vw,72px); }
+  .label { grid-column:1/4; font-size:14px; font-weight:500; padding-top:6px; }
+  .head { grid-column:4/13; }
+  .head h2 { font-size:clamp(34px,5vw,72px); font-weight:700; line-height:.92; letter-spacing:-.045em; }
+  .head p { margin-top:14px; max-width:58ch; }
+  .body { grid-column:4/13; margin-top:28px; min-width:0; }
+
+  .agent { display:grid; grid-template-columns:repeat(9,1fr); column-gap:var(--gutter); padding:24px 0; border-top:1px solid var(--ink); }
+  .agent:last-child { border-bottom:1px solid var(--ink); }
+  .agent .n { grid-column:1/2; font-size:clamp(26px,3vw,40px); font-weight:700; letter-spacing:-.05em; line-height:.9; }
+  .agent h3 { grid-column:2/5; font-size:20px; letter-spacing:-.01em; }
+  .agent h3 code { font-family:inherit; }
+  .agent .job { grid-column:5/10; }
+  .agent .lim { grid-column:5/10; margin-top:8px; font-size:14px; color:#333; }
+  .agent .lim b { color:var(--ink); }
+
+  .scroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; vertical-align:top; padding:10px 12px 10px 0; border-bottom:1px solid #d6d6d6; }
+  th { font-size:12px; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--ink); }
+  td.ok { font-weight:700; white-space:nowrap; }
+
+  .run { margin-top:44px; }
+  .run:first-child { margin-top:0; }
+  .run h3 { font-size:clamp(22px,2.4vw,32px); letter-spacing:-.03em; line-height:1; margin-bottom:14px; }
+  .ask { display:inline-block; background:var(--soft); padding:10px 14px; font-size:14px; margin-bottom:14px; }
+  .ask::before { content:"Request: "; font-weight:700; }
+  .out { border:1px solid var(--ink); padding:clamp(16px,2.2vw,28px); font-size:14px; }
+  .out .tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:12px; display:block; }
+  .out p + p, .out p + ul, .out ul + p, .out table + p, .out p + table { margin-top:10px; }
+  .out ul { padding-left:18px; }
+  .take { margin-top:14px; padding-left:14px; border-left:4px solid var(--ink); font-size:15px; font-weight:500; max-width:62ch; }
+  .take b { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+
+  .cols { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gutter); }
+  .cols h3 { font-size:14px; text-transform:uppercase; letter-spacing:.05em; padding-bottom:8px; border-bottom:1px solid var(--ink); margin-bottom:12px; }
+  .cols ul { padding-left:18px; } .cols li + li { margin-top:6px; }
+  .notes li + li { margin-top:10px; } .notes { padding-left:18px; max-width:64ch; }
+  footer { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:48px var(--gutter) 32px; font-size:12px; }
+
+  @media (max-width:860px) {
+    .kicker, .giant, .intro, .meta, .label, .head, .body { grid-column:1/13; }
+    .kicker { margin-bottom:20px; } .label { margin-bottom:10px; }
+    .meta { grid-template-columns:1fr 1fr; row-gap:16px; }
+    .agent .n { grid-column:1/3; } .agent h3 { grid-column:3/10; }
+    .agent .job, .agent .lim { grid-column:1/10; } .agent .job { margin-top:10px; }
+    .cols { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="../index.html">← Briana Heredia</a>
+  <span>Project 04</span>
+</nav>
+
+<header class="hero grid">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="24" y1="0" x2="60" y2="100"/><line x1="74" y1="0" x2="100" y2="66"/>
+  </svg>
+  <p class="kicker">Four AI agents built in Claude Code, tested on purpose.</p>
+  <h1 class="giant" aria-label="Agents with Guardrails">
+    <span aria-hidden="true">Agents</span><span aria-hidden="true">With</span><span aria-hidden="true">Guard</span><span aria-hidden="true">Rails</span>
+  </h1>
+  <p class="intro">Each agent has one job and clear limits. I tested every one on made-up material with problems planted inside, to see what it caught, what it missed, and whether it stayed inside its limits.</p>
+  <div class="meta">
+    <p><b>Role</b>Concept, agent design, testing, review</p>
+    <p><b>Year</b>2026</p>
+    <p><b>Built with</b>Claude Code subagents, Claude Sonnet</p>
+    <p><b>Test data</b>All fictional: no real people, emails or code</p>
+  </div>
+</header>
+
+<hr class="rule">
+
+<section class="grid" aria-labelledby="h1">
+  <p class="label">01 — The agents</p>
+  <div class="head"><h2 id="h1">One job each.</h2><p>A subagent is a specialist Claude can hand a task to. Each one is a short file: a description of when to use it, the tools it may use, and instructions for how to work.</p></div>
+  <div class="body">
+    <div class="agent">
+      <div class="n">01</div><h3><code>code-reviewer</code></h3>
+      <p class="job">Reviews code for security and performance problems and ranks each finding by severity, with a file, a line and a specific fix.</p>
+      <p class="lim"><b>Guardrail:</b> read-only, enforced twice. Its instructions forbid changing files, and a hook script checks every terminal command before it runs and blocks anything that would write.</p>
+    </div>
+    <div class="agent">
+      <div class="n">02</div><h3><code>data-entry</code></h3>
+      <p class="job">Pulls structured information out of emails and messy text and turns it into a clean document.</p>
+      <p class="lim"><b>Guardrail:</b> flags duplicates and missing details instead of guessing. Its tools aren't restricted yet (see next steps).</p>
+    </div>
+    <div class="agent">
+      <div class="n">03</div><h3><code>email-replier</code></h3>
+      <p class="job">Drafts friendly, professional first-draft replies to internal and customer emails.</p>
+      <p class="lim"><b>Guardrail:</b> drafts only. It never sends, and it marks every detail a person needs to confirm.</p>
+    </div>
+    <div class="agent">
+      <div class="n">04</div><h3><code>meeting-docs</code></h3>
+      <p class="job">Turns raw meeting notes into a structured document with decisions, action items, owners and deadlines.</p>
+      <p class="lim"><b>Guardrail:</b> surfaces unassigned tasks and labels its own assumptions instead of filling gaps silently.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="grid" aria-labelledby="h2">
+  <p class="label">02 — How I tested</p>
+  <div class="head"><h2 id="h2">Plant the problems first.</h2><p>For each agent I used a made-up file with known problems built in. Knowing the answers in advance is the only way to judge an AI's work fairly.</p></div>
+  <div class="body scroll">
+    <table>
+      <thead><tr><th>Agent</th><th>What was planted</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>code-reviewer</td><td>A Python file with 5 problems: a hardcoded key, SQL injection, a query inside a loop, network calls with no timeout, a password printed to logs</td><td class="ok">5 of 5, plus extras</td></tr>
+        <tr><td>data-entry</td><td>Workshop sign-ups in mixed formats, one person listed twice, one missing email, one broken email</td><td class="ok">All 3 caught</td></tr>
+        <tr><td>email-replier</td><td>An email with two requests: reschedule a meeting, and send a link</td><td class="ok">Both handled</td></tr>
+        <tr><td>meeting-docs</td><td>Rough notes with 2 decisions, 3 owned tasks with deadlines, and 2 loose ends nobody claimed</td><td class="ok">All caught</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="grid" aria-labelledby="h3">
+  <p class="label">03 — Results</p>
+  <div class="head"><h2 id="h3">What they produced.</h2><p>Outputs below are transcribed from my Claude Code sessions (October 2026), shortened only where noted.</p></div>
+  <div class="body">
+
+    <div class="run">
+      <h3>01 code-reviewer</h3>
+      <p class="ask">Use the code-reviewer agent on agent-test-pack/1-code-reviewer/sample_app.py</p>
+      <div class="out">
+        <span class="tag">Agent output</span>
+        <p>Found 8 issues in sample_app.py: 1 critical, 2 high, 3 medium and 2 low. It changed no files.</p>
+        <div class="scroll"><table>
+          <thead><tr><th>Severity</th><th>Line</th><th>Issue</th></tr></thead>
+          <tbody>
+            <tr><td>Critical</td><td>15</td><td>SQL injection in find_user: the username is concatenated into the query</td></tr>
+            <tr><td>High</td><td>7</td><td>Hardcoded API key in source</td></tr>
+            <tr><td>High</td><td>39</td><td>Plaintext password logged in log_login</td></tr>
+            <tr><td>Medium</td><td>34</td><td>API key sent in the URL query string; pid unescaped in the URL</td></tr>
+            <tr><td>Medium</td><td>22–27</td><td>N+1 queries in order_report, built with string concatenation</td></tr>
+            <tr><td>Medium</td><td>32–35</td><td>Sequential HTTP calls with no timeout and no error handling</td></tr>
+            <tr><td>Low</td><td>9–19</td><td>Database connections opened on every call and never closed</td></tr>
+            <tr><td>Low</td><td>20</td><td>All users loaded into memory with no limit</td></tr>
+          </tbody>
+        </table></div>
+        <p>Each finding also came with a specific fix (fixes omitted here for length).</p>
+      </div>
+      <p class="take"><b>My takeaway</b>It found all 5 planted problems plus 3 real ones I hadn't planted, every line number was correct, and it changed nothing, as designed.</p>
+    </div>
+
+    <div class="run">
+      <h3>02 data-entry</h3>
+      <p class="ask">Use the data-entry agent to pull the sign-up details from agent-test-pack/2-data-entry/messy_signups.txt into a clean document. Flag duplicates and missing info.</p>
+      <div class="out">
+        <span class="tag">Agent output (summary)</span>
+        <p>Saved a clean table with name, email, phone, workshop, date and a flags column. 7 sign-up lines from 6 unique people.</p>
+        <ul>
+          <li><b>Duplicate:</b> Maria Lopez appears twice with the same email, workshop and date. Both rows kept and flagged instead of merged.</li>
+          <li><b>Dev Patel:</b> email has no domain extension, so it looks invalid or truncated.</li>
+          <li><b>Chris:</b> no email and no last name. <b>Kenji:</b> no phone and no last name.</li>
+          <li><b>Workshops:</b> "Figma basics" and "Figma" may be the same workshop; left as written.</li>
+        </ul>
+        <p>Dates and phone formats were kept as written in the source.</p>
+      </div>
+      <p class="take"><b>My takeaway</b>It caught every duplicate and missing field without inventing data. Next version: standardize obvious formats, like dates and phone numbers, while still flagging anything uncertain.</p>
+    </div>
+
+    <div class="run">
+      <h3>03 email-replier</h3>
+      <p class="ask">Use the email-replier agent to draft a reply to agent-test-pack/3-email-replier/incoming_email.txt. Don't send anything.</p>
+      <div class="out">
+        <span class="tag">Agent output: draft, nothing sent</span>
+        <p>Hi Jordan,</p>
+        <p>No problem at all, thanks for letting me know. Happy to move our portfolio review to early next week. Here are two options:</p>
+        <ul><li>Monday, October 19 at 10:00 AM [CONFIRM]</li><li>Tuesday, October 20 at 9:30 AM [CONFIRM]</li></ul>
+        <p>Just reply with whichever works best and I'll send an updated invite.</p>
+        <p>And yes, here's the link to The Better Question so you can try it beforehand: [INSERT LINK]</p>
+        <p>Talk soon,<br>Briana</p>
+        <p><b>Fill in before sending:</b> confirm the times and time zone, paste the link, and cancel the original Thursday 2pm invite.</p>
+      </div>
+      <p class="take"><b>My takeaway</b>It answered both requests, matched Jordan's preference for mornings, and marked every detail I needed to confirm, without guessing or sending anything.</p>
+    </div>
+
+    <div class="run">
+      <h3>04 meeting-docs</h3>
+      <p class="ask">Use the meeting-docs agent on agent-test-pack/4-meeting-docs/meeting_notes.txt</p>
+      <div class="out">
+        <span class="tag">Agent output</span>
+        <p><b>Decisions:</b> launch moves from Nov 3 to Nov 10; the team will test with real students before launch (Lena's idea, everyone agreed); next sync is the same time next week.</p>
+        <div class="scroll"><table>
+          <thead><tr><th>Owner</th><th>Item</th><th>Deadline</th></tr></thead>
+          <tbody>
+            <tr><td>Marcus</td><td>Fix the mobile layout</td><td>Monday</td></tr>
+            <tr><td>Marcus</td><td>Finish the rest of the landing page</td><td>none given</td></tr>
+            <tr><td>Lena</td><td>Write the 5 test questions</td><td>before Briana's sessions</td></tr>
+            <tr><td>Briana</td><td>Set up 3 test sessions</td><td>aim for next Friday</td></tr>
+            <tr><td><i>Unassigned</i></td><td>Check the room booking for the 10th</td><td>none given</td></tr>
+            <tr><td><i>Unassigned</i></td><td>Ask program staff about the snack budget</td><td>none given</td></tr>
+          </tbody>
+        </table></div>
+        <p><b>Flags:</b> it read "the 10th" as Nov 10 and marked that as its own inference; relative deadlines can't become calendar dates without the meeting date; there is no go/no-go checkpoint before the Nov 10 launch.</p>
+      </div>
+      <p class="take"><b>My takeaway</b>It turned messy notes into decisions, owners and deadlines, put unassigned tasks in plain sight, and labeled its own assumptions.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="grid" aria-labelledby="h4">
+  <p class="label">04 — What I learned</p>
+  <div class="head"><h2 id="h4">Honest notes.</h2></div>
+  <div class="body">
+    <ul class="notes">
+      <li><b>AI output varies between runs.</b> I ran the code-reviewer twice. Both runs found all 5 planted problems with the same severity ranking, but one reported 7 issues and the other 8. Only the minor extras changed, which is why AI work still needs a person to review it.</li>
+      <li><b>Instructions are a guardrail; tools are a stronger one.</b> The code-reviewer can only read, and a hook enforces it. The other three agents can currently use every tool, and two of them saved new files into the project. Restricting their tools is my next improvement.</li>
+      <li><b>Cautious isn't the same as complete.</b> The data-entry agent never invented data, but it also left dates and phone numbers in mixed formats. Good agent design means deciding where the agent should fix things and where it should only flag them.</li>
+      <li><b>The best outputs showed their limits.</b> [CONFIRM] tags, "unassigned" rows and labeled guesses made every agent's work easy to check.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="grid" aria-labelledby="h5">
+  <p class="label">05 — Who did what</p>
+  <div class="head"><h2 id="h5">Human decisions, AI drafts.</h2></div>
+  <div class="body cols">
+    <div>
+      <h3>Briana</h3>
+      <ul>
+        <li>Chose the four agents and what each one is for</li>
+        <li>Decided the scope and limits, including the read-only reviewer</li>
+        <li>Set the agents up in Claude Code and ran every test</li>
+        <li>Judged each result against what was planted</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Claude</h3>
+      <ul>
+        <li>Helped draft the agent instructions and the read-only hook</li>
+        <li>Created the fictional test material</li>
+        <li>Checked results against the planted problems</li>
+        <li>Helped write this page</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="grid" aria-labelledby="h6">
+  <p class="label">06 — Next</p>
+  <div class="head"><h2 id="h6">Version 2.</h2></div>
+  <div class="body">
+    <ul class="notes">
+      <li>Give data-entry, email-replier and meeting-docs only the tools they need.</li>
+      <li>Teach data-entry to standardize clear-cut formats and keep flagging uncertain ones.</li>
+      <li>Have the agents work together, for example meeting-docs handing its action items to email-replier for follow-up drafts.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Agents with Guardrails · Briana Heredia, Creative AI Technologist</p>
+  <p><a href="../index.html">Back to portfolio</a></p>
+</footer>
+
+</body>
+</html>
