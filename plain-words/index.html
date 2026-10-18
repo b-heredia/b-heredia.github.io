@@ -20,6 +20,10 @@
   .rule { border:0; border-top:1px solid var(--ink); margin:0 var(--gutter); }
   nav { display:flex; justify-content:space-between; gap:16px; padding:20px var(--gutter); font-size:14px; font-weight:500; }
   nav a { text-decoration:none; } nav a:hover { text-decoration:underline; text-underline-offset:4px; }
+  .tabs { display:flex; gap:28px; padding:4px var(--gutter) 0; font-size:clamp(18px,2vw,24px); font-weight:700; letter-spacing:-.02em; }
+  .tabs a { text-decoration:none; padding-bottom:6px; border-bottom:4px solid transparent; color:var(--muted); }
+  .tabs a:hover { color:var(--ink); }
+  .tabs a[aria-current="page"] { color:var(--ink); border-bottom-color:var(--ink); }
   .lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
   .lines line { stroke:var(--ink); stroke-width:1; vector-effect:non-scaling-stroke; }
 
@@ -90,6 +94,11 @@
   <a href="../index.html">← Briana Heredia</a>
   <span>Plain Words</span>
 </nav>
+<div class="tabs" role="navigation" aria-label="Plain Words sections">
+  <a href="index.html" aria-current="page">Words</a>
+  <a href="questions.html">Questions</a>
+</div>
+
 
 <header class="hero grid">
   <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
