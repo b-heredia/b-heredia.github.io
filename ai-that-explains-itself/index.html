@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI That Explains Itself — Briana Heredia</title>
+<meta name="description" content="A reading tool for everyday people: see the claims, confidence, sources and assumptions underneath an AI answer.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%226%22%20fill%3D%22%23111%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%2CArial%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2238%22%20fill%3D%22%23fff%22%3E%3F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#examples">Skip to the examples</a>
+
+<nav aria-label="Main">
+  <a href="../index.html#work"><strong>← Briana Heredia</strong><span class="nav-sub"> — Creative AI Technologist</span></a>
+  <ul>
+    <li><a href="#lenses">Lenses</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#reader">Try it</a></li>
+    <li><a href="#made">How it was made</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero grid" id="top">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="22" y1="0" x2="58" y2="100"/>
+    <line x1="74" y1="6" x2="100" y2="70"/>
+  </svg>
+
+  <p class="kicker">Project 01 — A reading tool for everyday people who use AI.</p>
+
+  <h1 class="giant t-title">
+    <span>AI That</span>
+    <span class="indent-1">Explains</span>
+    <span class="indent-2">Itself</span>
+  </h1>
+
+  <p class="intro">
+    AI answers arrive fluent, confident and complete. That polish makes them easy to
+    trust and hard to question. <mark class="hl">This page shows you what's underneath:</mark>
+    the claims, the confidence, the sources and the assumptions, so you can decide what
+    to believe.
+  </p>
+
+  <dl class="facts">
+    <div><dt>For</dt><dd>Anyone who asks AI questions</dd></div>
+    <div><dt>Does</dt><dd>Reads AI answers through four lenses</dd></div>
+    <div><dt>Doesn't</dt><dd>Decide what's true for you</dd></div>
+    <div><dt>Runs</dt><dd>In your browser. Nothing you paste leaves the page.</dd></div>
+  </dl>
+</header>
+
+<hr class="rule">
+
+<!-- ================= 01 LENSES ================= -->
+<section class="grid section" id="lenses" aria-labelledby="lenses-title">
+  <p class="sec-label">01 — How to read it</p>
+  <h2 class="giant sec-title" id="lenses-title"><span>Four</span><span>Lenses</span></h2>
+
+  <ol class="lens-list">
+    <li>
+      <span class="lens-num">A</span>
+      <h3><span class="mk mk-claim">Claim</span></h3>
+      <p>A fact you could check: a number, a date, a name, a "this is how it works."</p>
+      <p class="ask">Ask: Where does that come from?</p>
+    </li>
+    <li>
+      <span class="lens-num">B</span>
+      <h3><span class="mk mk-confidence">Confidence</span></h3>
+      <p>How sure the wording sounds. Hedges ("usually") and absolutes ("always") both tell you something.</p>
+      <p class="ask">Ask: How sure are you, and why?</p>
+    </li>
+    <li>
+      <span class="lens-num">C</span>
+      <h3><span class="mk mk-source">Source</span></h3>
+      <p>Who the answer leans on. "Experts say" is not a source. A name you can look up is.</p>
+      <p class="ask">Ask: Which source, exactly?</p>
+    </li>
+    <li>
+      <span class="lens-num">D</span>
+      <h3><span class="mk mk-assumption">Assumption</span></h3>
+      <p>What the answer decided about you without asking: where you live, what you earn, your health.</p>
+      <p class="ask">Ask: What are you assuming about me?</p>
+    </li>
+  </ol>
+</section>
+
+<hr class="rule">
+
+<!-- ================= 02 EXAMPLES ================= -->
+<section class="grid section" id="examples" aria-labelledby="examples-title">
+  <p class="sec-label">02 — Annotated answers</p>
+  <h2 class="giant sec-title" id="examples-title"><span>Read</span><span>Along</span></h2>
+
+  <p class="sec-note">
+    Three everyday questions. Each answer was written for this project to show patterns
+    common in AI chat tools. It is not a transcript of any one product.
+    Click a marked phrase to read its note.
+  </p>
+
+  <div class="tabs" role="tablist" aria-label="Example questions" id="example-tabs"></div>
+
+  <div class="ex-layout">
+    <div class="ex-side">
+      <p class="small-label">Show lenses</p>
+      <div class="lens-toggles" id="lens-toggles" role="group" aria-label="Lens filters"></div>
+    </div>
+
+    <article class="ex-main" id="example-panel" role="tabpanel" aria-live="polite">
+      <!-- filled by script.js -->
+    </article>
+
+    <aside class="note-panel" id="example-note" aria-live="polite">
+      <p class="small-label">Margin note</p>
+      <p class="note-empty">Select a marked phrase in the answer.</p>
+    </aside>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= 03 READER ================= -->
+<section class="grid section" id="reader" aria-labelledby="reader-title">
+  <p class="sec-label">03 — Try your own</p>
+  <h2 class="giant sec-title" id="reader-title"><span>Paste</span><span>An Answer</span></h2>
+
+  <div class="reader-input">
+    <label for="reader-text" class="small-label">Paste any AI answer</label>
+    <textarea id="reader-text" rows="9" placeholder="Paste an answer from ChatGPT, Claude, Gemini, Copilot or any other AI tool…"></textarea>
+    <div class="reader-actions">
+      <button type="button" class="btn btn-solid" id="reader-run">Read it</button>
+      <button type="button" class="btn" id="reader-sample">Use a sample</button>
+      <button type="button" class="btn" id="reader-clear">Clear</button>
+    </div>
+  </div>
+
+  <aside class="limits">
+    <p class="small-label">What this reader can't do</p>
+    <p><strong>It reads wording, not truth.</strong> It spots patterns in the language — numbers,
+      hedges, absolutes, vague sources, assumptions about you. It can't tell you whether
+      the answer is right. That part is still yours.</p>
+    <p>It uses simple word lists you can read in <code>script.js</code>, not another AI.
+      It will miss things and flag things that are fine.</p>
+  </aside>
+
+  <div class="reader-out" id="reader-out" hidden>
+    <div class="reader-counts" id="reader-counts"></div>
+    <div class="reader-body">
+      <div class="reader-text" id="reader-result"></div>
+      <aside class="note-panel" id="reader-note" aria-live="polite">
+        <p class="small-label">Margin note</p>
+        <p class="note-empty">Select a marked phrase.</p>
+      </aside>
+    </div>
+    <div class="followups">
+      <p class="small-label">Questions to ask back</p>
+      <ol id="reader-questions"></ol>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= 04 PROMPTS ================= -->
+<section class="grid section" id="ask" aria-labelledby="ask-title">
+  <p class="sec-label">04 — Make it explain itself</p>
+  <h2 class="giant sec-title" id="ask-title"><span>Ask</span><span>Back</span></h2>
+
+  <p class="sec-note">
+    AI tools will usually explain their reasoning if you ask. These follow-ups work in most
+    chat tools. Copy one and send it after any answer. The explanation can still be wrong,
+    so treat it as more to check, not as proof.
+  </p>
+
+  <ol class="prompt-list" id="prompt-list"></ol>
+</section>
+
+<hr class="rule">
+
+<!-- ================= 05 MADE ================= -->
+<section class="grid section" id="made" aria-labelledby="made-title">
+  <p class="sec-label">05 — Process</p>
+  <h2 class="giant sec-title" id="made-title"><span>How It</span><span>Was Made</span></h2>
+
+  <p class="about-text">
+    <mark class="hl">A project about explaining AI should explain its own AI.</mark>
+    Here is who did what.
+  </p>
+
+  <div class="made-cols">
+    <div class="col">
+      <h3>Human<br>(Briana Heredia)</h3>
+      <ul>
+        <li>Concept, title and audience.</li>
+        <li>The brief: what it should do and for whom.</li>
+        <li>Visual direction: black-and-white Swiss editorial.</li>
+        <li>Chose the approach: no AI on the page, nothing leaves the browser.</li>
+        <li>Review, edits and the decision to publish.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>AI<br>(Claude, by Anthropic)</h3>
+      <ul>
+        <li>Drafted the HTML, CSS and JavaScript.</li>
+        <li>Wrote the three example answers and their notes.</li>
+        <li>Wrote the word lists the reader uses.</li>
+        <li>Drafted the README and build guide.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Checked<br>(Against sources)</h3>
+      <ul>
+        <li><a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table" target="_blank" rel="noopener">USDA FSIS — Shell eggs</a></li>
+        <li><a href="https://www.fidelity.com/viewpoints/retirement/retirement-guidelines" target="_blank" rel="noopener">Fidelity — Retirement guidelines</a></li>
+        <li><a href="https://www.inventingeurope.eu/story/ediswan" target="_blank" rel="noopener">Inventing Europe — Ediswan</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Briana Heredia<br>Imagined by a human. Built with AI. Explained by both.</p>
+  <a class="mark" href="../index.html" aria-label="Back to portfolio">b/h</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
