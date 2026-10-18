@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Better Question</title>
+<meta name="description" content="Turn a rough question into a clear one, in your own learning style, then take it to AI.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%226%22%20fill%3D%22%23111%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2248%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%2CArial%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2244%22%20fill%3D%22%23fff%22%3E%3F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111;
+    --paper: #fff;
+    --muted: #5c5c5c;
+    --soft: #f1f1f1;
+    --gutter: clamp(16px, 3vw, 48px);
+    --giant: clamp(60px, 14vw, 220px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { overflow-x: hidden; scroll-behavior: smooth; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, "Inter Tight", Arial, sans-serif;
+    font-size: 16px; line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  button, input, textarea { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter); padding: 0 var(--gutter); position: relative;
+  }
+  .rule { border: 0; border-top: 1px solid var(--ink); margin: 0 var(--gutter); }
+  .giant {
+    font-size: var(--giant); font-weight: 700; line-height: .8;
+    letter-spacing: -0.055em; text-transform: uppercase;
+  }
+  .giant span { display: block; }
+  .lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .lines line { stroke: var(--ink); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; gap: 16px; padding: 20px var(--gutter); font-size: 14px; font-weight: 500; }
+  nav a { text-decoration: none; white-space: nowrap; }
+  nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* HERO */
+  .hero { padding: clamp(24px, 5vw, 64px) var(--gutter) clamp(48px, 6vw, 80px); position: relative; }
+  .kicker { grid-column: 1 / 4; font-size: clamp(15px, 1.5vw, 20px); line-height: 1.2; max-width: 16ch; padding-top: .3em; }
+  .title { grid-column: 4 / 13; }
+  .title span:nth-child(2) { padding-left: .5em; }
+  .title span:nth-child(4) { padding-left: .3em; }
+  .intro { grid-column: 8 / 13; margin-top: 40px; font-size: clamp(17px, 1.7vw, 22px); line-height: 1.3; max-width: 30ch; }
+  .five { grid-column: 1 / 8; margin-top: 40px; align-self: end; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 13px; font-weight: 700; }
+  .five span { font-weight: 400; color: var(--muted); margin-right: 4px; }
+
+  /* STEP SECTIONS */
+  .step { padding-top: clamp(40px, 5vw, 72px); padding-bottom: clamp(40px, 5vw, 72px); }
+  .step-label { grid-column: 1 / 4; font-size: 14px; font-weight: 500; padding-top: 6px; }
+  .step-head { grid-column: 4 / 13; }
+  .step-head h2 { font-size: clamp(34px, 5.5vw, 80px); font-weight: 700; line-height: .9; letter-spacing: -0.045em; }
+  .step-head p { margin-top: 14px; max-width: 52ch; color: #222; }
+  .step-body { grid-column: 4 / 13; margin-top: 28px; }
+
+  /* ROUGH QUESTION */
+  .rough {
+    width: 100%; border: 0; border-bottom: 2px solid var(--ink); resize: vertical;
+    font-size: clamp(26px, 3.6vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08;
+    padding: 6px 0 12px; min-height: 2.4em; background: transparent;
+  }
+  .rough::placeholder { color: #b5b5b5; }
+  .rough:focus { outline: none; border-bottom-width: 4px; }
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 16px; font-size: 13px; }
+  .examples b { margin-right: 4px; }
+  .tip { margin-top: 14px; font-size: 14px; min-height: 1.4em; }
+
+  /* CHIPS & BUTTONS */
+  .chip {
+    border: 1px solid var(--ink); background: var(--paper); border-radius: 999px;
+    padding: 7px 14px; font-size: 14px; cursor: pointer; line-height: 1.2;
+  }
+  .chip:hover { background: var(--soft); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .chip.small { padding: 5px 11px; font-size: 13px; }
+  .btn {
+    border: 2px solid var(--ink); background: var(--ink); color: var(--paper);
+    padding: 13px 22px; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn.ghost { background: var(--paper); color: var(--ink); }
+  .btn:hover { opacity: .85; }
+
+  /* METER */
+  .meter-bar {
+    position: sticky; top: 0; z-index: 10; background: var(--paper);
+    border-bottom: 1px solid var(--ink); padding: 10px var(--gutter);
+    display: flex; align-items: center; gap: 16px; font-size: 13px;
+  }
+  .meter-score { font-weight: 700; white-space: nowrap; min-width: 9.5em; }
+  .segments { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; flex: 1; }
+  .seg { border-top: 6px solid #d9d9d9; padding-top: 4px; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .seg.on { border-top-color: var(--ink); color: var(--ink); font-weight: 700; }
+
+  /* FRAMEWORK ROWS */
+  .part { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); padding: 28px 0; border-top: 1px solid var(--ink); }
+  .part:last-child { border-bottom: 1px solid var(--ink); }
+  .part-num { grid-column: 1 / 2; font-size: clamp(28px, 3vw, 44px); font-weight: 700; letter-spacing: -0.05em; line-height: .9; }
+  .part-info { grid-column: 2 / 6; }
+  .part-info h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+  .part-info p { font-size: 14px; color: #333; margin-top: 6px; max-width: 34ch; }
+  .part-field { grid-column: 6 / 13; }
+  .part-field label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .field {
+    width: 100%; border: 1px solid var(--ink); padding: 12px 14px; font-size: 17px; background: var(--paper);
+    resize: vertical; border-radius: 0;
+  }
+  textarea.field { min-height: 84px; }
+  .field::placeholder { color: #9a9a9a; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .check-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); margin-left: 8px; vertical-align: middle; }
+  .part.done .check-dot { background: var(--ink); }
+  .custom { margin-top: 12px; }
+
+  /* MODE CARDS */
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .mode {
+    text-align: left; border: 2px solid var(--ink); background: var(--paper); padding: 22px; cursor: pointer;
+    display: flex; flex-direction: column; gap: 8px; min-height: 170px;
+  }
+  .mode strong { font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em; line-height: 1; }
+  .mode span { font-size: 14px; line-height: 1.35; }
+  .mode small { margin-top: auto; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+  .mode[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* COMPARE */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .compare h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding-bottom: 10px; border-bottom: 1px solid var(--ink); margin-bottom: 16px; }
+  .before { font-size: clamp(20px, 2.2vw, 30px); color: #8a8a8a; line-height: 1.2; letter-spacing: -0.02em; text-decoration: line-through; text-decoration-thickness: 1px; }
+  .after { font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+  .empty { color: #9a9a9a; font-weight: 400; text-decoration: none; }
+
+  /* PROMPT */
+  .prompt {
+    background: var(--ink); color: var(--paper); padding: clamp(18px, 2.5vw, 32px);
+    white-space: pre-wrap; font-size: 15px; line-height: 1.5; min-height: 160px;
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; align-items: center; }
+  .status { font-size: 14px; font-weight: 700; min-height: 1.4em; }
+  .note { margin-top: 18px; font-size: 13px; color: var(--muted); max-width: 60ch; }
+
+  /* HOW IT WORKS */
+  .how { padding-top: clamp(40px, 5vw, 72px); padding-bottom: 24px; }
+  .how-cols { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 28px; }
+  .how-cols h3 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .how-cols p { font-size: 13px; line-height: 1.45; color: #222; }
+  footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 48px var(--gutter) 32px; font-size: 12px; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 860px) {
+    .kicker, .title, .intro, .five, .step-label, .step-head, .step-body, .how-cols { grid-column: 1 / 13; }
+    .kicker { margin-bottom: 20px; }
+    .step-label { margin-bottom: 10px; }
+    .part-num { grid-column: 1 / 3; }
+    .part-info { grid-column: 3 / 13; }
+    .part-field { grid-column: 1 / 13; margin-top: 16px; }
+    .compare, .modes { grid-template-columns: 1fr; }
+    .how-cols { grid-template-columns: 1fr; }
+    .seg { font-size: 0; }
+    .meter-score { min-width: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="#top"><strong>The Better Question</strong></a>
+  <a href="../">By Briana Heredia</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero grid" id="top">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="22" y1="0" x2="58" y2="100"/>
+    <line x1="72" y1="0" x2="100" y2="70"/>
+  </svg>
+  <p class="kicker">A tool for students and anyone learning something new.</p>
+  <h1 class="giant title" aria-label="The Better Question">
+    <span aria-hidden="true">The</span>
+    <span aria-hidden="true">Bet</span>
+    <span aria-hidden="true">Ter</span>
+    <span aria-hidden="true">Ques</span>
+    <span aria-hidden="true">Tion</span>
+  </h1>
+  <p class="intro">The answer you get depends on the question you ask. Start with your rough question, shape it in five small steps, and leave with a prompt built for the way you learn.</p>
+  <p class="five" aria-label="The five parts of a better question">
+    <b><span>01</span>Goal</b><b><span>02</span>Context</b><b><span>03</span>What I know</b><b><span>04</span>The gap</b><b><span>05</span>How I learn</b>
+  </p>
+</header>
+
+<!-- ============ METER ============ -->
+<div class="meter-bar" role="status" aria-live="polite">
+  <span class="meter-score" id="score">0 / 5 · Rough</span>
+  <div class="segments" aria-hidden="true">
+    <div class="seg" data-seg="goal">01 Goal</div>
+    <div class="seg" data-seg="context">02 Context</div>
+    <div class="seg" data-seg="known">03 Known</div>
+    <div class="seg" data-seg="gap">04 Gap</div>
+    <div class="seg" data-seg="style">05 Learn</div>
+  </div>
+</div>
+
+<main>
+<!-- ============ STEP 1 ============ -->
+<section class="step grid" aria-labelledby="s1">
+  <p class="step-label">Step 01</p>
+  <div class="step-head">
+    <h2 id="s1">Ask it rough.</h2>
+    <p>Type your question exactly as it comes to mind. It doesn't need to be good yet. That's what the next steps are for.</p>
+  </div>
+  <div class="step-body">
+    <label for="rough" class="sr-only">Your rough question</label>
+    <textarea id="rough" class="rough" rows="2" placeholder="How does photosynthesis work?"></textarea>
+    <div class="examples">
+      <b>Try one:</b>
+      <button class="chip small" type="button" data-example="How does photosynthesis work?">How does photosynthesis work?</button>
+      <button class="chip small" type="button" data-example="How do I start learning Python?">How do I start learning Python?</button>
+      <button class="chip small" type="button" data-example="Why did the Roman Empire fall?">Why did the Roman Empire fall?</button>
+    </div>
+    <p class="tip" id="tip" aria-live="polite"></p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ STEP 2 ============ -->
+<section class="step grid" aria-labelledby="s2">
+  <p class="step-label">Step 02</p>
+  <div class="step-head">
+    <h2 id="s2">Build it out.</h2>
+    <p>Five short parts turn a rough question into a clear one. Fill in what you can; each one you add lights up the meter.</p>
+  </div>
+  <div class="step-body">
+
+    <div class="part" data-part="goal">
+      <div class="part-num">01</div>
+      <div class="part-info">
+        <h3>Goal <span class="check-dot" aria-hidden="true"></span></h3>
+        <p>What are you trying to do? The same topic needs a different answer for each goal.</p>
+      </div>
+      <div class="part-field">
+        <span class="sr-only" id="goal-label">Choose your goal</span>
+        <div class="chips" role="group" aria-labelledby="goal-label" id="goal">
+          <button class="chip" type="button" data-goal="understand" aria-pressed="false">Understand it</button>
+          <button class="chip" type="button" data-goal="fix" aria-pressed="false">Fix a problem</button>
+          <button class="chip" type="button" data-goal="remember" aria-pressed="false">Remember it for a test</button>
+          <button class="chip" type="button" data-goal="create" aria-pressed="false">Make something</button>
+          <button class="chip" type="button" data-goal="decide" aria-pressed="false">Make a decision</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="part" data-part="context">
+      <div class="part-num">02</div>
+      <div class="part-info">
+        <h3>Context <span class="check-dot" aria-hidden="true"></span></h3>
+        <p>Where is this coming from? Context sets the level and the examples you'll get.</p>
+      </div>
+      <div class="part-field">
+        <label for="context">It's for…</label>
+        <input id="context" class="field" type="text" placeholder="a high school biology quiz on Friday">
+      </div>
+    </div>
+
+    <div class="part" data-part="known">
+      <div class="part-num">03</div>
+      <div class="part-info">
+        <h3>What I know <span class="check-dot" aria-hidden="true"></span></h3>
+        <p>What do you already understand or have tried? This stops the answer from being too basic or too advanced.</p>
+      </div>
+      <div class="part-field">
+        <label for="known">I already know…</label>
+        <textarea id="known" class="field" placeholder="plants use sunlight to make their own food"></textarea>
+      </div>
+    </div>
+
+    <div class="part" data-part="gap">
+      <div class="part-num">04</div>
+      <div class="part-info">
+        <h3>The gap <span class="check-dot" aria-hidden="true"></span></h3>
+        <p>What exactly is confusing or missing? One specific point beats a whole topic.</p>
+      </div>
+      <div class="part-field">
+        <label for="gap">What I'm stuck on is…</label>
+        <textarea id="gap" class="field" placeholder="where the oxygen comes from"></textarea>
+      </div>
+    </div>
+
+    <div class="part" data-part="style">
+      <div class="part-num">05</div>
+      <div class="part-info">
+        <h3>How I learn <span class="check-dot" aria-hidden="true"></span></h3>
+        <p>Everyone learns differently. Pick any that feel like you, or describe your own way.</p>
+      </div>
+      <div class="part-field">
+        <span class="sr-only" id="style-label">Choose how you like to learn</span>
+        <div class="chips" role="group" aria-labelledby="style-label" id="styles">
+          <button class="chip" type="button" data-style="visual" aria-pressed="false">Visual</button>
+          <button class="chip" type="button" data-style="songs" aria-pressed="false">Songs &amp; rhymes</button>
+          <button class="chip" type="button" data-style="steps" aria-pressed="false">Step by step</button>
+          <button class="chip" type="button" data-style="examples" aria-pressed="false">Real-life examples</button>
+          <button class="chip" type="button" data-style="stories" aria-pressed="false">Stories</button>
+          <button class="chip" type="button" data-style="practice" aria-pressed="false">Hands-on practice</button>
+          <button class="chip" type="button" data-style="simple" aria-pressed="false">Simple words</button>
+          <button class="chip" type="button" data-style="quiz" aria-pressed="false">Quiz me</button>
+        </div>
+        <div class="custom">
+          <label for="custom">My own way (optional)</label>
+          <input id="custom" class="field" type="text" placeholder="compare it to basketball, I play every day">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ STEP 3 ============ -->
+<section class="step grid" aria-labelledby="s3">
+  <p class="step-label">Step 03</p>
+  <div class="step-head">
+    <h2 id="s3">Choose how to learn.</h2>
+    <p>Do you want to work through it, or do you just need the answer right now? Both are fine. You decide.</p>
+  </div>
+  <div class="step-body">
+    <div class="modes" role="group" aria-label="Learning mode">
+      <button class="mode" type="button" data-mode="learn" aria-pressed="false">
+        <strong>Help me learn it.</strong>
+        <span>The AI explains in your style, checks your understanding with a question, and lets you try before giving everything away.</span>
+        <small>Best for studying</small>
+      </button>
+      <button class="mode" type="button" data-mode="answer" aria-pressed="false">
+        <strong>Just give me the answer.</strong>
+        <span>A clear, direct answer first, then a short explanation in your style.</span>
+        <small>Best when you're short on time</small>
+      </button>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ STEP 4 ============ -->
+<section class="step grid" aria-labelledby="s4">
+  <p class="step-label">Step 04</p>
+  <div class="step-head">
+    <h2 id="s4">Compare.</h2>
+    <p>Same curiosity, clearer question. Notice what changed: that's the skill you're building.</p>
+  </div>
+  <div class="step-body">
+    <div class="compare">
+      <div>
+        <h3>Before</h3>
+        <p class="before" id="before"><span class="empty">Your rough question appears here.</span></p>
+      </div>
+      <div>
+        <h3>After</h3>
+        <p class="after" id="after"><span class="empty">Your better question builds here as you fill in the five parts.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ STEP 5 ============ -->
+<section class="step grid" aria-labelledby="s5">
+  <p class="step-label">Step 05</p>
+  <div class="step-head">
+    <h2 id="s5">Take it to AI.</h2>
+    <p>Here's your full prompt. It includes your better question plus instructions for how the AI should teach you. Read it, edit it if you like, then copy it into the AI you use.</p>
+  </div>
+  <div class="step-body">
+    <div class="prompt" id="prompt" aria-label="Your prompt">Start with your rough question in Step 01.</div>
+    <div class="actions">
+      <button class="btn" type="button" id="copy">Copy prompt</button>
+      <a class="btn ghost" id="open-claude" href="https://claude.ai/new" target="_blank" rel="noopener">Open in Claude</a>
+      <a class="btn ghost" id="open-chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener">Open in ChatGPT</a>
+      <button class="chip" type="button" id="reset">Start over</button>
+      <span class="status" id="status" aria-live="polite"></span>
+    </div>
+    <p class="note">The "Open in" buttons try to fill in your prompt for you. If it doesn't appear, paste it in: it's already copied.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how grid" aria-labelledby="how">
+  <p class="step-label">How it works</p>
+  <div class="step-head"><h2 id="how">No magic. Just a better question.</h2></div>
+  <div class="how-cols">
+    <div>
+      <h3>No AI runs on this page</h3>
+      <p>The Better Question structures your thinking and writes a prompt. The answering happens in the AI tool you choose.</p>
+    </div>
+    <div>
+      <h3>The meter uses simple rules</h3>
+      <p>It checks whether each of the five parts is filled in with enough detail. It can't judge whether your question is "right", only whether it's complete.</p>
+    </div>
+    <div>
+      <h3>Nothing is stored or sent</h3>
+      <p>Everything you type stays in your browser and disappears when you close the page.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>The Better Question · Designed by <a href="../">Briana Heredia</a>, Creative AI Technologist</p>
+  <p>Imagination is the input.</p>
+</footer>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => [...document.querySelectorAll(s)];
+
+  const state = { goal: null, styles: new Set(), mode: null };
+
+  const GOALS = {
+    understand: "I'm trying to understand this:",
+    fix: "I'm trying to fix a problem:",
+    remember: "I need to remember this for a test:",
+    create: "I'm trying to make something:",
+    decide: "I'm trying to make a decision:",
+  };
+  const STYLE_NAMES = {
+    visual: "visuals", songs: "songs and rhymes", steps: "step-by-step explanations",
+    examples: "real-life examples", stories: "stories", practice: "hands-on practice",
+    simple: "simple words", quiz: "being quizzed",
+  };
+  const STYLE_RULES = {
+    visual: "Include a simple diagram, table or vivid visual description.",
+    songs: "Add a short rhyme, song or mnemonic to help me remember the key idea.",
+    steps: "Break the explanation into short, numbered steps.",
+    examples: "Use an everyday, real-life example I can relate to.",
+    stories: "Explain it through a short story.",
+    practice: "Give me a small hands-on task to try myself.",
+    simple: "Use simple words. If you need a technical term, define it.",
+    quiz: "End with 2–3 short quiz questions, and wait for my answers.",
+  };
+  const VAGUE = ["stuff", "things", "everything", "anything", "work", "works", "explain", "help"];
+
+  const words = (s) => s.trim().split(/\s+/).filter(Boolean).length;
+  const clean = (s) => s.trim().replace(/\s+/g, " ");
+  const sentence = (s) => { s = clean(s); if (!s) return ""; s = s.charAt(0).toUpperCase() + s.slice(1); return /[.!?]$/.test(s) ? s : s + "."; };
+  const lower = (s) => { s = clean(s).replace(/[.!?]+$/, ""); return s ? s.charAt(0).toLowerCase() + s.slice(1) : ""; };
+  const strip = (s, re) => clean(s).replace(re, "");
+  const list = (arr) => arr.length < 2 ? arr.join("") : arr.slice(0, -1).join(", ") + (arr.length > 2 || arr.some((x) => x.includes(" and ")) ? ", and " : " and ") + arr[arr.length - 1];
+  const escapeHTML = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  function values() {
+    return {
+      rough: clean($("#rough").value),
+      context: strip($("#context").value, /^(it'?s\s+)?for\s+/i),
+      known: strip($("#known").value, /^i\s+(already\s+)?know\s+(that\s+)?/i),
+      gap: strip($("#gap").value, /^(what\s+)?i'?m\s+stuck\s+on\s+(is\s+)?/i),
+      custom: clean($("#custom").value),
+    };
+  }
+
+  // The rules behind the meter: simple, visible, explainable.
+  function checks(v) {
+    return {
+      goal: !!state.goal,
+      context: words(v.context) >= 2,
+      known: words(v.known) >= 3,
+      gap: words(v.gap) >= 3,
+      style: state.styles.size > 0 || words(v.custom) >= 2,
+    };
+  }
+
+  function betterQuestion(v) {
+    if (!v.rough) return "";
+    const q = lower(v.rough);
+    const parts = [];
+    parts.push(state.goal ? `${GOALS[state.goal]} ${q}${/\?$/.test(v.rough) ? "?" : "."}` : sentence(v.rough));
+    if (v.context) parts.push(`It's for ${lower(v.context)}.`);
+    if (v.known) parts.push(`I already know ${lower(v.known)}.`);
+    if (v.gap) parts.push(`What I'm stuck on is ${lower(v.gap)}.`);
+    const names = [...state.styles].map((k) => STYLE_NAMES[k]);
+    if (v.custom) names.push(lower(v.custom));
+    if (names.length) parts.push(`I learn best with ${list(names)}.`);
+    return parts.join(" ");
+  }
+
+  function buildPrompt(v, better) {
+    if (!better) return "";
+    const lines = [];
+    lines.push("You're a patient tutor helping me learn.");
+    lines.push("");
+    lines.push(better);
+    lines.push("");
+    lines.push("How to answer:");
+    if (state.mode === "learn") {
+      lines.push("- Don't just give me the final answer. Explain it one step at a time.");
+      lines.push("- After explaining, ask me one short question to check I understood, and let me try before telling me.");
+    } else if (state.mode === "answer") {
+      lines.push("- Give me a clear, direct answer first, then a short explanation.");
+    }
+    if (v.known) lines.push("- Start from what I already know. Don't repeat it, build on it.");
+    else lines.push("- Assume I'm a beginner unless I say otherwise.");
+    if (v.gap) lines.push("- Focus on what I'm stuck on before anything else.");
+    [...state.styles].forEach((k) => lines.push("- " + STYLE_RULES[k]));
+    if (v.custom) lines.push(`- Also: ${sentence(v.custom)}`);
+    lines.push("- If my question is unclear, ask me one clarifying question before answering.");
+    return lines.join("\n");
+  }
+
+  function tipFor(v) {
+    if (!v.rough) return "";
+    const lowerQ = v.rough.toLowerCase();
+    const vague = VAGUE.filter((w) => new RegExp(`\\b${w}\\b`).test(lowerQ));
+    if (words(v.rough) < 4) return "Good start. It's short, which usually means the AI will have to guess. Step 02 fills in the gaps.";
+    if (vague.length) return `Words like "${vague[0]}" are broad. Step 02 will help you say exactly what you mean.`;
+    return "Nice. Now let's give it a goal, some context and your learning style.";
+  }
+
+  function render() {
+    const v = values();
+    const c = checks(v);
+    const score = Object.values(c).filter(Boolean).length;
+    const label = score <= 1 ? "Rough" : score <= 3 ? "Getting clearer" : score === 4 ? "Strong" : "Ready";
+    $("#score").textContent = `${score} / 5 · ${label}`;
+    $$(".seg").forEach((el) => el.classList.toggle("on", c[el.dataset.seg]));
+    $$(".part").forEach((el) => el.classList.toggle("done", c[el.dataset.part]));
+
+    $("#tip").textContent = tipFor(v);
+    $("#before").innerHTML = v.rough ? escapeHTML(v.rough) : '<span class="empty">Your rough question appears here.</span>';
+    const better = betterQuestion(v);
+    $("#after").innerHTML = better ? escapeHTML(better) : '<span class="empty">Your better question builds here as you fill in the five parts.</span>';
+
+    const prompt = buildPrompt(v, better);
+    $("#prompt").textContent = prompt || "Start with your rough question in Step 01.";
+    const enc = encodeURIComponent(prompt);
+    $("#open-claude").href = prompt ? `https://claude.ai/new?q=${enc}` : "https://claude.ai/new";
+    $("#open-chatgpt").href = prompt ? `https://chatgpt.com/?q=${enc}` : "https://chatgpt.com/";
+  }
+
+  async function copyPrompt() {
+    const text = $("#prompt").textContent;
+    if (!$("#rough").value.trim()) { flash("Add your rough question first."); return false; }
+    try { await navigator.clipboard.writeText(text); flash("Copied."); return true; }
+    catch {
+      const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); flash("Copied."); return true; } catch { flash("Select the text above and copy it."); return false; }
+      finally { ta.remove(); }
+    }
+  }
+  let t; function flash(msg) { const s = $("#status"); s.textContent = msg; clearTimeout(t); t = setTimeout(() => (s.textContent = ""), 2500); }
+
+  // Events
+  ["#rough", "#context", "#known", "#gap", "#custom"].forEach((id) => $(id).addEventListener("input", render));
+  $$("[data-example]").forEach((b) => b.addEventListener("click", () => { $("#rough").value = b.dataset.example; render(); $("#rough").focus(); }));
+  $$("[data-goal]").forEach((b) => b.addEventListener("click", () => {
+    state.goal = state.goal === b.dataset.goal ? null : b.dataset.goal;
+    $$("[data-goal]").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.goal === state.goal)));
+    render();
+  }));
+  $$("[data-style]").forEach((b) => b.addEventListener("click", () => {
+    const k = b.dataset.style;
+    state.styles.has(k) ? state.styles.delete(k) : state.styles.add(k);
+    b.setAttribute("aria-pressed", String(state.styles.has(k)));
+    render();
+  }));
+  $$("[data-mode]").forEach((b) => b.addEventListener("click", () => {
+    state.mode = state.mode === b.dataset.mode ? null : b.dataset.mode;
+    $$("[data-mode]").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.mode === state.mode)));
+    render();
+  }));
+  $("#copy").addEventListener("click", copyPrompt);
+  ["#open-claude", "#open-chatgpt"].forEach((id) => $(id).addEventListener("click", () => { if ($("#rough").value.trim()) copyPrompt(); }));
+  $("#reset").addEventListener("click", () => {
+    ["#rough", "#context", "#known", "#gap", "#custom"].forEach((id) => ($(id).value = ""));
+    state.goal = null; state.styles.clear(); state.mode = null;
+    $$("[aria-pressed]").forEach((x) => x.setAttribute("aria-pressed", "false"));
+    render(); window.scrollTo({ top: 0 }); $("#rough").focus({ preventScroll: true });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
