@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plain Words — Briana Heredia</title>
+<meta name="description" content="A glossary of AI, code and design terms in plain language, each with an everyday example. Kept by Briana Heredia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#111; --paper:#fff; --muted:#5c5c5c; --soft:#f1f1f1; --gutter:clamp(16px,3vw,48px); --giant:clamp(64px,15vw,230px); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { overflow-x:hidden; scroll-behavior:smooth; }
+  body { background:var(--paper); color:var(--ink); font-family:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif; font-size:16px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  button, input { font:inherit; color:inherit; }
+  :focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+  .grid { display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--gutter); padding-left:var(--gutter); padding-right:var(--gutter); position:relative; }
+  .rule { border:0; border-top:1px solid var(--ink); margin:0 var(--gutter); }
+  nav { display:flex; justify-content:space-between; gap:16px; padding:20px var(--gutter); font-size:14px; font-weight:500; }
+  nav a { text-decoration:none; } nav a:hover { text-decoration:underline; text-underline-offset:4px; }
+  .lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .lines line { stroke:var(--ink); stroke-width:1; vector-effect:non-scaling-stroke; }
+
+  .hero { padding-top:clamp(24px,5vw,64px); padding-bottom:clamp(40px,5vw,72px); }
+  .kicker { grid-column:1/4; font-size:clamp(15px,1.5vw,20px); line-height:1.2; max-width:16ch; padding-top:.3em; }
+  .giant { grid-column:4/13; font-size:var(--giant); font-weight:700; line-height:.8; letter-spacing:-.055em; text-transform:uppercase; }
+  .giant span { display:block; } .giant span:nth-child(2) { padding-left:.8em; }
+  .intro { grid-column:7/13; margin-top:40px; font-size:clamp(17px,1.7vw,22px); line-height:1.3; max-width:34ch; }
+
+  .tools { position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--ink); padding-top:14px; padding-bottom:14px; }
+  .tools-in { grid-column:1/13; display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center; }
+  .search { flex:1 1 280px; border:0; border-bottom:2px solid var(--ink); padding:6px 0; font-size:clamp(20px,2.4vw,30px); font-weight:700; letter-spacing:-.02em; background:transparent; min-width:0; }
+  .search::placeholder { color:#b0b0b0; }
+  .search:focus { outline:none; border-bottom-width:4px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip { border:1px solid var(--ink); background:var(--paper); border-radius:999px; padding:6px 13px; font-size:14px; cursor:pointer; }
+  .chip:hover { background:var(--soft); }
+  .chip[aria-pressed="true"] { background:var(--ink); color:var(--paper); }
+  .count { font-size:13px; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
+
+  .list { padding-top:8px; padding-bottom:40px; }
+  .entry { grid-column:1/13; display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--gutter); padding:30px 0; border-bottom:1px solid var(--ink); scroll-margin-top:90px; }
+  .entry:target { background:var(--soft); }
+  .term { grid-column:1/5; }
+  .term h2 { font-size:clamp(30px,3.6vw,54px); font-weight:700; line-height:.95; letter-spacing:-.045em; }
+  .term .cat { display:inline-block; margin-top:10px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; border:1px solid var(--ink); padding:3px 8px; }
+  .term .aka { display:block; margin-top:6px; font-size:13px; color:var(--muted); }
+  .def { grid-column:5/13; min-width:0; }
+  .def .plain { font-size:clamp(18px,1.7vw,22px); line-height:1.3; letter-spacing:-.01em; max-width:40ch; }
+  .ex { display:grid; grid-template-columns:1fr 1fr; gap:var(--gutter); margin-top:18px; }
+  .ex div { font-size:14px; }
+  .ex b { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px; }
+  .ex code { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:13px; background:var(--soft); padding:1px 5px; }
+  .rel { margin-top:14px; font-size:13px; color:var(--muted); }
+  .rel a { color:var(--ink); }
+  .empty { grid-column:1/13; padding:48px 0; font-size:20px; }
+  [hidden] { display:none !important; }
+
+  .note { padding-top:clamp(40px,5vw,64px); padding-bottom:24px; }
+  .note p { grid-column:4/13; max-width:62ch; }
+  .note p + p { margin-top:10px; }
+  footer { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:40px var(--gutter) 32px; font-size:12px; }
+
+  @media (max-width:860px) {
+    .kicker, .giant, .intro { grid-column:1/13; } .kicker { margin-bottom:20px; }
+    .term, .def { grid-column:1/13; } .def { margin-top:16px; }
+    .ex { grid-template-columns:1fr; gap:14px; }
+    .note p { grid-column:1/13; }
+  }
+  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="../index.html">← Briana Heredia</a>
+  <span>Plain Words</span>
+</nav>
+
+<header class="hero grid">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="56" y2="100"/><line x1="70" y1="0" x2="100" y2="64"/>
+  </svg>
+  <p class="kicker">A glossary of AI, code and design words.</p>
+  <h1 class="giant" aria-label="Plain Words"><span aria-hidden="true">Plain</span><span aria-hidden="true">Words</span></h1>
+  <p class="intro">I'm learning as I go, and these are the words I've had to look up. Each one is in plain language with an everyday example. If it helps me remember, maybe it helps you learn too.</p>
+</header>
+
+<div class="tools grid">
+  <div class="tools-in">
+    <label for="q" class="search-label" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search words</label>
+    <input id="q" class="search" type="search" placeholder="Search a word…" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by topic">
+      <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-cat="ai" aria-pressed="false">AI</button>
+      <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
+      <button class="chip" type="button" data-cat="tools" aria-pressed="false">Tools</button>
+      <button class="chip" type="button" data-cat="design" aria-pressed="false">Design</button>
+    </div>
+    <span class="count" id="count" aria-live="polite">20 words</span>
+  </div>
+</div>
+
+<main class="list grid" id="list">
+
+  <article class="entry" id="agent" data-cat="ai">
+    <div class="term"><h2>AI agent</h2><span class="cat">AI</span></div>
+    <div class="def">
+      <p class="plain">An AI that can take steps toward a goal using tools, not just answer a question.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>An assistant you give a task to, who can open files and look things up until it's done.</div>
+        <div><b>In real tech</b>Claude Code can read files, run commands and make changes to finish a coding task.</div>
+      </div>
+      <p class="rel">Related: <a href="#subagent">Subagent</a>, <a href="#guardrail">Guardrail</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="api" data-cat="code">
+    <div class="term"><h2>API</h2><span class="cat">Code</span><span class="aka">Application Programming Interface</span></div>
+    <div class="def">
+      <p class="plain">A set of rules that lets one app ask another app for information or to do something.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A waiter. You tell the waiter what you want, they tell the kitchen, and they bring back your food. You never go into the kitchen yourself.</div>
+        <div><b>In real tech</b>A weather app asks a weather service's API for today's forecast and shows you the answer.</div>
+      </div>
+      <p class="rel">Related: <a href="#javascript">JavaScript</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="commit" data-cat="tools">
+    <div class="term"><h2>Commit</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">A saved snapshot of changes to a project, with a short message describing what changed.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Saving a checkpoint in a video game, so you can always go back to that moment.</div>
+        <div><b>In real tech</b>Adding a project to my portfolio was one commit: <code>Add Agents with Guardrails project page</code>.</div>
+      </div>
+      <p class="rel">Related: <a href="#git">Git</a>, <a href="#repository">Repository</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="css" data-cat="code">
+    <div class="term"><h2>CSS</h2><span class="cat">Code</span><span class="aka">Cascading Style Sheets</span></div>
+    <div class="def">
+      <p class="plain">The language that styles a web page: colors, fonts, spacing and layout.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The paint, furniture and decorations in a house.</div>
+        <div><b>In real tech</b><code>h1 { color: black; }</code> makes every main heading black.</div>
+      </div>
+      <p class="rel">Related: <a href="#html">HTML</a>, <a href="#javascript">JavaScript</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="git" data-cat="tools">
+    <div class="term"><h2>Git</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">A tool that tracks every change to a project's files over time, so you can see what changed and go back if needed.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Version history in Google Docs, but for code.</div>
+        <div><b>In real tech</b>Developers use Git so a whole team can work on the same project without losing anyone's work.</div>
+      </div>
+      <p class="rel">Related: <a href="#github">GitHub</a>, <a href="#commit">Commit</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="github" data-cat="tools">
+    <div class="term"><h2>GitHub</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">A website that stores Git projects online so people can share them and work on them together.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Google Drive, but built for code and its history.</div>
+        <div><b>In real tech</b>The code for this portfolio lives on GitHub at b-heredia/portfolio.</div>
+      </div>
+      <p class="rel">Related: <a href="#git">Git</a>, <a href="#github-pages">GitHub Pages</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="github-pages" data-cat="tools">
+    <div class="term"><h2>GitHub Pages</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">A free GitHub service that turns the files in a repository into a live website.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Putting your poster in a shop window so anyone walking by can see it.</div>
+        <div><b>In real tech</b>This site is published with GitHub Pages at b-heredia.github.io/portfolio.</div>
+      </div>
+      <p class="rel">Related: <a href="#github">GitHub</a>, <a href="#repository">Repository</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="guardrail" data-cat="ai">
+    <div class="term"><h2>Guardrail</h2><span class="cat">AI</span></div>
+    <div class="def">
+      <p class="plain">A limit that stops an AI, or any system, from doing things it shouldn't.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The bumpers in a bowling lane: you still bowl, but the ball can't go in the gutter.</div>
+        <div><b>In real tech</b>My code-reviewer agent is read-only, so it can point out problems but can't change any files.</div>
+      </div>
+      <p class="rel">Related: <a href="#agent">AI agent</a>, <a href="#hook">Hook</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="hallucination" data-cat="ai">
+    <div class="term"><h2>Hallucination</h2><span class="cat">AI</span></div>
+    <div class="def">
+      <p class="plain">When an AI says something false but sounds confident about it.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A friend who fills in the gaps of a story with made-up details without realizing it.</div>
+        <div><b>In real tech</b>An AI might invent a book or a source that doesn't exist. Always check important facts.</div>
+      </div>
+      <p class="rel">Related: <a href="#llm">Large language model</a>, <a href="#prompt">Prompt</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="hook" data-cat="code">
+    <div class="term"><h2>Hook</h2><span class="cat">Code</span></div>
+    <div class="def">
+      <p class="plain">A small piece of code that runs automatically at a certain moment, like right before or after an action.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A doorbell camera that switches on by itself whenever someone walks up.</div>
+        <div><b>In real tech</b>My code-reviewer has a hook that checks every command before it runs and blocks anything that would change files.</div>
+      </div>
+      <p class="rel">Related: <a href="#guardrail">Guardrail</a>, <a href="#subagent">Subagent</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="html" data-cat="code">
+    <div class="term"><h2>HTML</h2><span class="cat">Code</span><span class="aka">HyperText Markup Language</span></div>
+    <div class="def">
+      <p class="plain">The language that gives a web page its structure: headings, paragraphs, links and images.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The frame and walls of a house, before any paint goes on.</div>
+        <div><b>In real tech</b><code>&lt;h1&gt;Hello&lt;/h1&gt;</code> creates a main heading that says "Hello".</div>
+      </div>
+      <p class="rel">Related: <a href="#css">CSS</a>, <a href="#javascript">JavaScript</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="human-centered-design" data-cat="design">
+    <div class="term"><h2>Human-centered design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Designing around the real needs, habits and feelings of the people who will use something.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A tailor who measures you before making a suit, instead of guessing your size.</div>
+        <div><b>In real tech</b>Testing The Better Question with real students before deciding what to change.</div>
+      </div>
+      <p class="rel">Related: <a href="#prototype">Prototype</a>, <a href="#wireframe">Wireframe</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="javascript" data-cat="code">
+    <div class="term"><h2>JavaScript</h2><span class="cat">Code</span></div>
+    <div class="def">
+      <p class="plain">The programming language that makes web pages interactive, so they respond when you click or type.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The electricity in a house: it makes the lights turn on and the doorbell ring.</div>
+        <div><b>In real tech</b>The strength meter in The Better Question updates as you type because of JavaScript.</div>
+      </div>
+      <p class="rel">Related: <a href="#html">HTML</a>, <a href="#css">CSS</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="llm" data-cat="ai">
+    <div class="term"><h2>Large language model</h2><span class="cat">AI</span><span class="aka">LLM</span></div>
+    <div class="def">
+      <p class="plain">An AI trained on huge amounts of text so it can understand and write language by predicting what words come next.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Someone who has read millions of books and is very good at guessing how a sentence should continue.</div>
+        <div><b>In real tech</b>Claude, ChatGPT and Grok are all built on large language models.</div>
+      </div>
+      <p class="rel">Related: <a href="#token">Token</a>, <a href="#hallucination">Hallucination</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="prompt" data-cat="ai">
+    <div class="term"><h2>Prompt</h2><span class="cat">AI</span></div>
+    <div class="def">
+      <p class="plain">The question or instructions you give an AI.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Ordering at a restaurant: "something good" gets a guess, a clear order gets what you wanted.</div>
+        <div><b>In real tech</b>"Explain photosynthesis to a 10th grader in 3 steps, with an example" works better than "photosynthesis?"</div>
+      </div>
+      <p class="rel">Related: <a href="#llm">Large language model</a>, <a href="#hallucination">Hallucination</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="prototype" data-cat="design">
+    <div class="term"><h2>Prototype</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">An early, working version of an idea, made to test it before building the real thing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A cardboard model of a chair, made to check the shape before using wood.</div>
+        <div><b>In real tech</b>A clickable design in Figma, or the first version of a website shared with testers.</div>
+      </div>
+      <p class="rel">Related: <a href="#wireframe">Wireframe</a>, <a href="#human-centered-design">Human-centered design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="repository" data-cat="tools">
+    <div class="term"><h2>Repository</h2><span class="cat">Tools</span><span class="aka">Repo</span></div>
+    <div class="def">
+      <p class="plain">A project folder tracked by Git, holding all its files and their full history.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A binder that keeps every draft of a school project, not just the final one.</div>
+        <div><b>In real tech</b>All my portfolio projects live in one repository called portfolio.</div>
+      </div>
+      <p class="rel">Related: <a href="#git">Git</a>, <a href="#commit">Commit</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="subagent" data-cat="ai">
+    <div class="term"><h2>Subagent</h2><span class="cat">AI</span></div>
+    <div class="def">
+      <p class="plain">A specialist AI agent that a main AI hands one specific kind of task to.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A team lead passing a job to the person on the team who's best at it.</div>
+        <div><b>In real tech</b>I built four subagents in Claude Code, including a code-reviewer and a meeting-notes organizer.</div>
+      </div>
+      <p class="rel">Related: <a href="#agent">AI agent</a>, <a href="#hook">Hook</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="token" data-cat="ai">
+    <div class="term"><h2>Token</h2><span class="cat">AI</span></div>
+    <div class="def">
+      <p class="plain">The small pieces of text an AI reads and writes. A token is often a short word or part of a longer word.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Lego bricks of language: the AI builds sentences one brick at a time.</div>
+        <div><b>In real tech</b>AI usage limits and costs are often counted in tokens.</div>
+      </div>
+      <p class="rel">Related: <a href="#llm">Large language model</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="wireframe" data-cat="design">
+    <div class="term"><h2>Wireframe</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A simple sketch of a page's layout, showing where things go without colors or details.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A floor plan of a house: rooms and doors, no furniture yet.</div>
+        <div><b>In real tech</b>Gray boxes that show where the header, buttons and text will sit on a new app screen.</div>
+      </div>
+      <p class="rel">Related: <a href="#prototype">Prototype</a>, <a href="#human-centered-design">Human-centered design</a></p>
+    </div>
+  </article>
+
+  <p class="empty" id="empty" hidden>No words match that yet. Try another word, or <a href="mailto:bheredia@icstars.org">suggest one</a>.</p>
+</main>
+
+<section class="note grid" aria-label="About this glossary">
+  <p><b>Missing a word?</b> Suggest one at bheredia@icstars.org. I add new words as I learn them.</p>
+  <p>Definitions are written to be simple, not complete. For deeper detail, ask a teacher, read official docs, or ask an AI and check what it says.</p>
+</section>
+
+<footer>
+  <p>Plain Words · Briana Heredia, Creative AI Technologist</p>
+  <p><a href="../index.html">Back to portfolio</a></p>
+</footer>
+
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var chips = document.querySelectorAll('[data-cat].chip');
+  var entries = document.querySelectorAll('.entry');
+  var count = document.getElementById('count');
+  var empty = document.getElementById('empty');
+  var cat = 'all';
+
+  function update() {
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    entries.forEach(function (el) {
+      var matchCat = cat === 'all' || el.getAttribute('data-cat') === cat;
+      var matchText = !term || el.textContent.toLowerCase().indexOf(term) !== -1;
+      var show = matchCat && matchText;
+      el.hidden = !show;
+      if (show) shown++;
+    });
+    count.textContent = shown + (shown === 1 ? ' word' : ' words');
+    empty.hidden = shown !== 0;
+  }
+
+  q.addEventListener('input', update);
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      cat = b.getAttribute('data-cat');
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      update();
+    });
+  });
+  update();
+})();
+</script>
+</body>
+</html>
