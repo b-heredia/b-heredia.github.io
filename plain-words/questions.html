@@ -105,7 +105,7 @@
       <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
       <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
     </div>
-    <span class="count" id="count" aria-live="polite">1 question</span>
+    <span class="count" id="count" aria-live="polite">3 questions</span>
   </div>
 </div>
 
@@ -122,6 +122,31 @@
 }</code></pre>
       <p>A selector can point to a tag name like <code>h1</code>, a class like <code>.card</code>, or an id like <code>#about</code>. So CSS doesn't have tags of its own, but it often uses HTML tag names to choose what to style.</p>
       <p class="see">See also: <a href="index.html#css">CSS</a>, <a href="index.html#tag">Tag</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="flask" data-cat="code">
+    <summary><span class="num">02</span><h2>What is Flask?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">A small Python tool for building web apps.</p>
+      <p>It lets your Python code respond when someone visits a page. You write a function, and Flask runs it when someone goes to a certain address on your site.</p>
+      <pre><code>@app.route("/")
+def home():
+    return "Hello!"</code></pre>
+      <p class="see">See also: <a href="index.html#flask">Flask</a>, <a href="index.html#api">API</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="static-dynamic" data-cat="code">
+    <summary><span class="num">03</span><h2>Why can't GitHub Pages run my Flask app?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Because GitHub Pages only serves files that are the same for everyone. Flask needs Python running every time someone visits.</p>
+      <ul>
+        <li><b>Static site:</b> plain HTML, CSS, JavaScript and images. GitHub Pages hosts these for free. My portfolio is static.</li>
+        <li><b>Dynamic site:</b> code runs on a server for each visit and can respond differently. Flask apps are dynamic.</li>
+      </ul>
+      <p>For a Flask app, use a host that runs Python, like Render or PythonAnywhere.</p>
+      <p class="see">See also: <a href="index.html#github-pages">GitHub Pages</a>, <a href="index.html#flask">Flask</a></p>
     </div></div>
   </details>
 
