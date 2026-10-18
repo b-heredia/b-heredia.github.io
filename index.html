@@ -139,6 +139,14 @@
   .p-demo .figcap { position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: var(--muted); }
   .p-demo:hover { outline: 2px solid var(--ink); outline-offset: -2px; }
 
+  .p-clarity { gap: clamp(16px, 3vw, 48px); align-items: stretch; }
+  .cl-mess { position: relative; flex: 1; font-size: clamp(11px, 1.5vw, 20px); letter-spacing: -0.02em; overflow: hidden; }
+  .cl-mess span { position: absolute; white-space: nowrap; }
+  .cl-cols { flex: 1.2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-content: center; font-size: clamp(10px, 1.2vw, 16px); }
+  .cl-cols b { display: block; font-size: 1.6em; text-transform: uppercase; letter-spacing: -0.04em; border-top: 3px solid var(--ink); padding-top: 4px; margin-bottom: 4px; }
+  .cl-cols i { display: block; font-style: normal; border-top: 1px solid var(--ink); padding: 4px 0; }
+  .cl-cols .cl-rel { text-decoration: line-through; color: #767676; }
+
   /* ---------- ABOUT ---------- */
   .about { padding: clamp(48px, 7vw, 100px) 0; position: relative; }
   .about-text {
@@ -289,6 +297,31 @@
       <a class="p-img p-demo" href="ai-that-explains-itself/index.html" aria-label="Open AI That Explains Itself">
         <span class="demo-text" aria-hidden="true">Yes — <u class="d-claim">eggs are usually safe for 3 to 5 weeks</u>, as long as they've been <span class="d-assume">kept in the refrigerator</span>. <span class="d-source">The date is mostly about quality.</span> <span class="d-conf">You'll be fine.</span></span>
         <span class="figcap">Fig. 01 — An AI answer, read through four lenses</span>
+      </a>
+    </article>
+
+    <article class="project">
+      <div class="p-num">02</div>
+      <h3 class="p-title"><a href="the-clarity-tool/index.html" class="p-link"><span>The</span><span>Clarity</span><span>Tool</span></a></h3>
+      <div class="p-desc">
+        <p><strong>Question:</strong> Can a few minutes of sorting turn "everything at once" into one next step?</p>
+        <dl><dt>Role</dt><dd>Concept, design decisions, review</dd><dt>Year</dt><dd>2026</dd><dt>Medium</dt><dd>Interactive website (HTML, CSS, JavaScript), built with Claude</dd></dl>
+        <p style="margin-top:14px"><a href="the-clarity-tool/index.html"><strong>Open the project →</strong></a></p>
+      </div>
+      <a class="p-img p-demo p-clarity" href="the-clarity-tool/index.html" aria-label="Open The Clarity Tool">
+        <span class="cl-mess" aria-hidden="true">
+          <span style="left:6%;top:14%;rotate:-8deg;font-size:1.3em;font-weight:700">RENT DUE</span>
+          <span style="left:30%;top:36%;rotate:6deg">mom's birthday</span>
+          <span style="left:4%;top:56%;rotate:-3deg;font-size:1.6em;font-weight:700">JOB APPS</span>
+          <span style="left:36%;top:70%;rotate:11deg;font-size:.8em">that thing I said</span>
+          <span style="left:20%;top:84%;rotate:-12deg">laundry</span>
+        </span>
+        <span class="cl-cols" aria-hidden="true">
+          <span><b>Do</b><i>rent due</i><i>laundry</i></span>
+          <span><b>Plan</b><i>job apps</i><i>mom's birthday</i></span>
+          <span><b>Release</b><i class="cl-rel">that thing I said</i></span>
+        </span>
+        <span class="figcap">Fig. 02 — Overwhelm, sorted into Do / Plan / Release</span>
       </a>
     </article>
 
