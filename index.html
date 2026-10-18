@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Briana Heredia — Creative AI Technologist</title>
+<meta name="description" content="Briana Heredia, Creative AI Technologist. Imagination is the input.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%226%22%20fill%3D%22%23111%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%20Neue%2CHelvetica%2CArial%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2236%22%20letter-spacing%3D%22-2.5%22%20fill%3D%22%23fff%22%3Eb/h%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111;
+    --paper: #fff;
+    --muted: #555;
+    --line: #111;
+    --gutter: clamp(16px, 3vw, 48px);
+    --giant: clamp(64px, 15.5vw, 240px);
+    --big: clamp(40px, 7vw, 110px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, "Inter Tight", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.35;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+    padding: 0 var(--gutter);
+    position: relative;
+  }
+  .giant {
+    font-size: var(--giant);
+    font-weight: 700;
+    line-height: .8;
+    letter-spacing: -0.055em;
+    text-transform: uppercase;
+  }
+  .giant span { display: block; }
+  .lines {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 2;
+  }
+  .lines line { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 20px var(--gutter);
+    font-size: 14px; font-weight: 500;
+    position: relative; z-index: 3;
+  }
+  nav ul { display: flex; gap: clamp(12px, 3vw, 36px); list-style: none; }
+  nav a { text-decoration: none; white-space: nowrap; }
+  nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding-top: clamp(24px, 5vw, 64px); padding-bottom: 64px; }
+  .kicker {
+    grid-column: 1 / 4; grid-row: 1;
+    font-size: clamp(15px, 1.5vw, 20px); line-height: 1.2;
+    padding-top: .3em; max-width: 22ch;
+  }
+  .t-portfolio { grid-column: 4 / 13; grid-row: 1; }
+  .t-name { grid-column: 1 / 8; grid-row: 2; margin-top: clamp(32px, 6vw, 90px); }
+  .t-name span:nth-child(2) { padding-left: .5em; }
+  .t-name span:nth-child(3) { padding-left: 1em; }
+  .t-name span:nth-child(4) { padding-left: 1.5em; }
+  .intro {
+    grid-column: 8 / 13; grid-row: 2; align-self: start;
+    margin-top: clamp(40px, 7vw, 100px);
+    font-size: clamp(16px, 1.6vw, 22px); line-height: 1.3;
+    max-width: 28ch;
+  }
+  .t-year {
+    grid-column: 8 / 13; grid-row: 2; align-self: end;
+    margin-top: clamp(32px, 6vw, 80px);
+    margin-right: calc(var(--gutter) * -1 - .12em);
+    text-align: right; white-space: nowrap;
+  }
+  .meta-head {
+    grid-column: 1 / 8; grid-row: 3; align-self: end; margin-top: 56px;
+    font-size: clamp(20px, 2.4vw, 32px); font-weight: 700; line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .cols { grid-column: 1 / 13; grid-row: 4; display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--gutter); margin-top: 36px; }
+  .col h3 { font-size: 13px; font-weight: 700; line-height: 1.25; margin-bottom: 4px; }
+  .col p, .col li { font-size: 12px; line-height: 1.4; color: #222; }
+  .col ul { list-style: none; }
+
+  /* ---------- SECTION HEADER ---------- */
+  .rule { border: 0; border-top: 1px solid var(--ink); margin: 0 var(--gutter); }
+  .sec-label {
+    grid-column: 1 / 4; font-size: 14px; font-weight: 500; padding-top: 18px;
+  }
+  .sec-title { grid-column: 4 / 13; padding-top: 18px; }
+
+  /* ---------- WORK ---------- */
+  .work { position: relative; padding-bottom: 40px; }
+  .project {
+    grid-column: 1 / 13;
+    display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); row-gap: 20px;
+    padding: clamp(40px, 6vw, 80px) 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  .project:last-child { border-bottom: 0; }
+  .p-num { grid-column: 1 / 3; font-size: var(--big); font-weight: 700; line-height: .8; letter-spacing: -0.05em; }
+  .p-title { grid-column: 3 / 9; font-size: var(--big); font-weight: 700; line-height: .85; letter-spacing: -0.05em; text-transform: uppercase; }
+  .p-title span { display: block; }
+  .p-desc { grid-column: 9 / 13; font-size: 15px; line-height: 1.35; align-self: end; }
+  .p-desc dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; margin-top: 14px; font-size: 12px; }
+  .p-desc dt { font-weight: 700; }
+  .p-img {
+    grid-column: 3 / 13; aspect-ratio: 16 / 8; background: #ececec;
+    position: relative; overflow: hidden; margin-top: 16px;
+  }
+  .p-img svg { width: 100%; height: 100%; display: block; }
+  .p-img figcaption { position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: var(--muted); }
+  .project:nth-child(even) .p-img { grid-column: 1 / 11; }
+
+  .p-link { text-decoration: none; }
+  .p-link:hover { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 8px; }
+  .p-demo { display: flex; align-items: center; padding: clamp(20px, 4vw, 64px); text-decoration: none; color: var(--ink); }
+  .demo-text { font-size: clamp(18px, 2.6vw, 38px); line-height: 1.55; letter-spacing: -0.01em; max-width: 34ch; }
+  .d-claim { text-decoration: none; border-bottom: 2px solid var(--ink); }
+  .d-conf { border-bottom: 2px dotted var(--ink); }
+  .d-source::before { content: "["; font-weight: 700; } .d-source::after { content: "]"; font-weight: 700; }
+  .d-assume { background: var(--ink); color: var(--paper); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .p-demo .figcap { position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: var(--muted); }
+  .p-demo:hover { outline: 2px solid var(--ink); outline-offset: -2px; }
+
+  /* ---------- ABOUT ---------- */
+  .about { padding: clamp(48px, 7vw, 100px) 0; position: relative; }
+  .about-text {
+    grid-column: 4 / 11; margin-top: 40px;
+    font-size: clamp(22px, 2.8vw, 40px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 500;
+  }
+  .hl { background: var(--ink); color: var(--paper); font-weight: 700; padding: 0 .15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .about-cols { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 48px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact { position: relative; padding: clamp(48px, 7vw, 100px) 0 40px; overflow: hidden; }
+  .t-hello { grid-column: 1 / 13; }
+  .t-hello span:nth-child(2) { padding-left: 1.4em; }
+  .t-hello span:nth-child(3) { padding-left: 2.8em; }
+  .contact-info {
+    grid-column: 8 / 13; margin-top: 40px;
+    font-size: clamp(18px, 2vw, 26px); font-weight: 700; line-height: 1.25;
+  }
+  .contact-info a { text-decoration: none; border-bottom: 2px solid var(--ink); }
+  .contact-info a:hover { background: var(--ink); color: var(--paper); }
+  footer {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+    padding: 64px var(--gutter) 32px; font-size: 12px;
+  }
+  .mark {
+    background: var(--ink); color: var(--paper);
+    font-weight: 800; font-size: 22px; letter-spacing: -0.06em; line-height: 1;
+    padding: 6px 8px 4px; position: relative;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 7px, var(--paper) 7px 8px);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .kicker { grid-column: 1 / 13; grid-row: 1; margin-bottom: 20px; }
+    .t-portfolio { grid-column: 1 / 13; grid-row: 2; text-align: right; }
+    .t-name { grid-column: 1 / 13; grid-row: 3; }
+    .intro { grid-column: 3 / 13; grid-row: 4; margin-top: 32px; }
+    .t-year { grid-column: 1 / 13; grid-row: 5; }
+    .meta-head { grid-column: 1 / 13; grid-row: 6; margin-top: 32px; }
+    .cols { grid-row: 7; grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
+    .cols .col:last-child { grid-column: 1 / -1; max-width: 50ch; }
+    .sec-label, .sec-title { grid-column: 1 / 13; }
+    .p-num { grid-column: 1 / 13; }
+    .p-title { grid-column: 1 / 13; }
+    .p-desc { grid-column: 1 / 13; }
+    .p-img, .project:nth-child(even) .p-img { grid-column: 1 / 13; }
+    .about-text, .about-cols, .contact-info { grid-column: 1 / 13; }
+    .about-cols { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) { .nav-sub { display: none; } }
+  @media (max-width: 480px) {
+    nav ul { gap: 12px; font-size: 13px; }
+    .cols, .about-cols { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="#top"><strong>Briana Heredia</strong><span class="nav-sub"> — Creative AI Technologist</span></a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">Perspective</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="Briana-Heredia-Resume.pdf" target="_blank" rel="noopener">Résumé</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero grid" id="top">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="18" y1="4"  x2="62" y2="96"/>
+    <line x1="2"  y1="44" x2="26" y2="94"/>
+    <line x1="70" y1="0"  x2="100" y2="62"/>
+    <line x1="40" y1="30" x2="82" y2="100"/>
+  </svg>
+
+  <p class="kicker">Experiments at the meeting point of imagination and machine intelligence, by</p>
+
+  <h1 class="giant t-portfolio" aria-label="Portfolio of Briana Heredia, 2026">
+    <span aria-hidden="true">Port</span>
+    <span aria-hidden="true">Fo</span>
+    <span aria-hidden="true">Lio</span>
+  </h1>
+
+  <div class="giant t-name" aria-hidden="true">
+    <span>Bri</span>
+    <span>Ana</span>
+    <span>Here</span>
+    <span>Dia</span>
+  </div>
+
+  <p class="intro">
+    Machines are built to predict. I'm interested in what they can't. I design and
+    build with artificial intelligence, treating it as a creative material to question,
+    shape and push past the obvious.
+  </p>
+
+  <div class="giant t-year" aria-hidden="true">
+    <span>20</span>
+    <span>26</span>
+  </div>
+
+  <p class="meta-head">Creative AI Technologist<br>Imagination is the input.</p>
+
+  <div class="cols">
+    <div class="col">
+      <h3>Practice<br>(What I do)</h3>
+      <p>Wireframes, prototypes and AI-assisted design: interfaces and experiments that make machine intelligence useful, legible and a little unexpected.</p>
+      <p style="margin-top:6px"><strong>Google UX Design Professional Certificate</strong> (2021)</p>
+    </div>
+    <div class="col">
+      <h3>Tools<br>(What I use)</h3>
+      <p>Claude, Claude Code, ChatGPT, Grok, Visual Studio Code, GitHub and Canva.</p>
+    </div>
+    <div class="col">
+      <h3>Approach<br>(How I work)</h3>
+      <p>Human-centered thinking first. Research, then experiment. Question the default output, and keep the human decision in the loop.</p>
+    </div>
+    <div class="col">
+      <h3>Status<br>(Now)</h3>
+      <p>In the i.c.stars internship program, building technical foundations alongside business and leadership skills. Open to conversations about roles and collaborations. Based in Chicago.</p>
+    </div>
+    <div class="col">
+      <h3>Currently Exploring<br>(Next)</h3>
+      <p>Creative AI and prompting, AI literacy, AI-assisted workflows, HTML and CSS. Sharpening UX/UI and interaction design in Figma, and getting into Framer.</p>
+    </div>
+  </div>
+</header>
+
+<hr class="rule">
+
+<!-- ================= WORK ================= -->
+<section class="work grid" id="work" aria-labelledby="work-title">
+  <p class="sec-label">01 — Experiments</p>
+  <h2 class="giant sec-title" id="work-title"><span>Selec</span><span>ted</span><span>Work</span></h2>
+
+  <div style="grid-column:1/13">
+
+    <article class="project">
+      <div class="p-num">01</div>
+      <h3 class="p-title"><a href="ai-that-explains-itself/index.html" class="p-link"><span>AI That</span><span>Explains</span><span>Itself</span></a></h3>
+      <div class="p-desc">
+        <p><strong>Question:</strong> Can everyday people learn to see what's underneath an AI answer: its claims, confidence, sources and assumptions?</p>
+        <dl><dt>Role</dt><dd>Concept, design direction, review</dd><dt>Year</dt><dd>2026</dd><dt>Medium</dt><dd>Interactive website (HTML, CSS, JavaScript), built with Claude</dd></dl>
+        <p style="margin-top:14px"><a href="ai-that-explains-itself/index.html"><strong>Open the project →</strong></a></p>
+      </div>
+      <a class="p-img p-demo" href="ai-that-explains-itself/index.html" aria-label="Open AI That Explains Itself">
+        <span class="demo-text" aria-hidden="true">Yes — <u class="d-claim">eggs are usually safe for 3 to 5 weeks</u>, as long as they've been <span class="d-assume">kept in the refrigerator</span>. <span class="d-source">The date is mostly about quality.</span> <span class="d-conf">You'll be fine.</span></span>
+        <span class="figcap">Fig. 01 — An AI answer, read through four lenses</span>
+      </a>
+    </article>
+
+
+
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= ABOUT ================= -->
+<section class="about grid" id="about" aria-labelledby="about-title">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="0" y1="20" x2="30" y2="100"/>
+    <line x1="78" y1="0" x2="100" y2="58"/>
+  </svg>
+  <p class="sec-label">02 — Perspective</p>
+  <h2 class="giant sec-title" id="about-title"><span>Ab</span><span>out</span></h2>
+
+  <p class="about-text">
+    <mark class="hl">I don't treat AI as a shortcut.</mark> I see it as a collaboration: fast,
+    tireless, and dependent on the questions it's given. My work is about asking better ones.
+  </p>
+
+  <div class="about-cols">
+    <div class="col">
+      <h3>Driven By</h3>
+      <ul><li>Human curiosity.</li><li>Meaningful innovation.</li><li>Better experiences.</li></ul>
+    </div>
+    <div class="col">
+      <h3>Craft</h3>
+      <ul><li>Human-centered design.</li><li>Intelligent interactions.</li><li>Purposeful experimentation.</li></ul>
+    </div>
+    <div class="col">
+      <h3>Principles</h3>
+      <ul><li>Human before technology.</li><li>Clarity over complexity.</li><li>Purpose over hype.</li><li>Ethics by design.</li><li>Curiosity over certainty.</li><li>Empower, don't replace.</li></ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= CONTACT ================= -->
+<section class="contact grid" id="contact" aria-labelledby="contact-title">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="10" y1="0" x2="48" y2="100"/>
+    <line x1="64" y1="10" x2="96" y2="100"/>
+  </svg>
+  <p class="sec-label" style="grid-column:1/13">03 — Signal</p>
+  <h2 class="giant t-hello" id="contact-title" aria-label="Say hello"><span aria-hidden="true">Say</span><span aria-hidden="true">Hel</span><span aria-hidden="true">Lo</span></h2>
+
+  <div class="contact-info">
+    <p style="margin-bottom:24px">Intelligence is everywhere now. Imagination is still rare.</p>
+    <p style="font-size:15px;font-weight:500;margin-bottom:8px">Have an interesting idea? Let's explore what we can make possible.</p>
+    <p><a href="mailto:bheredia@icstars.org">bheredia@icstars.org</a></p>
+    <p style="margin-top:12px">
+      <a href="https://github.com/b-heredia" target="_blank" rel="noopener">GitHub</a>&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/brianaheredia/" target="_blank" rel="noopener">LinkedIn</a>&nbsp;&nbsp;
+      <a href="Briana-Heredia-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Briana Heredia<br>Imagined by a human. Set on a 12-column grid.</p>
+  <span class="mark" aria-label="BH monogram">b/h</span>
+</footer>
+
+</body>
+</html>
