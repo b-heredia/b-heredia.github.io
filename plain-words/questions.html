@@ -104,10 +104,8 @@
     <div class="chips" role="group" aria-label="Filter by topic">
       <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
       <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
-      <button class="chip" type="button" data-cat="ai" aria-pressed="false">AI tools</button>
-      <button class="chip" type="button" data-cat="career" aria-pressed="false">Career</button>
     </div>
-    <span class="count" id="count" aria-live="polite">10 questions</span>
+    <span class="count" id="count" aria-live="polite">1 question</span>
   </div>
 </div>
 
@@ -124,112 +122,6 @@
 }</code></pre>
       <p>A selector can point to a tag name like <code>h1</code>, a class like <code>.card</code>, or an id like <code>#about</code>. So CSS doesn't have tags of its own, but it often uses HTML tag names to choose what to style.</p>
       <p class="see">See also: <a href="index.html#css">CSS</a>, <a href="index.html#tag">Tag</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="flask" data-cat="code">
-    <summary><span class="num">02</span><h2>What is Flask?</h2><span class="cat">Code</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">A small Python tool for building web apps.</p>
-      <p>It lets your Python code respond when someone visits a page. You write a function, and Flask runs it when someone goes to a certain address on your site.</p>
-      <pre><code>@app.route("/")
-def home():
-    return "Hello!"</code></pre>
-      <p class="see">See also: <a href="index.html#flask">Flask</a>, <a href="index.html#api">API</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="static-dynamic" data-cat="code">
-    <summary><span class="num">03</span><h2>Why can't GitHub Pages run my Flask app?</h2><span class="cat">Code</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">Because GitHub Pages only serves files that are the same for everyone. Flask needs Python running every time someone visits.</p>
-      <ul>
-        <li><b>Static site:</b> plain HTML, CSS, JavaScript and images. GitHub Pages hosts these for free. My portfolio is static.</li>
-        <li><b>Dynamic site:</b> code runs on a server for each visit and can respond differently. Flask apps are dynamic.</li>
-      </ul>
-      <p>For a Flask app, use a host that runs Python, like Render or PythonAnywhere.</p>
-      <p class="see">See also: <a href="index.html#github-pages">GitHub Pages</a>, <a href="index.html#flask">Flask</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="style-css" data-cat="code">
-    <summary><span class="num">04</span><h2>What is style.css?</h2><span class="cat">Code</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">It isn't a special word. It's just the usual name for a file that holds a website's CSS.</p>
-      <p>Instead of putting all the styles inside the HTML page, you keep them in their own file and connect it inside the <code>&lt;head&gt;</code>:</p>
-      <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
-      <p>Both ways work. My portfolio keeps its CSS inside each page, which is fine for small sites.</p>
-      <p class="see">See also: <a href="index.html#css">CSS</a>, <a href="index.html#html">HTML</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="preview" data-cat="code">
-    <summary><span class="num">05</span><h2>Why didn't my website work in the preview?</h2><span class="cat">Code</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">Some previews show what a page looks like but don't run its JavaScript.</p>
-      <p>When I tested The Better Question inside a chat preview, I could type but nothing happened. The code was fine. The preview just wasn't running it. Once the page was opened in a real browser, it worked.</p>
-      <p>The lesson: test your site where real people will actually use it.</p>
-      <p class="see">See also: <a href="index.html#javascript">JavaScript</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="slash-agents" data-cat="ai">
-    <summary><span class="num">06</span><h2>Why didn't /agents work in Claude Code?</h2><span class="cat">AI tools</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">In my version of the app, that command had been removed.</p>
-      <p>Commands that start with a slash can change between versions. Two things helped:</p>
-      <ul>
-        <li>Type it with no space after the slash: <code>/agents</code>, not <code>/ agents</code>.</li>
-        <li>If a command is gone, ask in plain words instead: "Which subagents do I have available?"</li>
-      </ul>
-      <p class="see">See also: <a href="index.html#subagent">Subagent</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="agents-where" data-cat="ai">
-    <summary><span class="num">07</span><h2>Where do my Claude Code agents actually live?</h2><span class="cat">AI tools</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">They're small files in a hidden folder called <code>.claude/agents</code>.</p>
-      <ul>
-        <li><b>Project agents</b> live inside a project folder and only work in that project.</li>
-        <li><b>Personal agents</b> live in the <code>.claude</code> folder in your home folder and work in every project.</li>
-      </ul>
-      <p>Folders that start with a dot are hidden by default. On Windows, turn on View → Show → Hidden items to see them.</p>
-      <p class="see">See also: <a href="index.html#subagent">Subagent</a>, <a href="index.html#agent">AI agent</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="outside-project" data-cat="ai">
-    <summary><span class="num">08</span><h2>Should I worry when Claude says a file isn't in my project?</h2><span class="cat">AI tools</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">Usually not. It's being open about where it found the file.</p>
-      <p>Claude can read from any folder you've added to your session, not only the main project. When it says where a file was, or that it changed nothing, that's helpful transparency.</p>
-      <p>What's worth checking: that it didn't change anything you didn't ask it to.</p>
-      <p class="see">See also: <a href="index.html#guardrail">Guardrail</a></p>
-    </div></div>
-  </details>
-
-  <details class="q" id="resume-name" data-cat="career">
-    <summary><span class="num">09</span><h2>What's the best way to name my résumé file?</h2><span class="cat">Career</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">First name, last name, then "Resume", with hyphens: <code>Briana-Heredia-Resume.pdf</code>.</p>
-      <ul>
-        <li>Your name first, so recruiters can find it in a folder full of résumés.</li>
-        <li>Hyphens instead of spaces, so web links stay clean.</li>
-        <li>No "final" or "v3", so you can update it without changing the name.</li>
-      </ul>
-    </div></div>
-  </details>
-
-  <details class="q" id="pro-bono" data-cat="career">
-    <summary><span class="num">10</span><h2>Can I put free work on my résumé?</h2><span class="cat">Career</span></summary>
-    <div class="ans"><div class="ans-in">
-      <p class="short">Yes, if it's real work for a real person or organization, and you label it honestly.</p>
-      <ul>
-        <li>Call it "Pro bono" or "Community project".</li>
-        <li>Agree on the scope in writing: what you'll build, how many changes, and when it's done.</li>
-        <li>Ask permission before showing it in your portfolio.</li>
-      </ul>
     </div></div>
   </details>
 
