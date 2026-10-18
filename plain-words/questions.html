@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions I Asked — Briana Heredia</title>
+<meta name="description" content="Real questions from Briana Heredia's learning journey in AI, code and design, answered in plain language.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#111; --paper:#fff; --muted:#5c5c5c; --soft:#f1f1f1; --gutter:clamp(16px,3vw,48px); --giant:clamp(64px,15vw,230px); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { overflow-x:hidden; }
+  body { background:var(--paper); color:var(--ink); font-family:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif; font-size:16px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  button, input { font:inherit; color:inherit; }
+  :focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+  .grid { display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--gutter); padding-left:var(--gutter); padding-right:var(--gutter); position:relative; }
+  nav { display:flex; justify-content:space-between; gap:16px; padding:20px var(--gutter); font-size:14px; font-weight:500; }
+  nav a { text-decoration:none; } nav a:hover { text-decoration:underline; text-underline-offset:4px; }
+  .tabs { display:flex; gap:28px; padding:4px var(--gutter) 0; font-size:clamp(18px,2vw,24px); font-weight:700; letter-spacing:-.02em; }
+  .tabs a { text-decoration:none; padding-bottom:6px; border-bottom:4px solid transparent; color:var(--muted); }
+  .tabs a:hover { color:var(--ink); }
+  .tabs a[aria-current="page"] { color:var(--ink); border-bottom-color:var(--ink); }
+  .lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .lines line { stroke:var(--ink); stroke-width:1; vector-effect:non-scaling-stroke; }
+
+  .hero { padding-top:clamp(24px,5vw,64px); padding-bottom:clamp(40px,5vw,72px); }
+  .kicker { grid-column:1/4; font-size:clamp(15px,1.5vw,20px); line-height:1.2; max-width:16ch; padding-top:.3em; }
+  .giant { grid-column:4/13; font-size:var(--giant); font-weight:700; line-height:.8; letter-spacing:-.055em; text-transform:uppercase; }
+  .giant span { display:block; } .giant span:nth-child(2) { padding-left:.6em; }
+  .intro { grid-column:7/13; margin-top:40px; font-size:clamp(17px,1.7vw,22px); line-height:1.3; max-width:34ch; }
+
+  .tools { position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--ink); padding-top:14px; padding-bottom:14px; }
+  .tools-in { grid-column:1/13; display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center; }
+  .search { flex:1 1 280px; border:0; border-bottom:2px solid var(--ink); padding:6px 0; font-size:clamp(20px,2.4vw,30px); font-weight:700; letter-spacing:-.02em; background:transparent; min-width:0; }
+  .search::placeholder { color:#b0b0b0; }
+  .search:focus { outline:none; border-bottom-width:4px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip { border:1px solid var(--ink); background:var(--paper); border-radius:999px; padding:6px 13px; font-size:14px; cursor:pointer; }
+  .chip:hover { background:var(--soft); }
+  .chip[aria-pressed="true"] { background:var(--ink); color:var(--paper); }
+  .count { font-size:13px; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
+
+  .list { padding-top:8px; padding-bottom:40px; }
+  .q { grid-column:1/13; border-bottom:1px solid var(--ink); }
+  .q summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--gutter); padding:26px 0; align-items:baseline; }
+  .q summary::-webkit-details-marker { display:none; }
+  .q .num { grid-column:1/2; font-size:clamp(20px,2vw,28px); font-weight:700; letter-spacing:-.04em; }
+  .q h2 { grid-column:2/11; font-size:clamp(22px,2.6vw,38px); font-weight:700; line-height:1.05; letter-spacing:-.035em; }
+  .q .cat { grid-column:11/13; justify-self:end; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; border:1px solid var(--ink); padding:3px 8px; white-space:nowrap; }
+  .q summary:hover h2 { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:6px; }
+  .ans { display:grid; grid-template-columns:repeat(12,1fr); column-gap:var(--gutter); padding-bottom:30px; }
+  .ans-in { grid-column:2/10; font-size:17px; line-height:1.5; max-width:62ch; }
+  .ans-in p + p, .ans-in p + pre, .ans-in pre + p, .ans-in p + ul, .ans-in ul + p { margin-top:12px; }
+  .ans-in ul { padding-left:20px; }
+  .ans-in code { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:14px; background:var(--soft); padding:1px 5px; }
+  .ans-in pre { background:var(--ink); color:var(--paper); padding:14px 16px; overflow-x:auto; font-size:14px; }
+  .ans-in pre code { background:none; padding:0; color:inherit; }
+  .ans-in .short { font-weight:700; }
+  .ans-in .see { margin-top:14px; font-size:13px; color:var(--muted); }
+  .empty { grid-column:1/13; padding:48px 0; font-size:20px; }
+  [hidden] { display:none !important; }
+
+  .note { padding-top:clamp(40px,5vw,64px); padding-bottom:24px; }
+  .note p { grid-column:4/13; max-width:62ch; }
+  .note p + p { margin-top:10px; }
+  footer { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:40px var(--gutter) 32px; font-size:12px; }
+
+  @media (max-width:860px) {
+    .kicker, .giant, .intro { grid-column:1/13; } .kicker { margin-bottom:20px; }
+    .q .num { grid-column:1/3; } .q h2 { grid-column:3/13; }
+    .q .cat { grid-column:3/13; justify-self:start; margin-top:10px; }
+    .ans-in { grid-column:1/13; }
+    .note p { grid-column:1/13; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="../index.html">← Briana Heredia</a>
+  <span>Plain Words</span>
+</nav>
+<div class="tabs" role="navigation" aria-label="Plain Words sections">
+  <a href="index.html">Words</a>
+  <a href="questions.html" aria-current="page">Questions</a>
+</div>
+
+<header class="hero grid">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="22" y1="0" x2="58" y2="100"/><line x1="72" y1="0" x2="100" y2="66"/>
+  </svg>
+  <p class="kicker">Real questions from my learning journey.</p>
+  <h1 class="giant" aria-label="Questions I Asked"><span aria-hidden="true">Ques</span><span aria-hidden="true">Tions</span></h1>
+  <p class="intro">Every question here is one I actually asked while learning. If you're wondering the same thing, you're in good company. Tap a question to see the answer.</p>
+</header>
+
+<div class="tools grid">
+  <div class="tools-in">
+    <label for="q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search questions</label>
+    <input id="q" class="search" type="search" placeholder="Search a question…" autocomplete="off">
+    <div class="chips" role="group" aria-label="Filter by topic">
+      <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
+      <button class="chip" type="button" data-cat="ai" aria-pressed="false">AI tools</button>
+      <button class="chip" type="button" data-cat="career" aria-pressed="false">Career</button>
+    </div>
+    <span class="count" id="count" aria-live="polite">10 questions</span>
+  </div>
+</div>
+
+<main class="list grid">
+
+  <details class="q" id="css-tags" data-cat="code">
+    <summary><span class="num">01</span><h2>Does CSS have tags like HTML?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">No. HTML uses tags to say what something is. CSS uses rules to say how it looks.</p>
+      <p>A CSS rule has two parts: a <b>selector</b> (which things to style) and <b>declarations</b> inside curly braces (what to change).</p>
+      <pre><code>h1 {
+  color: black;
+  font-size: 48px;
+}</code></pre>
+      <p>A selector can point to a tag name like <code>h1</code>, a class like <code>.card</code>, or an id like <code>#about</code>. So CSS doesn't have tags of its own, but it often uses HTML tag names to choose what to style.</p>
+      <p class="see">See also: <a href="index.html#css">CSS</a>, <a href="index.html#tag">Tag</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="flask" data-cat="code">
+    <summary><span class="num">02</span><h2>What is Flask?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">A small Python tool for building web apps.</p>
+      <p>It lets your Python code respond when someone visits a page. You write a function, and Flask runs it when someone goes to a certain address on your site.</p>
+      <pre><code>@app.route("/")
+def home():
+    return "Hello!"</code></pre>
+      <p class="see">See also: <a href="index.html#flask">Flask</a>, <a href="index.html#api">API</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="static-dynamic" data-cat="code">
+    <summary><span class="num">03</span><h2>Why can't GitHub Pages run my Flask app?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Because GitHub Pages only serves files that are the same for everyone. Flask needs Python running every time someone visits.</p>
+      <ul>
+        <li><b>Static site:</b> plain HTML, CSS, JavaScript and images. GitHub Pages hosts these for free. My portfolio is static.</li>
+        <li><b>Dynamic site:</b> code runs on a server for each visit and can respond differently. Flask apps are dynamic.</li>
+      </ul>
+      <p>For a Flask app, use a host that runs Python, like Render or PythonAnywhere.</p>
+      <p class="see">See also: <a href="index.html#github-pages">GitHub Pages</a>, <a href="index.html#flask">Flask</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="style-css" data-cat="code">
+    <summary><span class="num">04</span><h2>What is style.css?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">It isn't a special word. It's just the usual name for a file that holds a website's CSS.</p>
+      <p>Instead of putting all the styles inside the HTML page, you keep them in their own file and connect it inside the <code>&lt;head&gt;</code>:</p>
+      <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+      <p>Both ways work. My portfolio keeps its CSS inside each page, which is fine for small sites.</p>
+      <p class="see">See also: <a href="index.html#css">CSS</a>, <a href="index.html#html">HTML</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="preview" data-cat="code">
+    <summary><span class="num">05</span><h2>Why didn't my website work in the preview?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Some previews show what a page looks like but don't run its JavaScript.</p>
+      <p>When I tested The Better Question inside a chat preview, I could type but nothing happened. The code was fine. The preview just wasn't running it. Once the page was opened in a real browser, it worked.</p>
+      <p>The lesson: test your site where real people will actually use it.</p>
+      <p class="see">See also: <a href="index.html#javascript">JavaScript</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="slash-agents" data-cat="ai">
+    <summary><span class="num">06</span><h2>Why didn't /agents work in Claude Code?</h2><span class="cat">AI tools</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">In my version of the app, that command had been removed.</p>
+      <p>Commands that start with a slash can change between versions. Two things helped:</p>
+      <ul>
+        <li>Type it with no space after the slash: <code>/agents</code>, not <code>/ agents</code>.</li>
+        <li>If a command is gone, ask in plain words instead: "Which subagents do I have available?"</li>
+      </ul>
+      <p class="see">See also: <a href="index.html#subagent">Subagent</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="agents-where" data-cat="ai">
+    <summary><span class="num">07</span><h2>Where do my Claude Code agents actually live?</h2><span class="cat">AI tools</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">They're small files in a hidden folder called <code>.claude/agents</code>.</p>
+      <ul>
+        <li><b>Project agents</b> live inside a project folder and only work in that project.</li>
+        <li><b>Personal agents</b> live in the <code>.claude</code> folder in your home folder and work in every project.</li>
+      </ul>
+      <p>Folders that start with a dot are hidden by default. On Windows, turn on View → Show → Hidden items to see them.</p>
+      <p class="see">See also: <a href="index.html#subagent">Subagent</a>, <a href="index.html#agent">AI agent</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="outside-project" data-cat="ai">
+    <summary><span class="num">08</span><h2>Should I worry when Claude says a file isn't in my project?</h2><span class="cat">AI tools</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Usually not. It's being open about where it found the file.</p>
+      <p>Claude can read from any folder you've added to your session, not only the main project. When it says where a file was, or that it changed nothing, that's helpful transparency.</p>
+      <p>What's worth checking: that it didn't change anything you didn't ask it to.</p>
+      <p class="see">See also: <a href="index.html#guardrail">Guardrail</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="resume-name" data-cat="career">
+    <summary><span class="num">09</span><h2>What's the best way to name my résumé file?</h2><span class="cat">Career</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">First name, last name, then "Resume", with hyphens: <code>Briana-Heredia-Resume.pdf</code>.</p>
+      <ul>
+        <li>Your name first, so recruiters can find it in a folder full of résumés.</li>
+        <li>Hyphens instead of spaces, so web links stay clean.</li>
+        <li>No "final" or "v3", so you can update it without changing the name.</li>
+      </ul>
+    </div></div>
+  </details>
+
+  <details class="q" id="pro-bono" data-cat="career">
+    <summary><span class="num">10</span><h2>Can I put free work on my résumé?</h2><span class="cat">Career</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Yes, if it's real work for a real person or organization, and you label it honestly.</p>
+      <ul>
+        <li>Call it "Pro bono" or "Community project".</li>
+        <li>Agree on the scope in writing: what you'll build, how many changes, and when it's done.</li>
+        <li>Ask permission before showing it in your portfolio.</li>
+      </ul>
+    </div></div>
+  </details>
+
+  <p class="empty" id="empty" hidden>No questions match that yet. Have one? <a href="mailto:bheredia@icstars.org">Ask me</a>.</p>
+</main>
+
+<section class="note grid" aria-label="About these questions">
+  <p><b>Have a question?</b> Send it to bheredia@icstars.org. If I've wondered it too, it might end up here.</p>
+  <p>Answers are written to be simple, not complete. Tools change, so check the official docs for the latest details.</p>
+</section>
+
+<footer>
+  <p>Plain Words · Briana Heredia, Creative AI Technologist</p>
+  <p><a href="../index.html">Back to portfolio</a></p>
+</footer>
+
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var chips = document.querySelectorAll('.chip');
+  var items = document.querySelectorAll('.q');
+  var count = document.getElementById('count');
+  var empty = document.getElementById('empty');
+  var cat = 'all';
+
+  function update() {
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function (el) {
+      var matchCat = cat === 'all' || el.getAttribute('data-cat') === cat;
+      var matchText = !term || el.textContent.toLowerCase().indexOf(term) !== -1;
+      var show = matchCat && matchText;
+      el.hidden = !show;
+      if (show) { shown++; if (term) el.open = true; }
+    });
+    count.textContent = shown + (shown === 1 ? ' question' : ' questions');
+    empty.hidden = shown !== 0;
+  }
+
+  q.addEventListener('input', update);
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      cat = b.getAttribute('data-cat');
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      update();
+    });
+  });
+  if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t && t.tagName === 'DETAILS') t.open = true; }
+  update();
+})();
+</script>
+</body>
+</html>
