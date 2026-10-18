@@ -46,14 +46,6 @@ Each project folder has its own README (what it does, and an honest account of A
 
 I build with AI and document it plainly. In each project, I set the concept, audience and direction, and make the design decisions. Claude (Anthropic) proposes options and drafts code and copy, which I review before publishing. Each project's README says exactly who did what.
 
-## Run Locally
-
-```bash
-git clone https://github.com/b-heredia/portfolio.git
-```
-
-Then open `index.html` in any browser.
-
 ## Contact
 
 - Email: [bheredia@icstars.org](mailto:bheredia@icstars.org)
