@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Clarity Tool — Briana Heredia</title>
+<meta name="description" content="For when everything feels like too much. Empty your head, sort what's there, and leave with one next step. Nothing you type leaves your browser.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%226%22%20fill%3D%22%23111%22/%3E%3Crect%20x%3D%2214%22%20y%3D%2230%22%20width%3D%2236%22%20height%3D%224%22%20fill%3D%22%23fff%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="../index.html#work"><strong>← Briana Heredia</strong><span class="nav-sub"> — Creative AI Technologist</span></a>
+  <ol class="progress" id="progress" aria-label="Progress">
+    <li data-step="1"><span>01</span> Empty</li>
+    <li data-step="2"><span>02</span> Sort</li>
+    <li data-step="3"><span>03</span> Choose</li>
+    <li data-step="4"><span>04</span> Clear</li>
+  </ol>
+  <button type="button" class="link-btn" id="about-open">About</button>
+</nav>
+
+<main>
+
+  <!-- ============ 00 START ============ -->
+  <section class="stage grid" id="stage-0" aria-labelledby="h-0">
+    <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="16" y1="0" x2="52" y2="100"/>
+      <line x1="70" y1="10" x2="100" y2="74"/>
+    </svg>
+    <p class="kicker">Project 02 — For when everything feels like too much.</p>
+    <h1 class="giant t-title" id="h-0" tabindex="-1">
+      <span>The</span><span class="indent-1">Clarity</span><span class="indent-2">Tool</span>
+    </h1>
+    <div class="intro">
+      <p>When you're overwhelmed, everything feels equally urgent. This tool helps you
+        <mark class="hl">get it out of your head, sort it, and leave with one next step.</mark></p>
+      <dl class="facts">
+        <div><dt>Time</dt><dd>About three minutes</dd></div>
+        <div><dt>Steps</dt><dd>Empty, sort, choose, clear</dd></div>
+        <div><dt>Privacy</dt><dd>Nothing you type leaves this page</dd></div>
+      </dl>
+      <button type="button" class="btn btn-solid btn-big" data-go="1">Begin →</button>
+    </div>
+  </section>
+
+  <!-- ============ 01 EMPTY ============ -->
+  <section class="stage grid" id="stage-1" aria-labelledby="h-1" hidden>
+    <p class="stage-num" aria-hidden="true">01</p>
+    <div class="stage-head">
+      <h2 class="giant" id="h-1" tabindex="-1"><span>Empty</span><span>Your Head</span></h2>
+      <p class="stage-lede">Write down everything taking up space. Tasks, worries, half-thoughts. One per line. Don't sort or judge yet.</p>
+    </div>
+
+    <div class="dump">
+      <label for="dump-text" class="small-label">One thought per line</label>
+      <textarea id="dump-text" rows="10" spellcheck="true"></textarea>
+      <div class="row-between">
+        <p class="count" id="dump-count" aria-live="polite">00 thoughts</p>
+        <button type="button" class="btn btn-solid" id="to-sort" disabled>Sort them →</button>
+      </div>
+    </div>
+
+    <div class="chaos-wrap">
+      <p class="small-label">What it looks like in your head</p>
+      <div class="chaos" id="chaos" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ 02 SORT ============ -->
+  <section class="stage grid" id="stage-2" aria-labelledby="h-2" hidden>
+    <p class="stage-num" aria-hidden="true">02</p>
+    <div class="stage-head">
+      <h2 class="giant giant-sm" id="h-2" tabindex="-1"><span>Sort It</span></h2>
+      <p class="stage-lede">One at a time. Ask: can I do something small about this today?</p>
+    </div>
+
+    <div class="sorter" id="sorter">
+      <p class="small-label" id="sort-count" aria-live="polite">Thought 01 / 01</p>
+      <p class="current" id="current-thought"></p>
+      <div class="choices" role="group" aria-label="Sort this thought">
+        <button type="button" class="choice" data-pile="do"><kbd>D</kbd><strong>Do</strong><span>Small, and in my control today.</span></button>
+        <button type="button" class="choice" data-pile="plan"><kbd>P</kbd><strong>Plan</strong><span>It matters, but it needs a time.</span></button>
+        <button type="button" class="choice" data-pile="release"><kbd>R</kbd><strong>Release</strong><span>I can't act on it today.</span></button>
+      </div>
+      <button type="button" class="link-btn" id="undo" disabled>← Undo last <kbd>Z</kbd></button>
+    </div>
+
+    <div class="pile-wrap">
+      <p class="small-label">Still in your head</p>
+      <div class="chaos chaos-sm" id="pile" aria-hidden="true"></div>
+    </div>
+
+    <div class="columns" id="columns">
+      <div class="column" data-pile="do"><h3>Do</h3><ol></ol></div>
+      <div class="column" data-pile="plan"><h3>Plan</h3><ol></ol></div>
+      <div class="column" data-pile="release"><h3>Release</h3><ol></ol></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 CHOOSE ============ -->
+  <section class="stage grid" id="stage-3" aria-labelledby="h-3" hidden>
+    <p class="stage-num" aria-hidden="true">03</p>
+    <div class="stage-head">
+      <h2 class="giant giant-sm" id="h-3" tabindex="-1"><span>Pick One</span></h2>
+      <p class="stage-lede" id="choose-lede">Not the most important one. The one you could start soonest.</p>
+    </div>
+
+    <fieldset class="pick">
+      <legend class="small-label">Your next step</legend>
+      <div id="pick-list" class="pick-list"></div>
+    </fieldset>
+
+    <div class="smaller">
+      <label for="smaller-text" class="small-label">Make it smaller (optional)</label>
+      <p class="hint">What's the first ten-minute version? "Do taxes" becomes "find last year's W-2."</p>
+      <input type="text" id="smaller-text" autocomplete="off">
+      <button type="button" class="btn btn-solid" id="to-clear" disabled>That's my next step →</button>
+    </div>
+  </section>
+
+  <!-- ============ 04 CLEAR ============ -->
+  <section class="stage grid" id="stage-4" aria-labelledby="h-4" hidden>
+    <p class="stage-num" aria-hidden="true">04</p>
+    <div class="stage-head">
+      <h2 class="giant giant-sm" id="h-4" tabindex="-1"><span>Clear</span></h2>
+      <p class="tally" id="tally"></p>
+    </div>
+
+    <div class="next-card" id="next-card"></div>
+
+    <div class="summary" id="summary"></div>
+
+    <div class="end-actions">
+      <button type="button" class="btn" id="copy-summary">Copy summary</button>
+      <button type="button" class="btn" id="print-summary">Print</button>
+      <button type="button" class="btn btn-solid" id="start-over">Start over</button>
+      <p class="small-note">Nothing was saved. When you close this page, it's gone.</p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="stage grid" id="stage-about" aria-labelledby="h-about" hidden>
+    <p class="stage-num" aria-hidden="true">—</p>
+    <div class="stage-head">
+      <h2 class="giant giant-sm" id="h-about" tabindex="-1"><span>About</span></h2>
+    </div>
+    <p class="about-text"><mark class="hl">Clarity isn't having less to do.</mark> It's knowing what to do next, and what you can set down for now.</p>
+
+    <div class="made-cols">
+      <div class="col">
+        <h3>Human<br>(Briana Heredia)</h3>
+        <ul>
+          <li>Concept, title and audience.</li>
+          <li>Chose the method: dump, sort into Do / Plan / Release, pick one step.</li>
+          <li>Chose full-screen stages and sorting one thought at a time.</li>
+          <li>Chose the signature moment: chaos snapping to a grid.</li>
+          <li>Chose strike-through for released thoughts, and no AI on the page.</li>
+          <li>Review and the decision to publish.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>AI<br>(Claude, by Anthropic)</h3>
+        <ul>
+          <li>Proposed the design options she chose from.</li>
+          <li>Drafted the HTML, CSS and JavaScript.</li>
+          <li>Wrote the interface copy.</li>
+          <li>Drafted the README and build guide.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Care<br>(Please read)</h3>
+        <ul>
+          <li>This tool sorts thoughts. It isn't therapy or medical advice.</li>
+          <li>If you're in crisis in the U.S., call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline). Elsewhere, contact local emergency services.</li>
+          <li>Nothing you type is stored or sent anywhere.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="about-back"><button type="button" class="btn" id="about-close">← Back</button></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Briana Heredia<br>Imagined by a human. Built with AI.</p>
+  <p class="foot-care">Not therapy. In crisis in the U.S.? Call or text 988.</p>
+  <a class="mark" href="../index.html" aria-label="Back to portfolio">b/h</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
