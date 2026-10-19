@@ -2,7 +2,7 @@
 
 **Creative AI Technologist. Imagination is the input.**
 
-🔗 **Live site:** [b-heredia.github.io/portfolio](https://b-heredia.github.io/portfolio/)
+🔗 **Live site:** [b-heredia.github.io](https://b-heredia.github.io/)
 
 ---
 
@@ -29,8 +29,8 @@ I'm currently in the [i.c.stars](https://www.icstars.org/) internship program in
 
 | # | Project | What it does | Links |
 |---|---|---|---|
-| 01 | **AI That Explains Itself** | A reading tool for everyday people. It shows the claims, confidence, sources and assumptions underneath an AI answer. | [Live](https://b-heredia.github.io/portfolio/ai-that-explains-itself/) · [Code](ai-that-explains-itself/) |
-| 02 | **The Clarity Tool** | For when everything feels like too much. Empty your head, sort each thought into Do / Plan / Release, and leave with one next step. | [Live](https://b-heredia.github.io/portfolio/the-clarity-tool/) · [Code](the-clarity-tool/) |
+| 01 | **AI That Explains Itself** | A reading tool for everyday people. It shows the claims, confidence, sources and assumptions underneath an AI answer. | [Live](https://b-heredia.github.io/ai-that-explains-itself/) · [Code](ai-that-explains-itself/) |
+| 02 | **The Clarity Tool** | For when everything feels like too much. Empty your head, sort each thought into Do / Plan / Release, and leave with one next step. | [Live](https://b-heredia.github.io/the-clarity-tool/) · [Code](the-clarity-tool/) |
 
 Each project folder has its own README (what it does, and an honest account of AI's role) and a BUILD-GUIDE (every design and code decision, step by step).
 
