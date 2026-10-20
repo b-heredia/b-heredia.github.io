@@ -104,8 +104,9 @@
     <div class="chips" role="group" aria-label="Filter by topic">
       <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
       <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
+      <button class="chip" type="button" data-cat="it" aria-pressed="false">IT</button>
     </div>
-    <span class="count" id="count" aria-live="polite">3 questions</span>
+    <span class="count" id="count" aria-live="polite">6 questions</span>
   </div>
 </div>
 
@@ -147,6 +148,62 @@ def home():
       </ul>
       <p>For a Flask app, use a host that runs Python, like Render or PythonAnywhere.</p>
       <p class="see">See also: <a href="index.html#github-pages">GitHub Pages</a>, <a href="index.html#flask">Flask</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="html-text" data-cat="code">
+    <summary><span class="num">04</span><h2>How do I format text, headings and lists in HTML?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Wrap your words in tags. Each tag tells the browser what that text is.</p>
+      <pre><code>&lt;h1&gt;Main title&lt;/h1&gt;
+&lt;h2&gt;Section title&lt;/h2&gt;
+&lt;p&gt;Some &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; words.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A bullet point&lt;/li&gt;
+  &lt;li&gt;Another bullet point&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Step one&lt;/li&gt;
+  &lt;li&gt;Step two&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      <ul>
+        <li><b>Headings:</b> <code>&lt;h1&gt;</code> is the biggest and <code>&lt;h6&gt;</code> is the smallest. Use one <code>&lt;h1&gt;</code> per page, and pick headings by importance, not size. CSS can change the size.</li>
+        <li><b>Text:</b> <code>&lt;strong&gt;</code> makes text bold and important, <code>&lt;em&gt;</code> makes it italic and emphasized, and <code>&lt;br&gt;</code> starts a new line.</li>
+        <li><b>Lists:</b> <code>&lt;ul&gt;</code> makes bullets, <code>&lt;ol&gt;</code> makes numbers, and every item goes in an <code>&lt;li&gt;</code>.</li>
+      </ul>
+      <p class="see">See also: <a href="index.html#tag">Tag</a>, <a href="index.html#element">Element</a>, <a href="index.html#nesting">Nesting</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="html-links-images" data-cat="code">
+    <summary><span class="num">05</span><h2>How do I add links and images in HTML?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">Links use <code>&lt;a&gt;</code> with an <code>href</code> that says where to go. Images use <code>&lt;img&gt;</code> with a <code>src</code> that says which picture and an <code>alt</code> that describes it.</p>
+      <pre><code>&lt;a href="https://github.com/b-heredia"&gt;My GitHub&lt;/a&gt;
+&lt;a href="plain-words/"&gt;Plain Words&lt;/a&gt;
+
+&lt;img src="images/me.jpg" alt="Briana smiling at her desk"&gt;</code></pre>
+      <ul>
+        <li><b>Links:</b> use the full web address for other sites and a short path for pages on your own site. The words between the tags are what people click. Add <code>target="_blank"</code> to open the link in a new tab.</li>
+        <li><b>Images:</b> <code>&lt;img&gt;</code> has no closing tag. The <code>alt</code> text is read aloud by screen readers and shows up if the picture doesn't load, so describe what's in the image.</li>
+        <li><b>Tip:</b> on GitHub Pages, file names are case-sensitive. <code>Me.jpg</code> and <code>me.jpg</code> are different files.</li>
+      </ul>
+      <p class="see">See also: <a href="index.html#html">HTML</a>, <a href="index.html#closing-tag">Closing tag</a>, <a href="index.html#github-pages">GitHub Pages</a></p>
+    </div></div>
+  </details>
+
+  <details class="q" id="problem-vs-incident" data-cat="it">
+    <summary><span class="num">06</span><h2>What's the difference between a problem ticket and an incident ticket?</h2><span class="cat">IT</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">An incident ticket is about fixing something that's broken right now. A problem ticket is about finding out why it keeps breaking.</p>
+      <ul>
+        <li><b>Incident:</b> an unplanned outage or slowdown, like someone who can't log in. The goal is to get people working again fast, even with a quick workaround.</li>
+        <li><b>Problem:</b> the hidden cause behind one or more incidents. The goal is to find the root cause and fix it so it stops happening.</li>
+      </ul>
+      <p><b>Example:</b> on Monday, three people can't connect to the Wi-Fi. That's three incident tickets, and restarting the router gets everyone back online. When it happens again every Monday, someone opens a problem ticket to find out why.</p>
+      <p>Think of it like this: the incident is putting out the fire, and the problem is finding what keeps starting it. These terms come from ITIL, a common set of practices for running IT support.</p>
     </div></div>
   </details>
 
