@@ -104,7 +104,7 @@
   <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
     <line x1="20" y1="0" x2="56" y2="100"/><line x1="70" y1="0" x2="100" y2="64"/>
   </svg>
-  <p class="kicker">A glossary of AI, code and design words.</p>
+  <p class="kicker">A glossary of AI, code, UX and design words.</p>
   <h1 class="giant" aria-label="Plain Words"><span aria-hidden="true">Plain</span><span aria-hidden="true">Words</span></h1>
   <p class="intro">I'm learning as I go, and these are the words I've had to look up. Each one is in plain language with an everyday example. If it helps me remember, maybe it helps you learn too.</p>
 </header>
@@ -119,12 +119,109 @@
       <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
       <button class="chip" type="button" data-cat="tools" aria-pressed="false">Tools</button>
       <button class="chip" type="button" data-cat="design" aria-pressed="false">Design</button>
+      <button class="chip" type="button" data-cat="process" aria-pressed="false">Process</button>
     </div>
-    <span class="count" id="count" aria-live="polite">29 words</span>
+    <span class="count" id="count" aria-live="polite">129 words</span>
   </div>
 </div>
 
 <main class="list grid" id="list">
+
+  <article class="entry" id="a-b-testing" data-cat="design">
+    <div class="term"><h2>A/B testing</h2><span class="cat">Design</span><span class="aka">Split testing</span></div>
+    <div class="def">
+      <p class="plain">Showing two versions of a design to different groups of people to see which one works better.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Baking two batches of cookies with different recipes and seeing which one disappears first.</div>
+        <div><b>In real tech</b>A site shows half its visitors a green Sign up button and half a blue one, then compares how many people sign up.</div>
+      </div>
+      <p class="rel">Related: <a href="#usability-testing">Usability testing</a>, <a href="#quantitative-user-research">Quantitative user research</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="above-the-fold" data-cat="design">
+    <div class="term"><h2>Above the fold</h2><span class="cat">Design</span><span class="aka">Below the fold</span></div>
+    <div class="def">
+      <p class="plain">The part of a page you see before scrolling is above the fold. Anything you have to scroll to see is below it.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The top half of a folded newspaper on a newsstand, the part people see first.</div>
+        <div><b>In real tech</b>Designers put the most important message and main button above the fold, like a headline and a Contact button.</div>
+      </div>
+      <p class="rel">Related: <a href="#responsive-design">Responsive design</a>, <a href="#visual-design">Visual design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="accessibility" data-cat="design">
+    <div class="term"><h2>Accessibility</h2><span class="cat">Design</span><span class="aka">a11y</span></div>
+    <div class="def">
+      <p class="plain">Designing so people with disabilities can use a product, including people who are blind, deaf, color-blind or can't use a mouse.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A ramp next to the stairs. It helps wheelchair users, and also people with strollers or suitcases.</div>
+        <div><b>In real tech</b>Alt text on images, strong color contrast, captions on videos and a site you can use with only a keyboard.</div>
+      </div>
+      <p class="rel">Related: <a href="#inclusive-design">Inclusive design</a>, <a href="#ethical-design">Ethical design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="adobe-xd" data-cat="tools">
+    <div class="term"><h2>Adobe XD</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">Adobe's app for designing and prototyping websites and apps.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A digital sketchbook made for screens.</div>
+        <div><b>In real tech</b>Adobe stopped adding new features to XD in 2023, so many teams have moved to Figma.</div>
+      </div>
+      <p class="rel">Related: <a href="#figma">Figma</a>, <a href="#sketch">Sketch</a>, <a href="#prototype">Prototype</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="affinity-map" data-cat="design">
+    <div class="term"><h2>Affinity map</h2><span class="cat">Design</span><span class="aka">Affinity diagram</span></div>
+    <div class="def">
+      <p class="plain">A way to sort lots of research notes into groups so patterns show up.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Dumping out a junk drawer and sorting things into piles: batteries, pens, keys.</div>
+        <div><b>In real tech</b>After user interviews, a team writes each finding on a sticky note and clusters similar notes together.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-research">User research</a>, <a href="#brainstorming">Brainstorming</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="affordance" data-cat="design">
+    <div class="term"><h2>Affordance</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A clue in a design that shows how something can be used.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A door handle you pull and a flat plate you push. The shape tells you what to do.</div>
+        <div><b>In real tech</b>A button that looks raised, or underlined blue text that looks clickable.</div>
+      </div>
+      <p class="rel">Related: <a href="#intuitive-design">Intuitive design</a>, <a href="#ui-elements">UI elements</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="agile" data-cat="process">
+    <div class="term"><h2>Agile</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">A way of working where a team builds in small pieces, gets feedback often and adjusts as they go.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Cooking a new dish by tasting and adjusting as you go, instead of following the recipe once and hoping.</div>
+        <div><b>In real tech</b>Teams work in short cycles called sprints, usually 1 to 4 weeks long, and meet briefly each day to check in.</div>
+      </div>
+      <p class="rel">Related: <a href="#waterfall">Waterfall</a>, <a href="#agile-ux">Agile UX</a>, <a href="#user-stories">User stories</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="agile-ux" data-cat="process">
+    <div class="term"><h2>Agile UX</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">Fitting UX design into an Agile team, so research and design happen in small steps alongside the developers.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A chef and a server working together on every course, instead of handing over a finished menu.</div>
+        <div><b>In real tech</b>A designer tests one screen with users during a sprint, so developers can build the improved version in the next one.</div>
+      </div>
+      <p class="rel">Related: <a href="#agile">Agile</a>, <a href="#lean-ux">Lean UX</a>, <a href="#design-sprint">Design sprint</a></p>
+    </div>
+  </article>
 
   <article class="entry" id="agent" data-cat="ai">
     <div class="term"><h2>AI agent</h2><span class="cat">AI</span></div>
@@ -135,6 +232,18 @@
         <div><b>In real tech</b>Claude Code can read files, run commands and make changes to finish a coding task.</div>
       </div>
       <p class="rel">Related: <a href="#subagent">Subagent</a>, <a href="#guardrail">Guardrail</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="animation-design" data-cat="design">
+    <div class="term"><h2>Animation design</h2><span class="cat">Design</span><span class="aka">Motion design</span></div>
+    <div class="def">
+      <p class="plain">Using motion in an interface to guide attention, give feedback or make changes feel smooth.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A turn signal on a car. The blinking tells others what's about to happen.</div>
+        <div><b>In real tech</b>A heart that pops when you like a post, or a menu that slides in so you can see where it came from.</div>
+      </div>
+      <p class="rel">Related: <a href="#interaction-design">Interaction design</a>, <a href="#visual-design">Visual design</a></p>
     </div>
   </article>
 
@@ -150,6 +259,90 @@
     </div>
   </article>
 
+  <article class="entry" id="beta-testing" data-cat="design">
+    <div class="term"><h2>Beta testing</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Letting a group of real users try an almost-finished product before it launches, to catch problems.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A dress rehearsal before opening night.</div>
+        <div><b>In real tech</b>A company releases a beta app to a few hundred people and collects bug reports and feedback.</div>
+      </div>
+      <p class="rel">Related: <a href="#usability-testing">Usability testing</a>, <a href="#mvp">MVP</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="brainstorming" data-cat="design">
+    <div class="term"><h2>Brainstorming</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A group session for coming up with lots of ideas quickly, without judging them yet.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Putting every idea on the table before choosing what to cook.</div>
+        <div><b>In real tech</b>A team spends 20 minutes writing ideas on sticky notes, then groups and votes on them.</div>
+      </div>
+      <p class="rel">Related: <a href="#ideation">Ideation</a>, <a href="#how-might-we">How Might We</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="brand-identity" data-cat="design">
+    <div class="term"><h2>Brand identity</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The look, voice and feeling that make a company recognizable, like its logo, colors, fonts and tone.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A person's style: how they dress, talk and carry themselves.</div>
+        <div><b>In real tech</b>A brand guide sets the exact colors and fonts so every page and post looks like it comes from the same company.</div>
+      </div>
+      <p class="rel">Related: <a href="#style-guide">Style guide</a>, <a href="#typography">Typography</a>, <a href="#visual-design">Visual design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="breadcrumb" data-cat="design">
+    <div class="term"><h2>Breadcrumb</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A small trail of links that shows where you are on a website and how to go back.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The trail of breadcrumbs in Hansel and Gretel.</div>
+        <div><b>In real tech</b>Home &gt; Shoes &gt; Running shoes at the top of a shopping page.</div>
+      </div>
+      <p class="rel">Related: <a href="#navigation">Navigation</a>, <a href="#information-architecture">Information architecture</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="card-sorting" data-cat="design">
+    <div class="term"><h2>Card sorting</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A research method where people group topics into categories that make sense to them.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Asking friends to organize your kitchen and seeing where they'd look for the spoons.</div>
+        <div><b>In real tech</b>Users sort 30 cards with page names into groups, which helps a team plan a site's menu.</div>
+      </div>
+      <p class="rel">Related: <a href="#information-architecture">Information architecture</a>, <a href="#tree-testing">Tree testing</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="case-study" data-cat="design">
+    <div class="term"><h2>Case study</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A story about a project that shows the problem, your process, the decisions you made and the results.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A recipe card plus the story of how you perfected the dish.</div>
+        <div><b>In real tech</b>Most UX portfolios are built from 2 to 4 case studies. Hiring managers want to see how you think, not just the final screens.</div>
+      </div>
+      <p class="rel">Related: <a href="#portfolio">Portfolio</a>, <a href="#design-deliverables">Design deliverables</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="clickstream-analysis" data-cat="design">
+    <div class="term"><h2>Clickstream analysis</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Studying the path of clicks people take through a website.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Following footprints in the snow to see where people walked.</div>
+        <div><b>In real tech</b>Analytics might show most visitors leave on the checkout page, which tells the team where to look.</div>
+      </div>
+      <p class="rel">Related: <a href="#quantitative-user-research">Quantitative user research</a>, <a href="#user-flow">User flow</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="closing-tag" data-cat="code">
     <div class="term"><h2>Closing tag</h2><span class="cat">Code</span><span class="aka">End tag</span></div>
     <div class="def">
@@ -159,6 +352,18 @@
         <div><b>In real tech</b><code>&lt;/p&gt;</code> closes a paragraph. A few tags, like <code>&lt;img&gt;</code> and <code>&lt;br&gt;</code>, don't need one. Forgetting a closing tag can make the rest of the page look wrong.</div>
       </div>
       <p class="rel">Related: <a href="#tag">Tag</a>, <a href="#element">Element</a>, <a href="#nesting">Nesting</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="cognitive-load" data-cat="design">
+    <div class="term"><h2>Cognitive load</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">How much mental effort it takes to use something. Less is usually better.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Trying to remember a long phone number versus a short one.</div>
+        <div><b>In real tech</b>Breaking a long form into short steps lowers cognitive load.</div>
+      </div>
+      <p class="rel">Related: <a href="#hicks-law">Hick's law</a>, <a href="#usability">Usability</a></p>
     </div>
   </article>
 
@@ -186,6 +391,42 @@
     </div>
   </article>
 
+  <article class="entry" id="competitor-analysis" data-cat="design">
+    <div class="term"><h2>Competitor analysis</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Looking closely at similar products to learn what they do well and where there's room to be better.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Checking out the other food trucks on the block before opening your own.</div>
+        <div><b>In real tech</b>A designer compares the sign-up flow of five apps and notes what's easy and what's frustrating.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-strategy">UX strategy</a>, <a href="#ux-audit">UX audit</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="consistency" data-cat="design">
+    <div class="term"><h2>Consistency</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Making similar things look and work the same way across a product.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Every stop sign is red and the same shape, so you never have to think about it.</div>
+        <div><b>In real tech</b>Every main button uses the same color, and every page has the menu in the same spot.</div>
+      </div>
+      <p class="rel">Related: <a href="#design-system">Design system</a>, <a href="#style-guide">Style guide</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="contextual-inquiry" data-cat="design">
+    <div class="term"><h2>Contextual inquiry</h2><span class="cat">Design</span><span class="aka">Contextual enquiry</span></div>
+    <div class="def">
+      <p class="plain">Watching and talking with people while they do a task in their real environment.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Learning a family recipe by cooking it in grandma's kitchen instead of asking her over the phone.</div>
+        <div><b>In real tech</b>A researcher sits with a nurse during a shift to see how she really uses the hospital software.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-research">User research</a>, <a href="#qualitative-user-research">Qualitative user research</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="css" data-cat="code">
     <div class="term"><h2>CSS</h2><span class="cat">Code</span><span class="aka">Cascading Style Sheets</span></div>
     <div class="def">
@@ -195,6 +436,126 @@
         <div><b>In real tech</b><code>h1 { color: black; }</code> makes every main heading black. CSS is often saved in its own file, usually called <code>style.css</code>, and connected to the page with <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>.</div>
       </div>
       <p class="rel">Related: <a href="#html">HTML</a>, <a href="#javascript">JavaScript</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="customer-experience" data-cat="design">
+    <div class="term"><h2>Customer experience</h2><span class="cat">Design</span><span class="aka">CX</span></div>
+    <div class="def">
+      <p class="plain">Everything a person feels about a company across every touchpoint, not just the app or website.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A restaurant visit: the food, the server, the wait and the bill all count.</div>
+        <div><b>In real tech</b>CX covers ads, customer service calls, delivery and returns. UX is one part of it.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-design">UX design</a>, <a href="#user-journey-map">User journey map</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="dark-ux" data-cat="design">
+    <div class="term"><h2>Dark UX</h2><span class="cat">Design</span><span class="aka">Dark patterns</span></div>
+    <div class="def">
+      <p class="plain">Design tricks that push people into doing things they didn't mean to do.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A store that hides the exit so you keep shopping.</div>
+        <div><b>In real tech</b>A hard-to-find cancel button, or a box that's already checked to sign you up for emails.</div>
+      </div>
+      <p class="rel">Related: <a href="#ethical-design">Ethical design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="decision-matrix" data-cat="design">
+    <div class="term"><h2>Decision matrix</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A table that scores options against what matters, to help a team choose.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A pros and cons list with points.</div>
+        <div><b>In real tech</b>A team rates three design ideas on user value, effort and cost, then picks the highest score.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-strategy">UX strategy</a>, <a href="#product-roadmap">Product roadmap</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="design-debt" data-cat="design">
+    <div class="term"><h2>Design debt</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Small design shortcuts and inconsistencies that pile up over time and make a product harder to use and change.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Putting off cleaning your room. One sock is fine. A month of socks is a project.</div>
+        <div><b>In real tech</b>Five different button styles across one app because each team made their own.</div>
+      </div>
+      <p class="rel">Related: <a href="#design-system">Design system</a>, <a href="#consistency">Consistency</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="design-deliverables" data-cat="design">
+    <div class="term"><h2>Design deliverables</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The things a designer hands over during or at the end of a project.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The blueprints and material list an architect gives the builder.</div>
+        <div><b>In real tech</b>Wireframes, prototypes, personas, user flows and research reports.</div>
+      </div>
+      <p class="rel">Related: <a href="#wireframe">Wireframe</a>, <a href="#prototype">Prototype</a>, <a href="#ux-documentation">UX documentation</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="design-patterns" data-cat="design">
+    <div class="term"><h2>Design patterns</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Common, proven solutions to design problems that people already know how to use.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The layout of a grocery store. Most put the milk in the back, so you know where to go.</div>
+        <div><b>In real tech</b>A magnifying glass icon for search, or a shopping cart icon in the top corner.</div>
+      </div>
+      <p class="rel">Related: <a href="#ui-elements">UI elements</a>, <a href="#consistency">Consistency</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="design-sprint" data-cat="process">
+    <div class="term"><h2>Design sprint</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">A five-day process for going from a big question to a tested prototype.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A cooking competition: plan, cook and get judged in a set amount of time.</div>
+        <div><b>In real tech</b>Created at Google Ventures. The days usually go: understand, sketch, decide, prototype, test.</div>
+      </div>
+      <p class="rel">Related: <a href="#prototype">Prototype</a>, <a href="#agile">Agile</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="design-system" data-cat="design">
+    <div class="term"><h2>Design system</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A shared library of reusable components, rules and guidelines that keeps a product consistent.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A Lego set with instructions. Everyone builds with the same bricks.</div>
+        <div><b>In real tech</b>Google's Material Design and IBM's Carbon are well-known design systems.</div>
+      </div>
+      <p class="rel">Related: <a href="#style-guide">Style guide</a>, <a href="#material-design">Material Design</a>, <a href="#consistency">Consistency</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="design-thinking" data-cat="design">
+    <div class="term"><h2>Design thinking</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A problem-solving approach that starts with understanding people, then moves through ideas, prototypes and testing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A doctor who asks about your symptoms before writing a prescription.</div>
+        <div><b>In real tech</b>A common version has five stages: empathize, define, ideate, prototype and test.</div>
+      </div>
+      <p class="rel">Related: <a href="#empathy">Empathy</a>, <a href="#ideation">Ideation</a>, <a href="#human-centered-design">Human-centered design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="diary-study" data-cat="design">
+    <div class="term"><h2>Diary study</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Research where people log their experiences over days or weeks, in their own words.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A food journal that shows patterns you'd never notice in one day.</div>
+        <div><b>In real tech</b>Participants send a quick note or photo each time they use a fitness app for two weeks.</div>
+      </div>
+      <p class="rel">Related: <a href="#qualitative-user-research">Qualitative user research</a>, <a href="#user-research">User research</a></p>
     </div>
   </article>
 
@@ -210,6 +571,90 @@
     </div>
   </article>
 
+  <article class="entry" id="empathy" data-cat="design">
+    <div class="term"><h2>Empathy</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Understanding how another person feels and what they need, from their point of view.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Walking a mile in someone else's shoes.</div>
+        <div><b>In real tech</b>In UX, empathy comes from research, like talking with users, not from guessing.</div>
+      </div>
+      <p class="rel">Related: <a href="#empathy-map">Empathy map</a>, <a href="#design-thinking">Design thinking</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="empathy-map" data-cat="design">
+    <div class="term"><h2>Empathy map</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A chart that sums up what a user says, thinks, does and feels.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A character sheet for a real person.</div>
+        <div><b>In real tech</b>A team fills out an empathy map after interviews so everyone agrees on who they're designing for.</div>
+      </div>
+      <p class="rel">Related: <a href="#persona">Persona</a>, <a href="#empathy">Empathy</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="end-user" data-cat="design">
+    <div class="term"><h2>End user</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The person who actually uses the finished product.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The person who eats the meal, not the one who orders the groceries.</div>
+        <div><b>In real tech</b>For school software, the buyer might be the school district, but the end users are teachers and students.</div>
+      </div>
+      <p class="rel">Related: <a href="#persona">Persona</a>, <a href="#user-centered-design">User-centered design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ethical-design" data-cat="design">
+    <div class="term"><h2>Ethical design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Designing in ways that respect people's privacy, time, attention and wellbeing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A shop that's honest about prices and lets you leave whenever you want.</div>
+        <div><b>In real tech</b>Clear privacy settings, easy unsubscribe links and no dark patterns.</div>
+      </div>
+      <p class="rel">Related: <a href="#dark-ux">Dark UX</a>, <a href="#accessibility">Accessibility</a>, <a href="#inclusive-design">Inclusive design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="eye-tracking" data-cat="design">
+    <div class="term"><h2>Eye tracking</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Research that uses a camera to record where people look on a screen and for how long.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Following someone's gaze across a store shelf.</div>
+        <div><b>In real tech</b>Results often show up as heatmaps of where eyes landed most.</div>
+      </div>
+      <p class="rel">Related: <a href="#heatmap">Heatmap</a>, <a href="#usability-testing">Usability testing</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="fidelity" data-cat="design">
+    <div class="term"><h2>Fidelity</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">How detailed and finished a design looks and works.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A pencil sketch of a house versus a 3D model you can walk through.</div>
+        <div><b>In real tech</b>Low fidelity is rough boxes and lines. High fidelity looks and clicks like the real product.</div>
+      </div>
+      <p class="rel">Related: <a href="#wireframe">Wireframe</a>, <a href="#mockup">Mockup</a>, <a href="#prototype">Prototype</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="figma" data-cat="tools">
+    <div class="term"><h2>Figma</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">A popular browser-based tool for designing and prototyping interfaces, where a team can work in the same file at the same time.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Google Docs, but for designing screens.</div>
+        <div><b>In real tech</b>Designers build screens and clickable prototypes in Figma, and developers check the same file for sizes and colors.</div>
+      </div>
+      <p class="rel">Related: <a href="#adobe-xd">Adobe XD</a>, <a href="#sketch">Sketch</a>, <a href="#prototype">Prototype</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="flask" data-cat="code">
     <div class="term"><h2>Flask</h2><span class="cat">Code</span></div>
     <div class="def">
@@ -219,6 +664,54 @@
         <div><b>In real tech</b><code>@app.route("/")</code> tells Flask: when someone visits the home page, run the function below. Flask apps need a host that runs Python, like Render or PythonAnywhere, not GitHub Pages.</div>
       </div>
       <p class="rel">Related: <a href="#api">API</a>, <a href="#html">HTML</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="flat-design" data-cat="design">
+    <div class="term"><h2>Flat design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A simple visual style without fake shadows or textures, using clean shapes, flat colors and clear type.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Road signs: simple shapes and bold colors.</div>
+        <div><b>In real tech</b>Apple's switch away from realistic textures in iOS 7, in 2013, helped make flat design popular.</div>
+      </div>
+      <p class="rel">Related: <a href="#visual-design">Visual design</a>, <a href="#material-design">Material Design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="focus-group" data-cat="design">
+    <div class="term"><h2>Focus group</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A guided group discussion where several people share opinions about a product or idea.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A taste test where people talk through what they think.</div>
+        <div><b>In real tech</b>Good for opinions and first reactions. Watching people use a product usually tells you more about usability.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-interview">User interview</a>, <a href="#qualitative-user-research">Qualitative user research</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="full-stack-designer" data-cat="design">
+    <div class="term"><h2>Full-stack designer</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A designer who can handle many parts of the process, from research and UX to visual design and sometimes code.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A chef who also shops, plates and runs the front of the restaurant.</div>
+        <div><b>In real tech</b>Common at startups, where one designer may cover everything.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-design">UX design</a>, <a href="#user-interface-design">User interface design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="gestalt-principles" data-cat="design">
+    <div class="term"><h2>Gestalt principles</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Rules about how people naturally group what they see, like by closeness, similarity or shape.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Seeing a face in a cloud. Your brain fills in the pattern.</div>
+        <div><b>In real tech</b>Placing a label close to its input box so people see them as one unit.</div>
+      </div>
+      <p class="rel">Related: <a href="#visual-design">Visual design</a>, <a href="#white-space">White space</a></p>
     </div>
   </article>
 
@@ -258,6 +751,18 @@
     </div>
   </article>
 
+  <article class="entry" id="grid-system" data-cat="design">
+    <div class="term"><h2>Grid system</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Invisible columns and rows that help line up content on a page.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The lines on notebook paper that keep your writing straight.</div>
+        <div><b>In real tech</b>Many websites use a 12-column grid so layouts adjust neatly on different screen sizes.</div>
+      </div>
+      <p class="rel">Related: <a href="#responsive-design">Responsive design</a>, <a href="#visual-design">Visual design</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="guardrail" data-cat="ai">
     <div class="term"><h2>Guardrail</h2><span class="cat">AI</span></div>
     <div class="def">
@@ -282,6 +787,42 @@
     </div>
   </article>
 
+  <article class="entry" id="heatmap" data-cat="design">
+    <div class="term"><h2>Heatmap</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A colorful map of where people click, tap, scroll or look on a page. Warm colors mean more activity.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A weather map, but for attention.</div>
+        <div><b>In real tech</b>A heatmap might show people clicking a picture that isn't a link, which is a sign to make it one.</div>
+      </div>
+      <p class="rel">Related: <a href="#eye-tracking">Eye tracking</a>, <a href="#clickstream-analysis">Clickstream analysis</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="heuristics" data-cat="design">
+    <div class="term"><h2>Heuristics</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Rules of thumb for judging how usable a design is.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A checklist a pilot runs through before takeoff.</div>
+        <div><b>In real tech</b>The best known are Jakob Nielsen's 10 usability heuristics, like showing system status and preventing errors.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-audit">UX audit</a>, <a href="#usability">Usability</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="hicks-law" data-cat="design">
+    <div class="term"><h2>Hick's law</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The more choices people have, the longer it takes them to decide.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Staring at a 20-page menu versus a menu with five dishes.</div>
+        <div><b>In real tech</b>Keeping a navigation menu short, or highlighting one recommended plan on a pricing page.</div>
+      </div>
+      <p class="rel">Related: <a href="#cognitive-load">Cognitive load</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="hook" data-cat="code">
     <div class="term"><h2>Hook</h2><span class="cat">Code</span></div>
     <div class="def">
@@ -291,6 +832,18 @@
         <div><b>In real tech</b>My code-reviewer has a hook that checks every command before it runs and blocks anything that would change files.</div>
       </div>
       <p class="rel">Related: <a href="#guardrail">Guardrail</a>, <a href="#subagent">Subagent</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="how-might-we" data-cat="design">
+    <div class="term"><h2>How Might We</h2><span class="cat">Design</span><span class="aka">HMW</span></div>
+    <div class="def">
+      <p class="plain">A way of turning a problem into an open question that invites ideas.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Turning 'I'm always late' into 'How might I get out the door faster?'</div>
+        <div><b>In real tech</b>'How might we help first-time students find a free workshop in under a minute?'</div>
+      </div>
+      <p class="rel">Related: <a href="#problem-statement">Problem statement</a>, <a href="#ideation">Ideation</a></p>
     </div>
   </article>
 
@@ -318,6 +871,30 @@
     </div>
   </article>
 
+  <article class="entry" id="ideation" data-cat="design">
+    <div class="term"><h2>Ideation</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The stage of coming up with lots of possible ideas before choosing which to pursue.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Writing down every name you could give a pet before picking one.</div>
+        <div><b>In real tech</b>Methods include brainstorming, sketching and Crazy 8s, where you sketch 8 ideas in 8 minutes.</div>
+      </div>
+      <p class="rel">Related: <a href="#brainstorming">Brainstorming</a>, <a href="#how-might-we">How Might We</a>, <a href="#design-thinking">Design thinking</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="inclusive-design" data-cat="design">
+    <div class="term"><h2>Inclusive design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Designing for the full range of people, including different abilities, ages, languages and situations.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Curb cuts in sidewalks, made for wheelchairs but useful for anyone with wheels.</div>
+        <div><b>In real tech</b>Captions help deaf users, and also people watching videos on a quiet bus.</div>
+      </div>
+      <p class="rel">Related: <a href="#accessibility">Accessibility</a>, <a href="#ethical-design">Ethical design</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="indentation" data-cat="code">
     <div class="term"><h2>Indentation</h2><span class="cat">Code</span></div>
     <div class="def">
@@ -327,6 +904,66 @@
         <div><b>In real tech</b>In HTML and CSS, indentation doesn't change how the page looks. In Python it does matter: the code won't run correctly without it.</div>
       </div>
       <p class="rel">Related: <a href="#nesting">Nesting</a>, <a href="#vs-code">VS Code</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="information-architecture" data-cat="design">
+    <div class="term"><h2>Information architecture</h2><span class="cat">Design</span><span class="aka">IA</span></div>
+    <div class="def">
+      <p class="plain">How content is organized, labeled and connected so people can find what they need.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>How a library sorts books into sections and shelves.</div>
+        <div><b>In real tech</b>Deciding a site's menu, page names and what goes under each section.</div>
+      </div>
+      <p class="rel">Related: <a href="#sitemap">Sitemap</a>, <a href="#card-sorting">Card sorting</a>, <a href="#navigation">Navigation</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="interaction-design" data-cat="design">
+    <div class="term"><h2>Interaction design</h2><span class="cat">Design</span><span class="aka">IxD</span></div>
+    <div class="def">
+      <p class="plain">Designing how a product responds when people use it, like clicks, taps, swipes and feedback.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The back-and-forth with a vending machine: you press, it lights up, it drops your snack.</div>
+        <div><b>In real tech</b>Deciding what happens when someone hits Submit: a loading spinner, then a success message.</div>
+      </div>
+      <p class="rel">Related: <a href="#animation-design">Animation design</a>, <a href="#user-flow">User flow</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="intuitive-design" data-cat="design">
+    <div class="term"><h2>Intuitive design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Design that people understand without needing instructions.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A light switch. Nobody needs a manual.</div>
+        <div><b>In real tech</b>It usually comes from familiar patterns and testing with real users, not from guessing what feels obvious.</div>
+      </div>
+      <p class="rel">Related: <a href="#affordance">Affordance</a>, <a href="#design-patterns">Design patterns</a>, <a href="#mental-model">Mental model</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="invision-studio" data-cat="tools">
+    <div class="term"><h2>InVision Studio</h2><span class="cat">Tools</span><span class="aka">InVision</span></div>
+    <div class="def">
+      <p class="plain">A design and prototyping tool that was popular in the 2010s.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>An old favorite phone that most people have since replaced.</div>
+        <div><b>In real tech</b>InVision shut down its products by the end of 2024. You'll still see it in older tutorials and job posts.</div>
+      </div>
+      <p class="rel">Related: <a href="#figma">Figma</a>, <a href="#sketch">Sketch</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="iterative-design" data-cat="process">
+    <div class="term"><h2>Iterative design</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">Improving a design through repeated rounds of making, testing and changing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Editing an essay through several drafts.</div>
+        <div><b>In real tech</b>Each round of usability testing leads to a better version of the prototype.</div>
+      </div>
+      <p class="rel">Related: <a href="#prototype">Prototype</a>, <a href="#usability-testing">Usability testing</a>, <a href="#agile">Agile</a></p>
     </div>
   </article>
 
@@ -354,6 +991,78 @@
     </div>
   </article>
 
+  <article class="entry" id="lean-ux" data-cat="process">
+    <div class="term"><h2>Lean UX</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">A fast way of working that focuses on testing ideas early instead of writing lots of detailed documents.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Opening a pop-up shop before signing a long lease.</div>
+        <div><b>In real tech</b>A team writes a guess like 'adding reviews will raise sign-ups', builds a small test and measures the result.</div>
+      </div>
+      <p class="rel">Related: <a href="#mvp">MVP</a>, <a href="#agile-ux">Agile UX</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="material-design" data-cat="design">
+    <div class="term"><h2>Material Design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Google's design system, with guidelines, components and icons for building apps and websites.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A style rulebook that many Android apps follow.</div>
+        <div><b>In real tech</b>Its newest version, Material 3, is used across many Google products.</div>
+      </div>
+      <p class="rel">Related: <a href="#design-system">Design system</a>, <a href="#flat-design">Flat design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="mental-model" data-cat="design">
+    <div class="term"><h2>Mental model</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">What a person believes about how something works, based on past experience.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Expecting a door to open toward you because most doors at home do.</div>
+        <div><b>In real tech</b>People expect the logo in the top-left to take them to the home page, because most sites work that way.</div>
+      </div>
+      <p class="rel">Related: <a href="#intuitive-design">Intuitive design</a>, <a href="#design-patterns">Design patterns</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="microcopy" data-cat="design">
+    <div class="term"><h2>Microcopy</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The small bits of text in an interface, like button labels, error messages and hints.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The labels on spice jars. Small, but you'd be lost without them.</div>
+        <div><b>In real tech</b>'Send my resume' is clearer than 'Submit'.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-writing">UX writing</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="mockup" data-cat="design">
+    <div class="term"><h2>Mockup</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A detailed, still picture of what a screen will look like, with real colors, fonts and images.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A photo of the finished cake in a recipe book.</div>
+        <div><b>In real tech</b>Mockups usually come after wireframes and before a clickable prototype.</div>
+      </div>
+      <p class="rel">Related: <a href="#wireframe">Wireframe</a>, <a href="#prototype">Prototype</a>, <a href="#fidelity">Fidelity</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="modal" data-cat="design">
+    <div class="term"><h2>Modal</h2><span class="cat">Design</span><span class="aka">Pop-up</span></div>
+    <div class="def">
+      <p class="plain">A window that appears on top of a page and has to be dealt with before you can go back.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Someone stepping in front of you to ask a question.</div>
+        <div><b>In real tech</b>An 'Are you sure you want to delete this?' box. Use modals sparingly, because they interrupt people.</div>
+      </div>
+      <p class="rel">Related: <a href="#ui-elements">UI elements</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="mvp" data-cat="design">
     <div class="term"><h2>MVP</h2><span class="cat">Design</span><span class="aka">Minimum Viable Product</span></div>
     <div class="def">
@@ -366,6 +1075,18 @@
     </div>
   </article>
 
+  <article class="entry" id="navigation" data-cat="design">
+    <div class="term"><h2>Navigation</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The menus, links and buttons that help people move around a product.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Street signs in a city.</div>
+        <div><b>In real tech</b>A top menu bar, a tab bar at the bottom of an app, or a search box.</div>
+      </div>
+      <p class="rel">Related: <a href="#information-architecture">Information architecture</a>, <a href="#breadcrumb">Breadcrumb</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="nesting" data-cat="code">
     <div class="term"><h2>Nesting</h2><span class="cat">Code</span></div>
     <div class="def">
@@ -375,6 +1096,90 @@
         <div><b>In real tech</b>In <code>&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; learning&lt;/p&gt;</code>, the <code>&lt;strong&gt;</code> element is nested inside the paragraph. Closing them in the wrong order is a common mistake.</div>
       </div>
       <p class="rel">Related: <a href="#element">Element</a>, <a href="#closing-tag">Closing tag</a>, <a href="#indentation">Indentation</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="onboarding" data-cat="design">
+    <div class="term"><h2>Onboarding</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The first experience that helps new users get started and understand a product.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A tour on your first day at a new job.</div>
+        <div><b>In real tech</b>A short welcome screen, a few setup steps or tips that point out key features.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-flow">User flow</a>, <a href="#microcopy">Microcopy</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="pain-points" data-cat="design">
+    <div class="term"><h2>Pain points</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Problems or frustrations a user runs into.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A pebble in your shoe.</div>
+        <div><b>In real tech</b>Research might find that users' biggest pain point is not knowing if their order went through.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-research">User research</a>, <a href="#user-journey-map">User journey map</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="paradox-of-specificity" data-cat="design">
+    <div class="term"><h2>Paradox of specificity</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The idea that designing for a specific group often makes something better for everyone.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Captions were made for deaf viewers, and now almost everyone uses them.</div>
+        <div><b>In real tech</b>A focused persona leads to clearer decisions than trying to please everyone at once.</div>
+      </div>
+      <p class="rel">Related: <a href="#persona">Persona</a>, <a href="#inclusive-design">Inclusive design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="persona" data-cat="design">
+    <div class="term"><h2>Persona</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A made-up but research-based profile of a typical user, with goals, needs and frustrations.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A character description that helps an actor understand who they're playing.</div>
+        <div><b>In real tech</b>'Maya, 24, career changer, studies at night on her phone.' Personas should come from real research, not guesses.</div>
+      </div>
+      <p class="rel">Related: <a href="#empathy-map">Empathy map</a>, <a href="#end-user">End user</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="portfolio" data-cat="design">
+    <div class="term"><h2>Portfolio</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A collection of your best work that shows what you can do and how you think.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>An artist's gallery show.</div>
+        <div><b>In real tech</b>A UX portfolio is usually a website with a few case studies. You're on part of mine right now.</div>
+      </div>
+      <p class="rel">Related: <a href="#case-study">Case study</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="problem-statement" data-cat="design">
+    <div class="term"><h2>Problem statement</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A short, clear description of the user problem a team is trying to solve.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Knowing your destination before planning the trip.</div>
+        <div><b>In real tech</b>'First-time students need a simple way to find free workshops, because the current list is long and confusing.'</div>
+      </div>
+      <p class="rel">Related: <a href="#how-might-we">How Might We</a>, <a href="#design-thinking">Design thinking</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="product-roadmap" data-cat="process">
+    <div class="term"><h2>Product roadmap</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">A plan that shows what a team will build and roughly when.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A road trip plan with stops along the way.</div>
+        <div><b>In real tech</b>Often split into Now, Next and Later instead of exact dates.</div>
+      </div>
+      <p class="rel">Related: <a href="#ux-strategy">UX strategy</a>, <a href="#agile">Agile</a></p>
     </div>
   </article>
 
@@ -402,6 +1207,30 @@
     </div>
   </article>
 
+  <article class="entry" id="qualitative-user-research" data-cat="design">
+    <div class="term"><h2>Qualitative user research</h2><span class="cat">Design</span><span class="aka">Qualitative research</span></div>
+    <div class="def">
+      <p class="plain">Research that explores why people do things, through words, stories and observation.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Asking friends why they loved a movie.</div>
+        <div><b>In real tech</b>User interviews, diary studies and usability tests with a small group of people.</div>
+      </div>
+      <p class="rel">Related: <a href="#quantitative-user-research">Quantitative user research</a>, <a href="#user-interview">User interview</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="quantitative-user-research" data-cat="design">
+    <div class="term"><h2>Quantitative user research</h2><span class="cat">Design</span><span class="aka">Quantitative research</span></div>
+    <div class="def">
+      <p class="plain">Research that measures what people do, using numbers from many people.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Counting how many tickets a movie sold.</div>
+        <div><b>In real tech</b>Surveys, analytics and A/B tests. It works best when paired with qualitative research.</div>
+      </div>
+      <p class="rel">Related: <a href="#qualitative-user-research">Qualitative user research</a>, <a href="#a-b-testing">A/B testing</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="repository" data-cat="tools">
     <div class="term"><h2>Repository</h2><span class="cat">Tools</span><span class="aka">Repo</span></div>
     <div class="def">
@@ -414,6 +1243,78 @@
     </div>
   </article>
 
+  <article class="entry" id="responsive-design" data-cat="design">
+    <div class="term"><h2>Responsive design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Designing pages that adjust to fit any screen, from phones to big monitors.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Water taking the shape of whatever glass you pour it into.</div>
+        <div><b>In real tech</b>A three-column layout on a laptop that stacks into one column on a phone. In CSS this is often done with media queries.</div>
+      </div>
+      <p class="rel">Related: <a href="#grid-system">Grid system</a>, <a href="#css">CSS</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="sitemap" data-cat="design">
+    <div class="term"><h2>Sitemap</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A diagram of all the pages in a website and how they connect.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The map at the entrance of a mall.</div>
+        <div><b>In real tech</b>My portfolio's sitemap: the home page, four project pages, Plain Words and Questions.</div>
+      </div>
+      <p class="rel">Related: <a href="#information-architecture">Information architecture</a>, <a href="#navigation">Navigation</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="sketch" data-cat="tools">
+    <div class="term"><h2>Sketch</h2><span class="cat">Tools</span></div>
+    <div class="def">
+      <p class="plain">A Mac app for designing interfaces. It was the go-to UI tool before Figma took off.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A classic tool that's still around and still loved by some teams.</div>
+        <div><b>In real tech</b>It only runs on Mac. Many teams switched to Figma because it runs in the browser.</div>
+      </div>
+      <p class="rel">Related: <a href="#figma">Figma</a>, <a href="#adobe-xd">Adobe XD</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="stakeholder-interviews" data-cat="design">
+    <div class="term"><h2>Stakeholder interviews</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Conversations with the people who have a say in a project, to understand their goals and limits.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Talking with everyone in the family before planning the reunion.</div>
+        <div><b>In real tech</b>Talking with the product manager, engineers and sales team before starting a redesign.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-interview">User interview</a>, <a href="#ux-strategy">UX strategy</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="storyboard" data-cat="design">
+    <div class="term"><h2>Storyboard</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A series of simple drawings that shows a user's experience step by step, like a comic strip.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The sketches filmmakers draw before shooting a movie.</div>
+        <div><b>In real tech</b>Six frames showing a student finding, booking and attending a workshop.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-journey-map">User journey map</a>, <a href="#user-flow">User flow</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="style-guide" data-cat="design">
+    <div class="term"><h2>Style guide</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A document that sets the rules for how a brand or product looks and sounds.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A dress code, but for design.</div>
+        <div><b>In real tech</b>Colors, fonts, logo rules and tone of voice. A design system usually goes further and adds ready-made components.</div>
+      </div>
+      <p class="rel">Related: <a href="#design-system">Design system</a>, <a href="#brand-identity">Brand identity</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="subagent" data-cat="ai">
     <div class="term"><h2>Subagent</h2><span class="cat">AI</span></div>
     <div class="def">
@@ -423,6 +1324,18 @@
         <div><b>In real tech</b>I built four subagents in Claude Code, including a code-reviewer and a meeting-notes organizer.</div>
       </div>
       <p class="rel">Related: <a href="#agent">AI agent</a>, <a href="#hook">Hook</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="surveys" data-cat="design">
+    <div class="term"><h2>Surveys</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A set of questions sent to many people to collect answers you can compare.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A poll in a group chat.</div>
+        <div><b>In real tech</b>Good for learning how many people feel a certain way. Short surveys get more answers.</div>
+      </div>
+      <p class="rel">Related: <a href="#quantitative-user-research">Quantitative user research</a></p>
     </div>
   </article>
 
@@ -487,6 +1400,18 @@
     </div>
   </article>
 
+  <article class="entry" id="task-analysis" data-cat="design">
+    <div class="term"><h2>Task analysis</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Breaking down every step people take to reach a goal.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Writing out every step of making a sandwich, including opening the bread bag.</div>
+        <div><b>In real tech</b>Mapping each step of paying a bill online to find where people get stuck.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-flow">User flow</a>, <a href="#usability">Usability</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="token" data-cat="ai">
     <div class="term"><h2>Token</h2><span class="cat">AI</span></div>
     <div class="def">
@@ -499,6 +1424,246 @@
     </div>
   </article>
 
+  <article class="entry" id="tree-testing" data-cat="design">
+    <div class="term"><h2>Tree testing</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A test where people try to find things using only a text version of a site's menu.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Testing a library's signs before decorating the shelves.</div>
+        <div><b>In real tech</b>'Where would you find the return policy?' If people pick the wrong menu, the labels need work.</div>
+      </div>
+      <p class="rel">Related: <a href="#card-sorting">Card sorting</a>, <a href="#information-architecture">Information architecture</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="typography" data-cat="design">
+    <div class="term"><h2>Typography</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Choosing and arranging fonts so text is easy to read and fits the mood.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A tone of voice, but for written words.</div>
+        <div><b>In real tech</b>Picking fonts, sizes, line spacing and weights. My portfolio uses big, bold type in a Swiss style.</div>
+      </div>
+      <p class="rel">Related: <a href="#visual-design">Visual design</a>, <a href="#brand-identity">Brand identity</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ui-elements" data-cat="design">
+    <div class="term"><h2>UI elements</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The building blocks of an interface, like buttons, text fields, checkboxes and dropdowns.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The pieces of a board game.</div>
+        <div><b>In real tech</b>Some HTML tags, like <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code>, create UI elements.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-interface">User interface</a>, <a href="#design-system">Design system</a>, <a href="#tag">Tag</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="usability" data-cat="design">
+    <div class="term"><h2>Usability</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">How easy and pleasant it is for people to use something to reach their goal.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A can opener that works on the first try.</div>
+        <div><b>In real tech</b>Often measured by how fast people finish a task, how many mistakes they make and how satisfied they feel.</div>
+      </div>
+      <p class="rel">Related: <a href="#usability-testing">Usability testing</a>, <a href="#heuristics">Heuristics</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="usability-testing" data-cat="design">
+    <div class="term"><h2>Usability testing</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Watching real people try to complete tasks with a design to find what's confusing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Handing someone your homemade map and watching whether they get lost.</div>
+        <div><b>In real tech</b>Testing with about five people often uncovers many of the biggest problems.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-testing">User testing</a>, <a href="#prototype">Prototype</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-flow" data-cat="design">
+    <div class="term"><h2>User flow</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A diagram of the steps a user takes to complete a task.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Directions from your front door to the bus stop.</div>
+        <div><b>In real tech</b>Landing page &rarr; Sign up &rarr; Confirm email &rarr; Dashboard.</div>
+      </div>
+      <p class="rel">Related: <a href="#task-analysis">Task analysis</a>, <a href="#user-journey-map">User journey map</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-interface" data-cat="design">
+    <div class="term"><h2>User interface</h2><span class="cat">Design</span><span class="aka">UI</span></div>
+    <div class="def">
+      <p class="plain">The parts of a product people see and interact with, like screens, buttons, text and icons.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The dashboard and steering wheel of a car.</div>
+        <div><b>In real tech</b>UI is how it looks and works on screen. UX is the whole experience around it.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-interface-design">User interface design</a>, <a href="#ui-elements">UI elements</a>, <a href="#ux-design">UX design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-interface-design" data-cat="design">
+    <div class="term"><h2>User interface design</h2><span class="cat">Design</span><span class="aka">UI design</span></div>
+    <div class="def">
+      <p class="plain">Designing the look and layout of screens so they're clear, attractive and easy to use.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Interior design, but for an app.</div>
+        <div><b>In real tech</b>Choosing layout, colors, type and components, often in a tool like Figma.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-interface">User interface</a>, <a href="#visual-design">Visual design</a>, <a href="#figma">Figma</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-interview" data-cat="design">
+    <div class="term"><h2>User interview</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A one-on-one conversation with a user to learn about their needs, habits and frustrations.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Getting to know someone over coffee, with good questions ready.</div>
+        <div><b>In real tech</b>Ask open questions like 'Tell me about the last time you...' instead of 'Would you use this?'</div>
+      </div>
+      <p class="rel">Related: <a href="#qualitative-user-research">Qualitative user research</a>, <a href="#stakeholder-interviews">Stakeholder interviews</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-journey-map" data-cat="design">
+    <div class="term"><h2>User journey map</h2><span class="cat">Design</span><span class="aka">Customer journey map</span></div>
+    <div class="def">
+      <p class="plain">A picture of a user's whole experience over time, including their actions, thoughts and feelings at each step.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A timeline of a trip, with the highs and lows marked.</div>
+        <div><b>In real tech</b>It might show excitement at sign-up, confusion during setup and relief after the first success.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-flow">User flow</a>, <a href="#pain-points">Pain points</a>, <a href="#customer-experience">Customer experience</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-research" data-cat="design">
+    <div class="term"><h2>User research</h2><span class="cat">Design</span><span class="aka">UX research</span></div>
+    <div class="def">
+      <p class="plain">Learning about users' needs, behaviors and problems so design decisions are based on evidence.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Asking guests about allergies before planning a dinner.</div>
+        <div><b>In real tech</b>Includes interviews, surveys, usability tests and analytics.</div>
+      </div>
+      <p class="rel">Related: <a href="#qualitative-user-research">Qualitative user research</a>, <a href="#quantitative-user-research">Quantitative user research</a>, <a href="#user-interview">User interview</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-stories" data-cat="process">
+    <div class="term"><h2>User stories</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">Short sentences that describe a feature from the user's point of view.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A wish written on a sticky note.</div>
+        <div><b>In real tech</b>'As a new student, I want to see free workshops so I can learn without paying.' Common on Agile teams.</div>
+      </div>
+      <p class="rel">Related: <a href="#agile">Agile</a>, <a href="#persona">Persona</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-testing" data-cat="design">
+    <div class="term"><h2>User testing</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Any testing where real users try a product or idea. Often used as another name for usability testing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A test drive before buying a car.</div>
+        <div><b>In real tech</b>It can be in person or remote, with a guide or on your own.</div>
+      </div>
+      <p class="rel">Related: <a href="#usability-testing">Usability testing</a>, <a href="#beta-testing">Beta testing</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="user-centered-design" data-cat="design">
+    <div class="term"><h2>User-centered design</h2><span class="cat">Design</span><span class="aka">User-centred design</span></div>
+    <div class="def">
+      <p class="plain">A design process that keeps users' needs at the center of every step, through research and testing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Tailoring a suit by measuring the person, not guessing their size.</div>
+        <div><b>In real tech</b>Very close to human-centered design. Many people use the two terms to mean the same thing.</div>
+      </div>
+      <p class="rel">Related: <a href="#human-centered-design">Human-centered design</a>, <a href="#design-thinking">Design thinking</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ux-audit" data-cat="design">
+    <div class="term"><h2>UX audit</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A review of an existing product to find usability problems and decide what to fix first.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A home inspection before you buy a house.</div>
+        <div><b>In real tech</b>An auditor checks a site against heuristics, looks at analytics and lists issues ranked by how serious they are.</div>
+      </div>
+      <p class="rel">Related: <a href="#heuristics">Heuristics</a>, <a href="#usability">Usability</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ux-design" data-cat="design">
+    <div class="term"><h2>UX design</h2><span class="cat">Design</span><span class="aka">User experience design</span></div>
+    <div class="def">
+      <p class="plain">Designing the whole experience someone has with a product, so it's useful, easy and enjoyable.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Planning a party so guests can find the door, the food and the bathroom without asking.</div>
+        <div><b>In real tech</b>Includes research, information architecture, wireframes, prototypes and testing.</div>
+      </div>
+      <p class="rel">Related: <a href="#user-interface">User interface</a>, <a href="#user-research">User research</a>, <a href="#customer-experience">Customer experience</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ux-documentation" data-cat="design">
+    <div class="term"><h2>UX documentation</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Written records of design decisions, research and specs, so the whole team understands what was built and why.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The notes in the margin of a recipe that explain why you swapped butter for oil.</div>
+        <div><b>In real tech</b>Annotated wireframes, research summaries and notes for developers.</div>
+      </div>
+      <p class="rel">Related: <a href="#design-deliverables">Design deliverables</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ux-strategy" data-cat="design">
+    <div class="term"><h2>UX strategy</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">The long-term plan that connects what users need with what the business wants.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A game plan before the season starts.</div>
+        <div><b>In real tech</b>Deciding which user problems to solve first and how to measure success.</div>
+      </div>
+      <p class="rel">Related: <a href="#product-roadmap">Product roadmap</a>, <a href="#competitor-analysis">Competitor analysis</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="ux-writing" data-cat="design">
+    <div class="term"><h2>UX writing</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Writing the words in a product to help people get things done.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A friendly guide who tells you exactly where to go.</div>
+        <div><b>In real tech</b>Button labels, error messages and onboarding screens. Clear beats clever.</div>
+      </div>
+      <p class="rel">Related: <a href="#microcopy">Microcopy</a>, <a href="#onboarding">Onboarding</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="visual-design" data-cat="design">
+    <div class="term"><h2>Visual design</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">Using color, type, images, spacing and layout to make a product clear and appealing.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The paint, furniture and lighting in a house.</div>
+        <div><b>In real tech</b>Strong visual hierarchy shows people what to look at first.</div>
+      </div>
+      <p class="rel">Related: <a href="#typography">Typography</a>, <a href="#user-interface-design">User interface design</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="vs-code" data-cat="tools">
     <div class="term"><h2>Visual Studio Code</h2><span class="cat">Tools</span><span class="aka">VS Code</span></div>
     <div class="def">
@@ -508,6 +1673,42 @@
         <div><b>In real tech</b>You can open a website folder in VS Code, edit the HTML and CSS files, and see your changes when you refresh the page.</div>
       </div>
       <p class="rel">Related: <a href="#html">HTML</a>, <a href="#git">Git</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="waterfall" data-cat="process">
+    <div class="term"><h2>Waterfall</h2><span class="cat">Process</span></div>
+    <div class="def">
+      <p class="plain">A way of working where each phase is finished before the next one starts: plan, design, build, test, launch.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A waterfall only flows one way. It's hard to go back up.</div>
+        <div><b>In real tech</b>Common in construction and projects with fixed requirements. Late changes are expensive, which is why many software teams use Agile instead.</div>
+      </div>
+      <p class="rel">Related: <a href="#agile">Agile</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="white-space" data-cat="design">
+    <div class="term"><h2>White space</h2><span class="cat">Design</span><span class="aka">Negative space</span></div>
+    <div class="def">
+      <p class="plain">The empty space around and between things in a design.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The pauses in music that let the notes stand out.</div>
+        <div><b>In real tech</b>More space around a button makes it easier to notice and tap.</div>
+      </div>
+      <p class="rel">Related: <a href="#visual-design">Visual design</a>, <a href="#gestalt-principles">Gestalt principles</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="whiteboard-challenge" data-cat="design">
+    <div class="term"><h2>Whiteboard challenge</h2><span class="cat">Design</span></div>
+    <div class="def">
+      <p class="plain">A job-interview exercise where you solve a design problem live, often on a whiteboard.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A cooking show where you get a mystery basket.</div>
+        <div><b>In real tech</b>Interviewers care more about how you think and the questions you ask than about the final drawing.</div>
+      </div>
+      <p class="rel">Related: <a href="#portfolio">Portfolio</a>, <a href="#design-thinking">Design thinking</a></p>
     </div>
   </article>
 
@@ -533,6 +1734,7 @@
 
 <footer>
   <p>Plain Words · Briana Heredia, Creative AI Technologist</p>
+  <p>The UX and UI words follow the list in UX Design Institute's <a href="https://www.uxdesigninstitute.com/blog/glossary-ux-terms/">glossary of 101 UX terms</a>. The definitions here are my own.</p>
   <p><a href="../index.html">Back to portfolio</a></p>
 </footer>
 
