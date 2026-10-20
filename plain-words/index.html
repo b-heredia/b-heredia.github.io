@@ -120,7 +120,7 @@
       <button class="chip" type="button" data-cat="tools" aria-pressed="false">Tools</button>
       <button class="chip" type="button" data-cat="design" aria-pressed="false">Design</button>
     </div>
-    <span class="count" id="count" aria-live="polite">24 words</span>
+    <span class="count" id="count" aria-live="polite">29 words</span>
   </div>
 </div>
 
@@ -150,6 +150,30 @@
     </div>
   </article>
 
+  <article class="entry" id="closing-tag" data-cat="code">
+    <div class="term"><h2>Closing tag</h2><span class="cat">Code</span><span class="aka">End tag</span></div>
+    <div class="def">
+      <p class="plain">The second half of a tag pair. It has a slash before the name and tells the browser where an element ends.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>The closing quotation mark at the end of a quote. Without it, you can't tell where the quote stops.</div>
+        <div><b>In real tech</b><code>&lt;/p&gt;</code> closes a paragraph. A few tags, like <code>&lt;img&gt;</code> and <code>&lt;br&gt;</code>, don't need one. Forgetting a closing tag can make the rest of the page look wrong.</div>
+      </div>
+      <p class="rel">Related: <a href="#tag">Tag</a>, <a href="#element">Element</a>, <a href="#nesting">Nesting</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="comment" data-cat="code">
+    <div class="term"><h2>Comment</h2><span class="cat">Code</span><span class="aka">Code comment</span></div>
+    <div class="def">
+      <p class="plain">A note in the code that the browser ignores. It's there for people reading the code, not for visitors to the page.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>A sticky note in the margin of a book. It helps the reader, but it isn't part of the story.</div>
+        <div><b>In real tech</b>In HTML a comment looks like <code>&lt;!-- main menu --&gt;</code>. CSS uses <code>/* note */</code> and JavaScript uses <code>// note</code>. Anyone can see comments by viewing the page source, so never put passwords in them.</div>
+      </div>
+      <p class="rel">Related: <a href="#html">HTML</a>, <a href="#css">CSS</a>, <a href="#javascript">JavaScript</a></p>
+    </div>
+  </article>
+
   <article class="entry" id="commit" data-cat="tools">
     <div class="term"><h2>Commit</h2><span class="cat">Tools</span></div>
     <div class="def">
@@ -171,6 +195,18 @@
         <div><b>In real tech</b><code>h1 { color: black; }</code> makes every main heading black. CSS is often saved in its own file, usually called <code>style.css</code>, and connected to the page with <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>.</div>
       </div>
       <p class="rel">Related: <a href="#html">HTML</a>, <a href="#javascript">JavaScript</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="element" data-cat="code">
+    <div class="term"><h2>Element</h2><span class="cat">Code</span><span class="aka">HTML element</span></div>
+    <div class="def">
+      <p class="plain">One complete piece of a web page: the opening tag, the content inside it and the closing tag, all together.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>If a tag is the label on a box, the element is the whole box with everything inside it.</div>
+        <div><b>In real tech</b><code>&lt;p&gt;Hello&lt;/p&gt;</code> is one paragraph element. People often say "tag" and "element" as if they mean the same thing.</div>
+      </div>
+      <p class="rel">Related: <a href="#tag">Tag</a>, <a href="#closing-tag">Closing tag</a>, <a href="#nesting">Nesting</a></p>
     </div>
   </article>
 
@@ -266,7 +302,7 @@
         <div><b>Think of it like</b>The frame and walls of a house, before any paint goes on.</div>
         <div><b>In real tech</b><code>&lt;h1&gt;Hello&lt;/h1&gt;</code> creates a main heading that says "Hello".</div>
       </div>
-      <p class="rel">Related: <a href="#tag">Tag</a>, <a href="#css">CSS</a>, <a href="#javascript">JavaScript</a></p>
+      <p class="rel">Related: <a href="#tag">Tag</a>, <a href="#element">Element</a>, <a href="#comment">Comment</a>, <a href="#css">CSS</a>, <a href="#javascript">JavaScript</a></p>
     </div>
   </article>
 
@@ -279,6 +315,18 @@
         <div><b>In real tech</b>Testing The Better Question with real students before deciding what to change.</div>
       </div>
       <p class="rel">Related: <a href="#prototype">Prototype</a>, <a href="#wireframe">Wireframe</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="indentation" data-cat="code">
+    <div class="term"><h2>Indentation</h2><span class="cat">Code</span></div>
+    <div class="def">
+      <p class="plain">Spaces at the start of a line that show which pieces of code sit inside others. In HTML it isn't required, but it makes code much easier to read.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>An outline for a school paper, where the smaller points are pushed in under the main point.</div>
+        <div><b>In real tech</b>In HTML and CSS, indentation doesn't change how the page looks. In Python it does matter: the code won't run correctly without it.</div>
+      </div>
+      <p class="rel">Related: <a href="#nesting">Nesting</a>, <a href="#vs-code">VS Code</a></p>
     </div>
   </article>
 
@@ -315,6 +363,18 @@
         <div><b>In real tech</b>Version 1 of The Better Question was an MVP: it builds a strong prompt without live AI, so I could test the idea first and add more later.</div>
       </div>
       <p class="rel">Related: <a href="#prototype">Prototype</a>, <a href="#human-centered-design">Human-centered design</a></p>
+    </div>
+  </article>
+
+  <article class="entry" id="nesting" data-cat="code">
+    <div class="term"><h2>Nesting</h2><span class="cat">Code</span></div>
+    <div class="def">
+      <p class="plain">Putting elements inside other elements. The inner element has to close before the outer one does.</p>
+      <div class="ex">
+        <div><b>Think of it like</b>Boxes inside boxes. You close the small box before you close the big one around it.</div>
+        <div><b>In real tech</b>In <code>&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; learning&lt;/p&gt;</code>, the <code>&lt;strong&gt;</code> element is nested inside the paragraph. Closing them in the wrong order is a common mistake.</div>
+      </div>
+      <p class="rel">Related: <a href="#element">Element</a>, <a href="#closing-tag">Closing tag</a>, <a href="#indentation">Indentation</a></p>
     </div>
   </article>
 
@@ -423,7 +483,7 @@
         </table></div>
         <p class="tt-note"><b>Tip:</b> the opening and closing tags must match. <code>&lt;h1&gt;Title&lt;/h1&gt;</code> works; <code>&lt;h1&gt;Title&lt;/h2&gt;</code> does not.</p>
       </div>
-      <p class="rel">Related: <a href="#html">HTML</a>, <a href="#css">CSS</a></p>
+      <p class="rel">Related: <a href="#html">HTML</a>, <a href="#element">Element</a>, <a href="#closing-tag">Closing tag</a>, <a href="#nesting">Nesting</a></p>
     </div>
   </article>
 
