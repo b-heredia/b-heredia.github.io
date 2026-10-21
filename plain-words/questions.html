@@ -106,7 +106,7 @@
       <button class="chip" type="button" data-cat="code" aria-pressed="false">Code</button>
       <button class="chip" type="button" data-cat="it" aria-pressed="false">IT</button>
     </div>
-    <span class="count" id="count" aria-live="polite">6 questions</span>
+    <span class="count" id="count" aria-live="polite">7 questions</span>
   </div>
 </div>
 
@@ -204,6 +204,25 @@ def home():
       </ul>
       <p><b>Example:</b> on Monday, three people can't connect to the Wi-Fi. That's three incident tickets, and restarting the router gets everyone back online. When it happens again every Monday, someone opens a problem ticket to find out why.</p>
       <p>Think of it like this: the incident is putting out the fire, and the problem is finding what keeps starting it. These terms come from ITIL, a common set of practices for running IT support.</p>
+    </div></div>
+  </details>
+
+  <details class="q" id="env-file" data-cat="code">
+    <summary><span class="num">07</span><h2>Should I ever share my .env file?</h2><span class="cat">Code</span></summary>
+    <div class="ans"><div class="ans-in">
+      <p class="short">No. A .env file holds secrets, like API keys and passwords. Anyone who has it can use your accounts, and that can cost you money.</p>
+      <pre><code># .env (keep this private)
+OPENAI_API_KEY=sk-your-real-key
+
+# .env.example (safe to share)
+OPENAI_API_KEY=</code></pre>
+      <ul>
+        <li><b>Keep it off GitHub:</b> add <code>.env</code> to your <code>.gitignore</code> file so Git never commits it. Bots scan public repositories for leaked keys within minutes.</li>
+        <li><b>Share the shape, not the secrets:</b> commit a <code>.env.example</code> with the same names and empty values, so others know what to fill in.</li>
+        <li><b>Teammate needs a key?</b> Send it through a password manager or have them make their own key. Never paste it in chat, email or a screenshot.</li>
+        <li><b>If it leaks:</b> cancel the key and make a new one right away. Deleting the file is not enough, because it stays in your Git history.</li>
+      </ul>
+      <p class="see">See also: <a href="index.html#api">API</a>, <a href="index.html#commit">Commit</a>, <a href="index.html#repository">Repository</a>, <a href="index.html#guardrail">Guardrail</a></p>
     </div></div>
   </details>
 
