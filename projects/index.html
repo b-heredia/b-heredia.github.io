@@ -116,15 +116,16 @@
 
     <article class="project" id="trustlens">
       <div class="p-num">05</div>
-      <h2 class="p-title"><span>Trust</span><span>Lens</span></h2>
+      <h2 class="p-title"><a href="https://github.com/b-heredia/TrustLens" class="p-link" target="_blank" rel="noopener"><span>Trust</span><span>Lens</span><span class="sr-only"> (opens in a new tab)</span></a></h2>
       <div class="p-desc">
         <p><strong>Question:</strong> Can a beginner-friendly tool help people spot warning signs in a link before they click it?</p>
-        <dl><dt>Role</dt><dd>Builder</dd><dt>Shown at</dt><dd>Tech Expo</dd><dt>Medium</dt><dd>Link checker that uses detection rules</dd></dl>
+        <dl><dt>Role</dt><dd>Builder</dd><dt>Year</dt><dd>2026</dd><dt>Shown at</dt><dd>Tech Expo</dd><dt>Medium</dt><dd>Python and Flask web app, with HTML, CSS and 13 automated tests</dd></dl>
+        <p style="margin-top:14px"><a href="https://github.com/b-heredia/TrustLens" target="_blank" rel="noopener"><strong>View the code on GitHub →</strong><span class="sr-only"> (opens in a new tab)</span></a></p>
       </div>
-      <div class="p-img p-demo tl-demo" role="img" aria-label="Example links with warning signs marked: an IP address, a URL shortener and an unusual domain ending.">
+      <div class="p-img p-demo tl-demo" role="img" aria-label="Example links with warning signs marked: an IP address, a URL shortener and an unusual domain ending (.xyz).">
         <span class="tl-row" aria-hidden="true"><span class="tl-url">http://<mark>192.0.2.44</mark>/account/verify</span><span class="tl-flag">IP address</span></span>
         <span class="tl-row" aria-hidden="true"><span class="tl-url">https://<mark>short.link</mark>/x7Qp2</span><span class="tl-flag">URL shortener</span></span>
-        <span class="tl-row" aria-hidden="true"><span class="tl-url">https://secure-login-update<mark>.zip</mark></span><span class="tl-flag">Unusual ending</span></span>
+        <span class="tl-row" aria-hidden="true"><span class="tl-url">https://secure-login-update<mark>.xyz</mark></span><span class="tl-flag">Unusual ending</span></span>
         <span class="figcap" aria-hidden="true">Fig. 05 — Made-up links, read the way TrustLens reads them</span>
       </div>
       <div class="p-more">
@@ -134,8 +135,8 @@
         </div>
         <div>
           <h3 class="h4">What it checks</h3>
-          <p>TrustLens analyzes HTTP and HTTPS links using predefined detection rules. It looks for:</p>
-          <ul><li>Suspicious URL structures</li><li>IP addresses used instead of a domain name</li><li>URL shorteners</li><li>Unusual domain endings</li></ul>
+          <p>TrustLens analyzes HTTP and HTTPS links with six predefined Python checks, and explains each warning it finds:</p>
+          <ul><li>Whether the link uses HTTPS</li><li>An IP address instead of a domain name</li><li>A URL longer than 100 characters</li><li>Username information hidden in the URL</li><li>Known URL shorteners</li><li>Unusual domain endings, like .xyz, .top and .click</li></ul>
         </div>
         <div>
           <h3 class="h4">What it doesn't do</h3>
