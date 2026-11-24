@@ -224,7 +224,7 @@
     display: none; background: none; border: 1px solid var(--ink); border-radius: 999px;
     font: inherit; font-weight: 700; padding: 6px 14px; cursor: pointer; color: var(--ink);
   }
-  @media (max-width: 760px) {
+  @media (max-width: 1180px) {
     .site-nav { flex-wrap: wrap; }
     .menu-btn { display: inline-block; }
     .site-nav ul {
@@ -338,3 +338,39 @@
     html { scroll-behavior: auto; }
     * { transition: none !important; animation: none !important; }
   }
+
+  /* ---------- STORIES (portfolio sections) ---------- */
+  .part { border-top: 1px solid var(--ink); margin: 0 var(--gutter); padding-left: 0; padding-right: 0; }
+  .part-title { grid-column: 4 / 13; padding-top: 18px; font-size: var(--big); font-weight: 700; line-height: .9; letter-spacing: -0.05em; text-transform: uppercase; margin-bottom: clamp(16px, 3vw, 40px); }
+  .entry.story h3 { grid-column: 4 / 13; }
+  .entry.story .body { grid-column: 4 / 11; font-size: 17px; line-height: 1.55; }
+  .entry.story .body p + p, .entry.story .body p + ul, .entry.story .body p + ol, .entry.story .body ul + p, .entry.story .body ol + p { margin-top: 12px; }
+  .entry.story .body ol { padding-left: 1.3em; }
+  .entry.story .body ol li + li { margin-top: 6px; }
+  .entry.story .body .btn-row { margin-top: 20px; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .quote { font-size: clamp(20px, 2.4vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; border-left: 6px solid var(--ink); padding-left: 18px; margin-top: 18px; }
+  .takeaway { grid-column: 4 / 11; border-top: 3px solid var(--ink); padding-top: 14px; margin-top: clamp(28px, 4vw, 48px); font-size: 17px; line-height: 1.55; }
+  .takeaway h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+  .takeaway p + p { margin-top: 12px; }
+  .mission { grid-column: 4 / 13; font-size: clamp(24px, 3.2vw, 46px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; padding-top: 14px; }
+  .timeline { grid-column: 1 / 13; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); margin-bottom: clamp(16px, 3vw, 40px); }
+  .timeline li { border-top: 3px solid var(--ink); padding-top: 10px; }
+  .timeline b { display: block; font-size: clamp(18px, 2vw, 26px); letter-spacing: -0.02em; }
+  .timeline span { display: block; font-size: 15px; margin-top: 6px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); margin-top: 12px; }
+  .two h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+  .home-contact { padding-top: 0; padding-bottom: clamp(24px, 4vw, 48px); }
+  .hc-links { grid-column: 4 / 13; display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: clamp(18px, 2vw, 24px); font-weight: 700; padding-top: 18px; }
+  .hc-links a { text-decoration: none; border-bottom: 2px solid var(--ink); }
+  .hc-links a:hover { background: var(--ink); color: var(--paper); }
+  @media (max-width: 860px) {
+    .part-title, .entry.story h3, .entry.story .body, .takeaway, .mission, .hc-links { grid-column: 1 / 13; }
+    .timeline { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) { .timeline, .two { grid-template-columns: 1fr; } }
+
+  /* ---------- nav fit for 10 links ---------- */
+  .site-nav ul { gap: 6px clamp(10px, 1.4vw, 24px); }
+  @media (max-width: 1440px) { .nav-sub { display: none; } }
+  .index-list .t { font-size: clamp(30px, 4.6vw, 72px); }
