@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technology — Briana Heredia</title>
+<meta name="description" content="Technology growth of Briana Heredia: TrustLens, Geek Week, debugging, GitHub and team tools.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%226%22%20fill%3D%22%23111%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%20Neue%2CHelvetica%2CArial%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2236%22%20letter-spacing%3D%22-2.5%22%20fill%3D%22%23fff%22%3Eb/h%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav aria-label="Main" class="site-nav" id="site-nav">
+  <a class="brand" href="/"><strong>Briana Heredia</strong><span class="nav-sub"> — Creative AI Technologist</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+  <ul id="nav-list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/leadership/">Leadership</a></li>
+    <li><a href="/business/">Business</a></li>
+    <li><a href="/technology/" aria-current="page">Technology</a></li>
+    <li><a href="/career/">Career</a></li>
+    <li><a href="/wellness/">Wellness</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/resume/">Résumé</a></li>
+    <li><a href="/plain-words/">Plain Words</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main" tabindex="-1">
+<header class="page-head hero grid">
+  <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="56" y2="100"/><line x1="70" y1="0" x2="100" y2="64"/>
+  </svg>
+  <p class="kicker">What I built, how I built it and what I learned along the way.</p>
+  <h1 class="giant" aria-label="Technology" style="font-size:min(var(--giant), calc(72vw / 7.0))"><span aria-hidden="true">Technology</span></h1>
+  <p class="lede">Technology isn’t just knowing how to code. It’s understanding problems, asking questions, testing solutions and continuing to learn.</p>
+</header>
+<section class="grid block part" aria-labelledby="tech-stats">
+  <h2 class="sr-only" id="tech-stats">At a glance</h2>
+  <div class="stats">
+    <p class="stat"><b>~86</b><span>words per minute, more than double the 40 WPM goal</span></p>
+    <p class="stat"><b>13</b><span>automated tests in TrustLens</span></p>
+    <p class="stat"><b>6</b><span>URL checks in TrustLens</span></p>
+  </div>
+</section>
+<section class="grid block part" aria-labelledby="tech-app">
+  <p class="sec-label">01 — Web Application</p>
+  <h2 class="part-title" id="tech-app">TrustLens: a link checker for everyday people</h2>
+  <article class="entry story">
+    <p class="when">The problem</p>
+    <h3>Who it helps</h3>
+    <div class="body">
+<p>Many people, especially those who aren’t familiar with cybersecurity threats, can click a malicious link that looks legitimate. I built TrustLens to help people spot warning signs in a URL before they click.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">What I built</p>
+    <h3>Front end, back end, logic and tests</h3>
+    <div class="body">
+<p>I built TrustLens myself, end to end:</p>
+<ul><li><b>Back end:</b> a Python and Flask web app that checks each link.</li><li><b>Logic:</b> six predefined checks, including HTTPS, IP addresses, long URLs, hidden usernames, URL shorteners and unusual domain endings.</li><li><b>Front end:</b> HTML and CSS, with a plain-language explanation for every warning.</li><li><b>Testing:</b> 13 automated tests with Python’s unittest.</li></ul>
+<p>TrustLens doesn’t guarantee whether a site is safe. It gives people information so they can make a more informed choice.</p>
+<p class="btn-row"><a class="btn solid" href="https://trustlens-l9xd.onrender.com/" target="_blank" rel="noopener">Try it live<span class="sr-only"> (opens in a new tab)</span></a><a class="btn" href="https://github.com/b-heredia/TrustLens" target="_blank" rel="noopener">View the code on GitHub<span class="sr-only"> (opens in a new tab)</span></a><a class="btn" href="/projects/#trustlens">Project details</a></p>
+<p class="note">The live app is on a free plan, so it can take up to a minute to wake up.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Debugging</p>
+    <h3>When the results didn’t match what I expected</h3>
+    <div class="body">
+<p>While building TrustLens, some results didn’t match what I expected. I reviewed my analyzer logic, tested functions one at a time and adjusted until the results were right.</p>
+<p>One big lesson was the difference between testing a single function and testing the whole application. I’m now more comfortable troubleshooting and working through problems step by step.</p>
+    </div>
+  </article>
+</section>
+<section class="grid block part" aria-labelledby="tech-geek">
+  <p class="sec-label">02 — Geek Week</p>
+  <h2 class="part-title" id="tech-geek">SQL, Excel and timed challenges</h2>
+  <article class="entry story">
+    <p class="when">SQL</p>
+    <h3>From memorizing to understanding</h3>
+    <div class="body">
+<p>At first, SQL was hard for me, especially remembering query structure and how commands work together. With repetition, I learned to break queries into smaller steps and understand the logic behind each one.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Excel and hot keys</p>
+    <h3>Attention to detail under time pressure</h3>
+    <div class="body">
+<p>In Excel, I practiced formulas, functions, cell references and working with data, along with keyboard shortcuts and timed exercises. It sharpened my attention to detail and made me more comfortable fixing my own mistakes.</p>
+<p>I learned that technical growth takes practice, patience and understanding why something works, not just memorizing commands.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Typing</p>
+    <h3>About 86 words per minute</h3>
+    <div class="body">
+<p>I worked on my typing speed and accuracy throughout the program and now type about 86 words per minute, more than double the 40 WPM benchmark. It helps me write code, take notes and communicate with my team faster.</p>
+    </div>
+  </article>
+</section>
+<section class="grid block part" aria-labelledby="tech-tools">
+  <p class="sec-label">03 — Tools</p>
+  <h2 class="part-title" id="tech-tools">How I work with others</h2>
+  <article class="entry story">
+    <p class="when">GitHub</p>
+    <h3>Version control</h3>
+    <div class="body">
+<p>I use GitHub to manage project files and track changes. This portfolio and TrustLens both live on GitHub, and both go live from it: the portfolio through GitHub Pages and TrustLens through Render.</p>
+<p>I learned that version control keeps code organized, keeps a record of progress and makes it possible to collaborate.</p><p><a href="https://github.com/b-heredia" target="_blank" rel="noopener"><strong>My GitHub →</strong><span class="sr-only"> (opens in a new tab)</span></a></p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Cloud and business tools</p>
+    <h3>Working as a team</h3>
+    <div class="body">
+<p>On the Medline client project, my team, Relanta, used Microsoft Teams, Zoom, Google Drive, Office 365, Outlook and Windows Explorer to communicate, collaborate and manage project files.</p>
+<p>These tools helped me practice professional communication, share information and keep project files organized.</p>
+    </div>
+  </article>
+  <div class="takeaway">
+    <h3>What I learned about technology</h3>
+    <p>Through SQL, Excel, Python, Flask, GitHub and team tools, I built a stronger technical foundation and more confidence that I can learn new technologies. I’m going to keep building these skills as I move into the technology industry.</p>
+    <p><a href="/projects/"><strong>See all my projects →</strong></a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Briana Heredia · <a href="mailto:bheredia@icstars.org">bheredia@icstars.org</a> · <a href="https://www.linkedin.com/in/brianaheredia/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/b-heredia" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a><br>Imagined by a human. Set on a 12-column grid.</p>
+  <span class="mark" aria-label="BH monogram">b/h</span>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('site-nav');
+  var btn = nav.querySelector('.menu-btn');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 4); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
