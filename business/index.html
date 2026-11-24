@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Business — Briana Heredia</title>
-<meta name="description" content="Business experience of Briana Heredia: eCornell Women's Entrepreneurship Certificate, customer insight at Enova and process improvement.">
+<meta name="description" content="Business reflections by Briana Heredia: the Medline client project with Relanta, consulting teamwork and employer insights.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%226%22%20fill%3D%22%23111%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%20Neue%2CHelvetica%2CArial%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2236%22%20letter-spacing%3D%22-2.5%22%20fill%3D%22%23fff%22%3Eb/h%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,12 @@
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
   <ul id="nav-list">
     <li><a href="/">Home</a></li>
-    <li><a href="/projects/">Projects</a></li>
     <li><a href="/leadership/">Leadership</a></li>
     <li><a href="/business/" aria-current="page">Business</a></li>
+    <li><a href="/technology/">Technology</a></li>
+    <li><a href="/career/">Career</a></li>
+    <li><a href="/wellness/">Wellness</a></li>
+    <li><a href="/projects/">Projects</a></li>
     <li><a href="/resume/">Résumé</a></li>
     <li><a href="/plain-words/">Plain Words</a></li>
     <li><a href="/contact/">Contact</a></li>
@@ -34,56 +37,126 @@
   <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
     <line x1="20" y1="0" x2="56" y2="100"/><line x1="70" y1="0" x2="100" y2="64"/>
   </svg>
-  <p class="kicker">Where business, customers and technology meet.</p>
-  <h1 class="giant" aria-label="Business"><span aria-hidden="true">Busi</span><span aria-hidden="true">Ness</span></h1>
-  <p class="lede">I've studied entrepreneurship, met team goals in a high-volume customer role and looked for better ways to get work done.</p>
+  <p class="kicker">Growing as a business thinker and emerging consultant.</p>
+  <h1 class="giant" aria-label="Business" style="font-size:min(var(--giant), calc(72vw / 5.6))"><span aria-hidden="true">Business</span></h1>
+  <p class="lede">At i.c.stars, my consulting team, Relanta, took on a real business problem for Medline. Here’s what we proposed and what I learned.</p>
 </header>
-
-<section class="grid block" aria-label="Business at a glance">
+<section class="grid block part" aria-labelledby="biz-client">
+  <p class="sec-label">01 — Client Project</p>
+  <h2 class="part-title" id="biz-client">Medline: from repeat incidents to root causes</h2>
+  <article class="entry story">
+    <p class="when">The problem</p>
+    <h3>What Medline needed</h3>
+    <div class="body">
+<p>Medline wanted one central web platform to standardize how warehouse incidents are captured and reported.</p>
+<p>The bigger issue was that the same warehouse problems kept being reported one at a time, without anyone recognizing, tracking and permanently fixing the underlying cause.</p>
+<p>Medline wanted to use AI to spot recurring patterns across incidents, register them as owned Problem records, and route them to the right IT teams until they were resolved. The goal: fewer repeat incidents, by fixing root causes instead of reacting to the same issue again and again.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Our approach</p>
+    <h3>Connecting incidents, patterns and owners</h3>
+    <div class="body">
+<p>We looked at how one platform could connect incident reporting, AI pattern recognition, problem ownership and IT resolution. We mapped what information the platform would capture and how the records would relate to each other.</p>
+<p>Our draft data model:</p>
+<ul><li><b>Owners</b>: the people or teams responsible</li><li><b>Incidents</b>: each reported issue</li><li><b>Problems</b>: recurring patterns made into owned records</li><li><b>Problem History</b>: every change until it’s resolved</li><li><b>Dismissed Patterns</b>: patterns reviewed and set aside</li></ul>
+<p>This helped us think through how incidents link to recurring problems, how ownership gets set, and how a problem’s history is tracked.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Our proposal</p>
+    <h3>One platform, from report to resolution</h3>
+    <div class="body">
+<p>In our proposal, we recommended a single web platform that would:</p>
+<ol><li>Capture warehouse incidents through a standard reporting process.</li><li>Use AI to identify recurring incident patterns.</li><li>Create Problem records from those patterns.</li><li>Assign each problem an owner.</li><li>Route problems to the right IT teams.</li><li>Track problem history through resolution.</li><li>Keep resolved issues from being reported again as new incidents.</li></ol>
+<p>The vision was to move from reacting to incidents to finding and fixing the problems behind them.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">My role</p>
+    <h3>UX Lead</h3>
+    <div class="body">
+<p>I served as UX Lead for Relanta, contributing to our shared project work and helping move the team’s responsibilities forward.</p>
+<p>The project pushed me to think beyond individual technical tasks and ask how a technology solution actually solves a business problem. I learned to understand the client’s needs before deciding on a technical approach.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Looking back</p>
+    <h3>What went well and what I’d change</h3>
+    <div class="body">
+<p>I learned how to approach a real business problem and how data structures, application design, AI and business processes work together in one solution.</p>
+<p>Next time, I’d set clear team roles, accountability and communication expectations earlier. I’d also spend more time checking each part of our solution against the client’s requirements.</p>
+    </div>
+  </article>
+</section>
+<section class="grid block part" aria-labelledby="biz-team">
+  <p class="sec-label">02 — Consulting Company</p>
+  <h2 class="part-title" id="biz-team">What Relanta taught me</h2>
+  <article class="entry story">
+    <p class="when">Teamwork</p>
+    <h3>More than dividing up assignments</h3>
+    <div class="body">
+<p>Working as a consulting team taught me that teamwork takes communication, accountability, trust and consistent participation from everyone.</p>
+<p>I learned to take initiative and stay committed to moving work forward, and also how much shared responsibility and clear expectations matter.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Feedback</p>
+    <h3>Feedback as a way to improve</h3>
+    <div class="body">
+<p>I learned to see feedback as a chance to improve the work, not as criticism of my abilities.</p>
+<p>It also showed me how important it is to communicate changes, adjust quickly and keep the team aligned with what the client expects.</p>
+    </div>
+  </article>
+  <article class="entry story">
+    <p class="when">Professionalism</p>
+    <h3>What professionalism means to me now</h3>
+    <div class="body">
+<p>Professionalism means being dependable, communicating clearly, meeting commitments, accepting feedback and respecting other people’s contributions.</p>
+<p>It also means remembering that good technology starts with understanding the people and business problems it’s meant to serve.</p>
+    </div>
+  </article>
+</section>
+<section class="grid block part" aria-labelledby="biz-employers">
+  <p class="sec-label">03 — Company Engagement</p>
+  <h2 class="part-title" id="biz-employers">Learning from employers</h2>
+  <article class="entry story">
+    <p class="when">Accenture · Equinix · Microsoft · Medline</p>
+    <h3>Seeing different paths in tech</h3>
+    <div class="body">
+<p>Through employer conversations with companies like Accenture, Equinix, Microsoft and Medline, I learned about company cultures, workplace expectations and the many career paths in technology.</p>
+<p>These conversations helped me think more intentionally about where I want to work and the kind of environment where I’ll grow. Every company offers different paths, cultures and chances to develop.</p>
+    </div>
+  </article>
+</section>
+<section class="grid block part" aria-labelledby="biz-before">
+  <p class="sec-label">04 — Background</p>
+  <h2 class="part-title" id="biz-before">Business experience before i.c.stars</h2>
   <div class="stats">
     <p class="stat"><b>300+</b><span>customer emails handled per day at Enova</span></p>
     <p class="stat"><b>100%</b><span>QA score, earning a spot in the QA 100% Club</span></p>
     <p class="stat"><b>3 mo.</b><span>Top Performer honors three months in a row</span></p>
   </div>
-</section>
-
-<section class="grid block" aria-labelledby="biz-exp" style="padding-top:0">
-  <h2 class="sr-only" id="biz-exp">Business experience</h2>
-
-  <article class="entry">
-    <p class="when">2022</p>
-    <h3>Women's Entrepreneurship Certificate<span class="where">eCornell</span></h3>
-    <div class="body"><p>Studied entrepreneurship through Cornell University's online certificate program.</p></div>
+  <article class="entry story">
+    <p class="when">2022<br>eCornell</p>
+    <h3>Women’s Entrepreneurship Certificate</h3>
+    <div class="body">
+<p>Studied entrepreneurship through Cornell University’s online certificate program.</p>
+    </div>
   </article>
-
-  <article class="entry">
-    <p class="when">Aug 2026 – Present<br>Chicago, IL</p>
-    <h3>Technology and business team project<span class="where">i.c.stars</span></h3>
-    <div class="body"><ul>
-      <li>Working on a team project that combines technology and business.</li>
-      <li>Reporting progress to program staff on a regular schedule.</li>
-      <li>Learning data and cloud tools such as SQL, Python, Azure and Microsoft Fabric.</li>
-    </ul></div>
+  <article class="entry story">
+    <p class="when">May 2021 – Jun 2025<br>Enova · Chicago, IL</p>
+    <h3>Email Team Specialist</h3>
+    <div class="body">
+<ul><li>Used analytics and customer feedback to improve my performance and beat team KPIs.</li><li>Recognized for top customer satisfaction, a perfect QA score and Top Performer honors three months in a row.</li><li>Helped prevent fraud using LexisNexis Risk Solutions.</li></ul>
+    </div>
   </article>
-
-  <article class="entry">
-    <p class="when">May 2021 – Jun 2025<br>Chicago, IL</p>
-    <h3>Email Team Specialist<span class="where">Enova</span></h3>
-    <div class="body"><ul>
-      <li>Used analytics and customer feedback to improve my performance and beat team KPIs.</li>
-      <li>Recognized for the highest quality of customer satisfaction, a perfect QA score and Top Performer honors three months in a row.</li>
-      <li>Helped prevent fraud using LexisNexis Risk Solutions.</li>
-      <li>Developed my own strategies to work email cases more efficiently.</li>
-    </ul></div>
-  </article>
-
-  <article class="entry">
-    <p class="when">May 2017 – May 2021<br>Cicero, IL</p>
-    <h3>Team Lead, General Merchandise<span class="where">Walmart</span></h3>
-    <div class="body"><ul>
-      <li>Identified workflow bottlenecks and suggested process improvements.</li>
-      <li>Wrote progress reports for management.</li>
-    </ul></div>
+  <article class="entry story">
+    <p class="when">May 2017 – May 2021<br>Walmart · Cicero, IL</p>
+    <h3>Team Lead, General Merchandise</h3>
+    <div class="body">
+<ul><li>Identified workflow bottlenecks and suggested process improvements.</li><li>Wrote progress reports for management.</li></ul>
+    </div>
   </article>
 </section>
 
