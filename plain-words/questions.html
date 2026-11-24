@@ -89,7 +89,9 @@
   .site-nav ul a[aria-current="page"] { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
   .menu-btn { display:none; background:none; border:1px solid var(--ink); border-radius:999px; font:inherit; font-weight:700; padding:6px 14px; cursor:pointer; color:var(--ink); }
   .tools { top:var(--navh, 60px); }
-  @media (max-width:760px) {
+  .site-nav ul { gap:6px clamp(10px,1.4vw,24px); }
+  @media (max-width:1440px) { .nav-sub { display:none; } }
+  @media (max-width:1180px) {
     .site-nav { flex-wrap:wrap; }
     .menu-btn { display:inline-block; }
     .site-nav ul { display:none; flex-basis:100%; flex-direction:column; gap:0; border-top:1px solid var(--ink); margin-top:14px; }
@@ -108,9 +110,12 @@
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
   <ul id="nav-list">
     <li><a href="/">Home</a></li>
-    <li><a href="/projects/">Projects</a></li>
     <li><a href="/leadership/">Leadership</a></li>
     <li><a href="/business/">Business</a></li>
+    <li><a href="/technology/">Technology</a></li>
+    <li><a href="/career/">Career</a></li>
+    <li><a href="/wellness/">Wellness</a></li>
+    <li><a href="/projects/">Projects</a></li>
     <li><a href="/resume/">Résumé</a></li>
     <li><a href="/plain-words/" aria-current="page">Plain Words</a></li>
     <li><a href="/contact/">Contact</a></li>
@@ -126,7 +131,7 @@
     <line x1="22" y1="0" x2="58" y2="100"/><line x1="72" y1="0" x2="100" y2="66"/>
   </svg>
   <p class="kicker">Real questions from my learning journey.</p>
-  <h1 class="giant" aria-label="Questions I Asked"><span aria-hidden="true">Ques</span><span aria-hidden="true">Tions</span></h1>
+  <h1 class="giant" aria-label="Questions I Asked" style="font-size:min(var(--giant), calc(72vw / 6.3))"><span aria-hidden="true">Questions</span></h1>
   <p class="intro">Every question here is one I actually asked while learning. If you're wondering the same thing, you're in good company. Tap a question to see the answer.</p>
 </header>
 
