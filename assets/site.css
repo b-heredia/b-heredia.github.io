@@ -374,3 +374,11 @@
   .site-nav ul { gap: 6px clamp(10px, 1.4vw, 24px); }
   @media (max-width: 1440px) { .nav-sub { display: none; } }
   .index-list .t { font-size: clamp(30px, 4.6vw, 72px); }
+
+  /* ---------- FOLLOW THRU CARD ---------- */
+  .ft-demo { flex-direction: column; align-items: stretch; justify-content: center; padding-bottom: 44px; }
+  .ft-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .ft-step { border-top: 3px solid var(--ink); padding-top: 10px; font-size: clamp(15px, 2vw, 26px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; position: relative; }
+  .ft-step b { display: block; font-size: 12px; letter-spacing: .04em; margin-bottom: 6px; }
+  .ft-step:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 28px; font-size: 18px; }
+  @media (max-width: 600px) { .ft-demo { aspect-ratio: auto; } .ft-flow { grid-template-columns: 1fr 1fr; gap: 20px 16px; } .ft-step::after { display: none; } }
