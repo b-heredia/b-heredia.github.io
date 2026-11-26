@@ -382,3 +382,7 @@
   .ft-step b { display: block; font-size: 12px; letter-spacing: .04em; margin-bottom: 6px; }
   .ft-step:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 28px; font-size: 18px; }
   @media (max-width: 600px) { .ft-demo { aspect-ratio: auto; } .ft-flow { grid-template-columns: 1fr 1fr; gap: 20px 16px; } .ft-step::after { display: none; } }
+
+  /* ---------- CASE STUDY FLOW ---------- */
+  .cx-flow { grid-column: 4 / 13; margin-bottom: clamp(16px, 3vw, 40px); aspect-ratio: auto; min-height: 220px; }
+  @media (max-width: 860px) { .cx-flow { grid-column: 1 / 13; } }
